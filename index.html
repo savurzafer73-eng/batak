@@ -26,7 +26,7 @@ color:#fff
 
 body{
 background:
-radial-gradient(circle at 50% 45%,#145b3d 0,#082e20 42%,#031009 100%)
+radial-gradient(circle at 50% 45%,#145b3d 0,#082e20 42%,#031009 100%);
 }
 
 button{
@@ -381,11 +381,16 @@ transform:translateY(-50%)
 }
 
 @keyframes drop{
-from{opacity:0;transform:scale(.7)}
-to{opacity:1}
+from{
+opacity:0;
+transform:scale(.7)
+}
+to{
+opacity:1
+}
 }
 
-/* ================= WINNER ANIMATION ================= */
+/* ================= WINNING CARD ANIMATION ================= */
 
 .trick-winning{
 transition:
@@ -431,7 +436,7 @@ color:#ffdb77;
 display:none
 }
 
-/* ================= PARTNER ================= */
+/* ================= PARTNER HAND ================= */
 
 .partnerHand{
 position:absolute;
@@ -681,7 +686,7 @@ background:linear-gradient(135deg,#efd074,#9d7428);
 color:#172015
 }
 
-/* ================= MODAL ================= */
+/* ================= MODALS ================= */
 
 .modal{
 position:absolute;
@@ -1007,6 +1012,8 @@ top:118px
 
 <div id="app">
 
+<!-- ================= MENU ================= -->
+
 <div id="menu">
 
 <div class="menu">
@@ -1070,6 +1077,8 @@ OYUNA BAŞLA
 </div>
 
 
+<!-- ================= GAME ================= -->
+
 <div id="game">
 
 <div class="top">
@@ -1100,6 +1109,7 @@ El <span id="round">1</span>
 
 </div>
 
+
 <div class="info" id="info">
 Oyun hazırlanıyor
 </div>
@@ -1111,42 +1121,80 @@ Koz: ♠
 
 <div class="table">
 
+<!-- MERT = EŞ -->
+
 <div class="player p0" id="p0">
+
 <div class="pavatar">M</div>
+
 <div>
+
 <div class="pname">MERT</div>
+
 <div class="pscore">0 el</div>
+
 </div>
+
 </div>
+
+
+<!-- EMRE -->
 
 <div class="player p1" id="p1">
+
 <div class="pavatar">E</div>
+
 <div>
+
 <div class="pname">EMRE</div>
+
 <div class="pscore">0 el</div>
+
 </div>
+
 </div>
+
+
+<!-- SEN -->
 
 <div class="player p2" id="p2">
+
 <div class="pavatar">Z</div>
+
 <div>
+
 <div class="pname">SEN</div>
+
 <div class="pscore">0 el</div>
-</div>
+
 </div>
 
+</div>
+
+
+<!-- AHMET -->
+
 <div class="player p3" id="p3">
+
 <div class="pavatar">A</div>
+
 <div>
+
 <div class="pname">AHMET</div>
+
 <div class="pscore">0 el</div>
+
 </div>
+
 </div>
+
 
 <div class="center" id="center"></div>
 
 </div>
 
+
+<!-- ================= MERT ELİ ================= -->
 
 <div class="partnerHand" id="partnerHand">
 
@@ -1158,6 +1206,8 @@ MERT • EŞİN • KARTINI SEN SEÇ
 
 </div>
 
+
+<!-- ================= CONTROLS ================= -->
 
 <div class="controls" id="controls">
 
@@ -1172,8 +1222,12 @@ KOZ SEÇ
 </div>
 
 
+<!-- ================= USER HAND ================= -->
+
 <div class="hand" id="hand"></div>
 
+
+<!-- ================= BID ================= -->
 
 <div class="modal" id="bidModal">
 
@@ -1193,6 +1247,8 @@ PAS
 
 </div>
 
+
+<!-- ================= TRUMP ================= -->
 
 <div class="modal" id="trumpModal">
 
@@ -1227,6 +1283,8 @@ PAS
 </div>
 
 
+<!-- ================= RESULT ================= -->
+
 <div class="modal" id="resultModal">
 
 <div class="box">
@@ -1254,6 +1312,15 @@ SONRAKİ EL
 <script>
 "use strict";
 
+
+/* =====================================================
+   OYUNCULAR
+
+   0 = MERT = EŞİN
+   1 = EMRE = RAKİP
+   2 = SEN
+   3 = AHMET = RAKİP
+===================================================== */
 
 const USER=2;
 const PARTNER=0;
@@ -1310,13 +1377,20 @@ let level=
 Number(localStorage.getItem("batakLevel")||1);
 
 let sound=true;
+
 let busy=false;
 
+
+/* =====================================================
+   DOM
+===================================================== */
 
 const $=id=>document.getElementById(id);
 
 
-/* ================= MODE ================= */
+/* =====================================================
+   MODE
+===================================================== */
 
 document.querySelectorAll(".mode").forEach(btn=>{
 
@@ -1336,7 +1410,9 @@ clickSound();
 });
 
 
-/* ================= START ================= */
+/* =====================================================
+   START
+===================================================== */
 
 $("start").onclick=()=>{
 
@@ -1345,6 +1421,7 @@ unlockAudio();
 startSound();
 
 $("menu").style.display="none";
+
 $("game").style.display="block";
 
 setTimeout(newGame,150);
@@ -1352,23 +1429,31 @@ setTimeout(newGame,150);
 };
 
 
+/* =====================================================
+   MENU
+===================================================== */
+
 $("menuBtn").onclick=()=>{
 
 clickSound();
 
 $("game").style.display="none";
+
 $("menu").style.display="flex";
 
 };
 
 
-/* ================= SOUND ================= */
+/* =====================================================
+   SOUND
+===================================================== */
 
 $("sound").onclick=()=>{
 
 if(!sound){
 
 sound=true;
+
 $("sound").textContent="🔊";
 
 unlockAudio();
@@ -1378,6 +1463,7 @@ playTone(520,.1,.18,"sine");
 }else{
 
 sound=false;
+
 $("sound").textContent="🔇";
 
 }
@@ -1385,7 +1471,9 @@ $("sound").textContent="🔇";
 };
 
 
-/* ================= NEW GAME ================= */
+/* =====================================================
+   NEW GAME
+===================================================== */
 
 function newGame(){
 
@@ -1396,7 +1484,9 @@ newRound();
 }
 
 
-/* ================= DECK ================= */
+/* =====================================================
+   DECK
+===================================================== */
 
 function createDeck(){
 
@@ -1407,7 +1497,7 @@ for(const suit of SUITS){
 for(const rank of RANKS){
 
 d.push({
-suit:suit,
+suit,
 rank:rank[0],
 value:rank[1],
 id:suit+rank[0]
@@ -1440,48 +1530,8 @@ return a;
 
 
 /* =====================================================
-   KARTLARI BÜYÜKTEN KÜÇÜĞE SIRALA
-
-   A
-   K
-   Q
-   J
-   10
-   9
-   8
-   ...
-   2
-
-   Tür sırası:
-   ♠ ♥ ♦ ♣
+   NEW ROUND
 ===================================================== */
-
-function sortCards(a,b){
-
-let sa=
-SUITS.indexOf(a.suit);
-
-let sb=
-SUITS.indexOf(b.suit);
-
-
-/* Önce tür */
-
-if(sa!==sb){
-
-return sa-sb;
-
-}
-
-
-/* Aynı türde BÜYÜK KART SOLDAN */
-
-return b.value-a.value;
-
-}
-
-
-/* ================= ROUND ================= */
 
 function newRound(){
 
@@ -1511,24 +1561,20 @@ deck.pop()
 
 
 players.forEach(p=>{
-
-/*
-BURADA BÜYÜKTEN KÜÇÜĞE
-SIRALAMA YAPILIYOR.
-*/
-
 p.hand.sort(sortCards);
-
 });
 
 
 trick=[];
+
 tricks=[0,0,0,0];
 
 leadSuit=null;
+
 trump=null;
 
 bidder=-1;
+
 highestBid=0;
 
 current=
@@ -1555,13 +1601,37 @@ startAuction();
 }
 
 
-/* ================= AUCTION ================= */
+/* =====================================================
+   KART SIRALAMA
+   A → K → Q → J → 10 → 9 → 8 → 7 → 6 → 5 → 4 → 3 → 2
+===================================================== */
+
+function sortCards(a,b){
+
+let sa=
+SUITS.indexOf(a.suit);
+
+let sb=
+SUITS.indexOf(b.suit);
+
+if(sa!==sb)
+return sa-sb;
+
+return b.value-a.value;
+
+}
+
+
+/* =====================================================
+   AUCTION
+===================================================== */
 
 function startAuction(){
 
 current=leader;
 
 highestBid=0;
+
 bidder=-1;
 
 $("info").textContent=
@@ -1597,6 +1667,7 @@ aiBid(players[current].hand);
 if(bid>highestBid){
 
 highestBid=bid;
+
 bidder=current;
 
 bidSound();
@@ -1634,7 +1705,9 @@ auctionTurn();
 }
 
 
-/* ================= AI BID ================= */
+/* =====================================================
+   AI BID
+===================================================== */
 
 function aiBid(hand){
 
@@ -1642,10 +1715,17 @@ let score=0;
 
 hand.forEach(c=>{
 
-if(c.rank==="A") score+=1;
-if(c.rank==="K") score+=.7;
-if(c.rank==="Q") score+=.35;
-if(c.rank==="J") score+=.15;
+if(c.rank==="A")
+score+=1;
+
+if(c.rank==="K")
+score+=.7;
+
+if(c.rank==="Q")
+score+=.35;
+
+if(c.rank==="J")
+score+=.15;
 
 });
 
@@ -1681,7 +1761,9 @@ Math.floor(score)
 }
 
 
-/* ================= USER BID ================= */
+/* =====================================================
+   USER BID
+===================================================== */
 
 function showBidButton(){
 
@@ -1727,6 +1809,7 @@ b.onclick=()=>{
 unlockAudio();
 
 highestBid=n;
+
 bidder=USER;
 
 bidSound();
@@ -1738,7 +1821,6 @@ showToast(
 close($("bidModal"));
 
 current=(current+1)%4;
-
 
 if(current===leader){
 
@@ -1762,7 +1844,9 @@ $("bidModal").style.display="flex";
 };
 
 
-/* ================= PASS ================= */
+/* =====================================================
+   PASS
+===================================================== */
 
 $("pass").onclick=()=>{
 
@@ -1775,7 +1859,6 @@ passSound();
 showToast("Sen pas geçtin");
 
 current=(current+1)%4;
-
 
 if(current===leader){
 
@@ -1790,7 +1873,9 @@ auctionTurn();
 };
 
 
-/* ================= FINISH AUCTION ================= */
+/* =====================================================
+   FINISH AUCTION
+===================================================== */
 
 function finishAuction(){
 
@@ -1800,6 +1885,7 @@ hideControls();
 if(bidder===-1){
 
 bidder=leader;
+
 highestBid=1;
 
 }
@@ -1811,11 +1897,6 @@ NAMES[bidder]+
 highestBid+
 " ile aldı";
 
-
-/*
-SADECE SEN İHALEYİ ALIRSAN
-MERT'İN ELİ AÇILIR.
-*/
 
 if(
 selectedMode==="esli" &&
@@ -1867,7 +1948,9 @@ startTrick();
 }
 
 
-/* ================= TRUMP ================= */
+/* =====================================================
+   BEST TRUMP
+===================================================== */
 
 function bestTrump(hand){
 
@@ -1894,6 +1977,10 @@ return [...SUITS]
 }
 
 
+/* =====================================================
+   TRUMP
+===================================================== */
+
 function openTrump(){
 
 unlockAudio();
@@ -1909,7 +1996,8 @@ btn.onclick=()=>{
 
 unlockAudio();
 
-trump=btn.dataset.suit;
+trump=
+btn.dataset.suit;
 
 close($("trumpModal"));
 
@@ -1919,7 +2007,10 @@ showTrump();
 
 current=bidder;
 
-setTimeout(startTrick,500);
+setTimeout(
+startTrick,
+500
+);
 
 };
 
@@ -1936,7 +2027,9 @@ $("trump").style.display="block";
 }
 
 
-/* ================= START TRICK ================= */
+/* =====================================================
+   START TRICK
+===================================================== */
 
 function startTrick(){
 
@@ -1949,6 +2042,7 @@ $("center").innerHTML="";
 updatePlayers();
 
 renderHand();
+
 renderPartnerHand();
 
 
@@ -1991,7 +2085,9 @@ aiTurn,
 }
 
 
-/* ================= LEGAL ================= */
+/* =====================================================
+   LEGAL
+===================================================== */
 
 function legalCards(index){
 
@@ -2013,7 +2109,9 @@ hand;
 }
 
 
-/* ================= PLAY CARD ================= */
+/* =====================================================
+   PLAY CARD
+===================================================== */
 
 function playCard(player,card){
 
@@ -2071,8 +2169,8 @@ leadSuit=card.suit;
 
 
 trick.push({
-player:player,
-card:card
+player,
+card
 });
 
 
@@ -2082,6 +2180,7 @@ card
 );
 
 renderHand();
+
 renderPartnerHand();
 
 updatePlayers();
@@ -2103,29 +2202,10 @@ return;
 }
 
 
-/*
-SIRASIYLA DEVAM:
-
-SEN
-↓
-EMRE
-↓
-MERT
-↓
-AHMET
-
-veya el hangi oyuncudan başladıysa
-normal saat yönünde devam eder.
-*/
-
 current=(current+1)%4;
 
 updatePlayers();
 
-
-/*
-MERT EŞ İSE KARTI SEN SEÇERSİN.
-*/
 
 if(
 current===PARTNER &&
@@ -2165,7 +2245,9 @@ aiTurn,
 }
 
 
-/* ================= PARTNER CARD ================= */
+/* =====================================================
+   PARTNER PLAY
+===================================================== */
 
 function playPartnerCard(card){
 
@@ -2184,18 +2266,12 @@ PARTNER,
 card
 );
 
-
-/*
-MERT KART ATTIKTAN SONRA
-AI OTOMATİK OLARAK BAŞA DÖNMEZ.
-
-playCard() normal sırayı devam ettirir.
-*/
-
 }
 
 
-/* ================= AI ================= */
+/* =====================================================
+   AI
+===================================================== */
 
 function aiTurn(){
 
@@ -2264,7 +2340,9 @@ card
 }
 
 
-/* ================= WOULD WIN ================= */
+/* =====================================================
+   WOULD WIN
+===================================================== */
 
 function wouldWin(card){
 
@@ -2293,12 +2371,17 @@ trick[i].card;
 }
 
 
-return beats(card,best);
+return beats(
+card,
+best
+);
 
 }
 
 
-/* ================= BEATS ================= */
+/* =====================================================
+   BEATS
+===================================================== */
 
 function beats(a,b){
 
@@ -2332,7 +2415,9 @@ return false;
 }
 
 
-/* ================= PLAYED ================= */
+/* =====================================================
+   RENDER PLAYED
+===================================================== */
 
 function renderPlayed(player,card){
 
@@ -2347,8 +2432,8 @@ let classes=[
 ];
 
 el.className=
-"played "+classes[player];
-
+"played "+
+classes[player];
 
 if(
 card.suit==="♥"||
@@ -2359,7 +2444,6 @@ el.classList.add("red");
 
 }
 
-
 el.innerHTML=
 card.rank+
 "<br>"+
@@ -2368,13 +2452,14 @@ card.suit+
 NAMES[player]+
 "</small>";
 
-
 $("center").appendChild(el);
 
 }
 
 
-/* ================= WINNER ANIMATION ================= */
+/* =====================================================
+   KAZANAN TARAFA KARTLARI KAYDIR
+===================================================== */
 
 function animateTrickToWinner(winnerPlayer){
 
@@ -2450,10 +2535,12 @@ card.style.left=
 card.style.top=
 `calc(50% + ${finalY}px)`;
 
+
 card.style.transform=
 `translate(-50%,-50%)
 scale(.72)
 rotate(${(index-1.5)*5}deg)`;
+
 
 card.style.opacity="0.12";
 
@@ -2462,7 +2549,9 @@ card.style.opacity="0.12";
 }
 
 
-/* ================= RESOLVE ================= */
+/* =====================================================
+   RESOLVE TRICK
+===================================================== */
 
 function resolveTrick(){
 
@@ -2490,18 +2579,17 @@ trick[i];
 const winnerPlayer=
 winner.player;
 
+
 tricks[winnerPlayer]++;
 
-leader=winnerPlayer;
-current=winnerPlayer;
+leader=
+winnerPlayer;
+
+current=
+winnerPlayer;
 
 updatePlayers();
 
-
-/*
-4 KART KAZANAN OYUNCUNUN
-TARAFINA KAYAR.
-*/
 
 animateTrickToWinner(
 winnerPlayer
@@ -2558,7 +2646,9 @@ startTrick();
 }
 
 
-/* ================= USER HAND ================= */
+/* =====================================================
+   USER HAND
+===================================================== */
 
 function renderHand(){
 
@@ -2615,15 +2705,6 @@ el.classList.add("red");
 }
 
 
-/*
-Kartlar artık sortCards()
-ile büyükten küçüğe geldiği için
-soldan sağa otomatik olarak:
-
-A K Q J 10 9 8 ...
-
-*/
-
 if(index<7){
 
 let x=
@@ -2675,7 +2756,9 @@ container.appendChild(el);
 }
 
 
-/* ================= CARD HTML ================= */
+/* =====================================================
+   CARD HTML
+===================================================== */
 
 function cardHTML(card){
 
@@ -2726,21 +2809,27 @@ ${card.suit}
 return `
 <div class="corner">
 ${card.rank}
-<div class="suitmini">${card.suit}</div>
+<div class="suitmini">
+${card.suit}
+</div>
 </div>
 
 ${face}
 
 <div class="corner bottom">
 ${card.rank}
-<div class="suitmini">${card.suit}</div>
+<div class="suitmini">
+${card.suit}
+</div>
 </div>
 `;
 
 }
 
 
-/* ================= PARTNER ================= */
+/* =====================================================
+   PARTNER HAND
+===================================================== */
 
 function showPartnerHand(){
 
@@ -2770,6 +2859,10 @@ $("partnerCards").innerHTML="";
 
 }
 
+
+/*
+MERT'İN 13 KARTI AÇIK.
+*/
 
 function renderPartnerHand(){
 
@@ -2804,7 +2897,8 @@ hand.forEach(
 let el=
 document.createElement("div");
 
-el.className="partnerCard";
+el.className=
+"partnerCard";
 
 
 if(
@@ -2829,17 +2923,13 @@ el.classList.add("red");
 }
 
 
-/*
-MERT'İN ELİ DE BÜYÜKTEN
-KÜÇÜĞE DİZİLİYOR.
-*/
-
 if(index<7){
 
 let x=
 14+(index/6)*72;
 
 el.style.left=x+"%";
+
 el.style.top="0";
 
 }else{
@@ -2848,6 +2938,7 @@ let x=
 20+((index-7)/5)*60;
 
 el.style.left=x+"%";
+
 el.style.top="29px";
 
 }
@@ -2879,7 +2970,9 @@ container.appendChild(el);
 }
 
 
-/* ================= PARTNER CARD HTML ================= */
+/* =====================================================
+   PARTNER CARD HTML
+===================================================== */
 
 function partnerCardHTML(card){
 
@@ -2956,7 +3049,9 @@ ${card.suit}
 }
 
 
-/* ================= PLAYERS ================= */
+/* =====================================================
+   PLAYERS
+===================================================== */
 
 function updatePlayers(){
 
@@ -2978,7 +3073,9 @@ tricks[i]+" el";
 }
 
 
-/* ================= CONTROLS ================= */
+/* =====================================================
+   CONTROLS
+===================================================== */
 
 function hideControls(){
 
@@ -2991,7 +3088,9 @@ $("trumpButton").style.display="none";
 }
 
 
-/* ================= RESULT ================= */
+/* =====================================================
+   RESULT
+===================================================== */
 
 function finishRound(){
 
@@ -3094,7 +3193,9 @@ html+=`
 
 <div class="resultRow">
 
-<span>${NAMES[i]}</span>
+<span>
+${NAMES[i]}
+</span>
 
 <b>
 ${score>0?"+":""}${score}
@@ -3171,7 +3272,9 @@ updateProfile();
 }
 
 
-/* ================= NEXT ================= */
+/* =====================================================
+   NEXT
+===================================================== */
 
 $("next").onclick=()=>{
 
@@ -3190,7 +3293,9 @@ newRound();
 };
 
 
-/* ================= TOAST ================= */
+/* =====================================================
+   TOAST
+===================================================== */
 
 let toastTimer;
 
@@ -3214,10 +3319,14 @@ t.classList.remove("show");
 }
 
 
-/* ================= AUDIO ================= */
+/* =====================================================
+   AUDIO
+===================================================== */
 
 let audio=null;
+
 let masterGain=null;
+
 let compressor=null;
 
 const MASTER_VOLUME=.95;
@@ -3255,14 +3364,23 @@ compressor=
 audio.createDynamicsCompressor();
 
 compressor.threshold.value=-18;
+
 compressor.knee.value=12;
+
 compressor.ratio.value=5;
+
 compressor.attack.value=.003;
+
 compressor.release.value=.15;
 
 
-masterGain.connect(compressor);
-compressor.connect(audio.destination);
+masterGain.connect(
+compressor
+);
+
+compressor.connect(
+audio.destination
+);
 
 
 }catch(e){
@@ -3352,6 +3470,7 @@ now+duration
 );
 
 osc.connect(gain);
+
 gain.connect(masterGain);
 
 osc.start(now);
@@ -3612,7 +3731,9 @@ cardSound();
 }
 
 
-/* ================= PROFILE ================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 function updateProfile(){
 
@@ -3627,12 +3748,20 @@ $("levelGame").textContent=level;
 }
 
 
+/* =====================================================
+   CLOSE
+===================================================== */
+
 function close(el){
 
 el.style.display="none";
 
 }
 
+
+/* =====================================================
+   INIT
+===================================================== */
 
 updateProfile();
 
