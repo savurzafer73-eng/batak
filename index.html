@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050b08">
+<meta name="theme-color" content="#06130f">
 <title>Batak Royale X</title>
 
 <style>
@@ -17,2613 +17,1151 @@
 
 html,body{
     width:100%;
-    min-height:100%;
-    background:#030806;
+    height:100%;
+    overflow:hidden;
+    font-family:Inter,Arial,sans-serif;
+    background:#06100d;
     color:#fff;
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
 }
 
 button{
+    font:inherit;
     border:0;
-    outline:0;
     cursor:pointer;
-    color:inherit;
-    font-family:inherit;
 }
 
-body{
-    overflow-x:hidden;
+:root{
+    --green:#0c5d3b;
+    --green2:#093d2a;
+    --gold:#f6c85f;
+    --gold2:#d99b25;
+    --panel:#0c1715;
+    --panel2:#101f1b;
+    --text:#f6f8f7;
+    --muted:#9daaa5;
+    --danger:#e85d5d;
 }
 
-::-webkit-scrollbar{
-    width:4px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#24543e;
-    border-radius:20px;
-}
-
-
-/* =========================================================
-   APP
-========================================================= */
-
+/* APP */
 #app{
-    min-height:100vh;
-}
-
-
-/* =========================================================
-   HOME
-========================================================= */
-
-.royaleHome{
-    min-height:100vh;
     position:relative;
+    width:100%;
+    height:100%;
     overflow:hidden;
-    padding-bottom:100px;
-
     background:
-        radial-gradient(
-            circle at 50% -15%,
-            #1a5138 0%,
-            #0b2619 30%,
-            #06130d 58%,
-            #030806 100%
-        );
+        radial-gradient(circle at 50% 35%,#12382b 0,#071914 42%,#030907 100%);
 }
 
-.homeGlow{
+/* TOP BAR */
+.topbar{
     position:absolute;
-    border-radius:50%;
-    pointer-events:none;
-    filter:blur(75px);
-    opacity:.22;
-}
-
-.glow1{
-    width:360px;
-    height:360px;
-    background:#00c878;
-    top:70px;
-    right:-190px;
-}
-
-.glow2{
-    width:280px;
-    height:280px;
-    background:#d3aa3e;
-    top:500px;
-    left:-190px;
-}
-
-.homeGrid{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.025;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.8) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.8) 1px,
-            transparent 1px
-        );
-
-    background-size:42px 42px;
-}
-
-
-/* HEADER */
-
-.royaleHeader{
-    height:74px;
-    padding:
-        10px
-        max(13px,calc((100vw - 1180px)/2));
-
+    left:0;
+    right:0;
+    top:0;
+    height:64px;
+    z-index:200;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    position:relative;
-    z-index:20;
-
-    background:
-        linear-gradient(
-            rgba(3,10,7,.94),
-            rgba(3,10,7,.72)
-        );
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.055);
-
-    backdrop-filter:blur(18px);
+    padding:8px 14px;
+    background:linear-gradient(180deg,rgba(3,8,7,.96),rgba(3,8,7,.72));
+    border-bottom:1px solid rgba(255,255,255,.06);
+    backdrop-filter:blur(12px);
 }
 
-.brandArea{
+.logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
+    font-weight:900;
+    letter-spacing:.5px;
 }
 
-.brandMark{
-    width:43px;
-    height:43px;
-
+.logoMark{
+    width:40px;
+    height:40px;
+    border-radius:12px;
     display:grid;
     place-items:center;
-
-    border-radius:13px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #20d58a,
-            #075b39
-        );
-
-    box-shadow:
-        0 8px 28px
-        rgba(0,200,120,.25);
+    background:linear-gradient(145deg,#f8d979,#b97813);
+    color:#172116;
+    box-shadow:0 5px 20px rgba(245,190,63,.22);
+    font-size:21px;
 }
 
-.brandMark span{
-    font-family:Georgia,serif;
-    font-size:25px;
+.logoText{
+    font-size:17px;
 }
 
-.brandTitle{
-    font-size:15px;
-    font-weight:1000;
-    letter-spacing:1.4px;
+.logoText span{
+    display:block;
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:2px;
 }
 
-.brandSub{
-    color:#dfbf5b;
-    font-size:7px;
-    letter-spacing:3px;
-    margin-top:2px;
-}
-
-.headerActions{
+.topRight{
     display:flex;
     align-items:center;
     gap:8px;
 }
 
-.headerCoin{
-    height:40px;
-    padding:0 10px;
-
+.coinBox{
     display:flex;
     align-items:center;
     gap:6px;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    color:#f3d16a;
-
-    font-size:12px;
+    padding:8px 11px;
+    border-radius:13px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
     font-weight:800;
 }
 
-.headerCoin b{
-    color:#58dca6;
-    font-size:17px;
+.coin{
+    color:#ffd75b;
 }
 
-.headerProfile{
-    width:43px;
-    height:43px;
-
-    position:relative;
-
+.profileBtn{
+    width:40px;
+    height:40px;
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #f0d579,
-            #795718
-        );
-
-    border:
-        2px solid
-        rgba(255,255,255,.18);
-}
-
-.profileAvatar{
-    font-size:21px;
-}
-
-.onlineDot{
-    position:absolute;
-    right:-1px;
-    bottom:1px;
-
-    width:10px;
-    height:10px;
-
-    border-radius:50%;
-
-    background:#1fe08a;
-    border:2px solid #07110b;
-}
-
-
-/* CONTENT */
-
-.royaleContent{
-    max-width:1180px;
-    margin:auto;
-
-    padding:
-        18px 18px 120px;
-
-    position:relative;
-    z-index:2;
-}
-
-
-/* PROFILE */
-
-.playerStrip{
-    min-height:76px;
-
-    padding:10px 14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.022)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.065);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.16);
-}
-
-.playerIdentity{
-    display:flex;
-    align-items:center;
-    gap:11px;
-}
-
-.bigAvatar{
-    width:50px;
-    height:50px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #f1d77b,
-            #76551c
-        );
-
-    font-size:24px;
-}
-
-.playerName{
-    font-size:14px;
-    font-weight:900;
-}
-
-.verified{
-    display:inline-grid;
-    place-items:center;
-
-    width:14px;
-    height:14px;
-
-    border-radius:50%;
-
-    background:#11b875;
-
-    font-size:9px;
-}
-
-.playerLevel{
-    margin-top:4px;
-
-    color:#d9b95a;
-
-    font-size:8px;
-    letter-spacing:1.3px;
-    font-weight:900;
-}
-
-.levelProgress{
-    width:min(300px,42%);
-}
-
-.xpLabels{
-    display:flex;
-    justify-content:space-between;
-
-    color:#8fa79e;
-
-    font-size:8px;
-    margin-bottom:5px;
-}
-
-.premiumXP{
-    height:7px;
-
-    border-radius:10px;
-
-    background:#06100b;
-
-    overflow:hidden;
-}
-
-.premiumXP div{
-    height:100%;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #08a967,
-            #f1c957
-        );
-
-    box-shadow:
-        0 0 13px
-        rgba(30,210,130,.35);
-}
-
-
-/* HERO */
-
-.royaleHero{
-    min-height:350px;
-
-    margin-top:15px;
-
-    position:relative;
-    overflow:hidden;
-
-    border-radius:28px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    background:
-        radial-gradient(
-            circle at 78% 50%,
-            rgba(31,174,111,.28),
-            transparent 30%
-        ),
-        linear-gradient(
-            125deg,
-            #173f2d,
-            #0a1b13 60%,
-            #07100c
-        );
-
-    box-shadow:
-        0 25px 60px
-        rgba(0,0,0,.32);
-}
-
-.heroTexture{
-    position:absolute;
-    inset:0;
-    opacity:.045;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            #fff 0,
-            #fff 1px,
-            transparent 1px,
-            transparent 10px
-        );
-}
-
-.heroLeft{
-    position:relative;
-    z-index:5;
-
-    padding:42px;
-
-    max-width:610px;
-}
-
-.seasonBadge{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-
-    padding:7px 10px;
-
-    border-radius:999px;
-
-    background:
-        rgba(220,182,71,.12);
-
-    border:
-        1px solid
-        rgba(220,182,71,.27);
-
-    color:#e9ca65;
-
-    font-size:8px;
-    letter-spacing:1.5px;
-    font-weight:900;
-}
-
-.seasonBadge span:last-child{
-    color:#fff;
-}
-
-.seasonDot{
-    width:6px;
-    height:6px;
-    border-radius:50%;
-
-    background:#2de193;
-
-    box-shadow:
-        0 0 10px
-        #2de193;
-}
-
-.royaleHero h1{
-    margin-top:20px;
-
-    font-size:
-        clamp(40px,6vw,68px);
-
-    line-height:.86;
-
-    letter-spacing:-2.5px;
-
-    font-weight:1000;
-}
-
-.royaleHero h1 strong{
-    display:block;
-
-    color:#e9c75d;
-
-    text-shadow:
-        0 8px 30px
-        rgba(235,198,80,.15);
-}
-
-.royaleHero p{
-    max-width:470px;
-
-    margin-top:17px;
-
-    color:#a8c0b6;
-
-    font-size:13px;
-    line-height:1.55;
-}
-
-.heroButtons{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    margin-top:24px;
-}
-
-.royalePlay{
-    min-height:56px;
-
-    padding:0 14px;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #17c77d,
-            #07804e
-        );
-
-    box-shadow:
-        0 13px 30px
-        rgba(0,180,105,.25);
-
-    transition:.2s;
-}
-
-.royalePlay:active{
-    transform:scale(.97);
-}
-
-.royalePlay span:nth-child(2){
-    display:flex;
-    flex-direction:column;
-    text-align:left;
-
-    font-size:12px;
-}
-
-.royalePlay small{
-    margin-top:2px;
-
-    color:#b9ead3;
-
-    font-size:7px;
-    letter-spacing:1px;
-}
-
-.royalePlay b{
-    font-size:22px;
-}
-
-.playTriangle{
-    font-size:17px;
-}
-
-.heroSecondary{
-    height:56px;
-
-    padding:0 15px;
-
-    border-radius:15px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    font-size:9px;
-    letter-spacing:.7px;
-}
-
-.heroCards{
-    position:absolute;
-
-    right:4%;
-    top:50%;
-
-    width:350px;
-    height:290px;
-
-    transform:translateY(-50%);
-}
-
-.floatingCard{
-    position:absolute;
-
-    width:108px;
-    height:154px;
-
-    padding:9px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #e0e0e0
-        );
-
-    color:#111;
-
-    font-family:Georgia,serif;
-
-    font-size:23px;
-    font-weight:900;
-
-    box-shadow:
-        0 20px 35px
-        rgba(0,0,0,.4);
-
-    border:1px solid #aaa;
-}
-
-.floatingCard span{
-    text-align:center;
-    font-size:63px;
-}
-
-.redSuit{
-    color:#c71928;
-}
-
-.fc1{
-    left:40px;
-    top:58px;
-    transform:rotate(-18deg);
-}
-
-.fc2{
-    left:108px;
-    top:24px;
-    transform:rotate(-4deg);
-    z-index:2;
-}
-
-.fc3{
-    left:176px;
-    top:50px;
-    transform:rotate(14deg);
-    z-index:3;
-}
-
-.heroChip{
-    position:absolute;
-
-    right:18px;
-    bottom:24px;
-
-    padding:8px 12px;
-
-    border-radius:8px;
-
-    background:
-        rgba(4,12,8,.8);
-
-    border:
-        1px solid
-        rgba(225,190,79,.3);
-
-    color:#dfbf59;
-
-    font-size:8px;
-    letter-spacing:2px;
-}
-
-
-/* STATS */
-
-.quickStats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:9px;
-    margin-top:12px;
-}
-
-.quickStat{
-    min-height:70px;
-
-    padding:12px;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    border-radius:16px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.055);
-}
-
-.qsIcon{
-    width:37px;
-    height:37px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:11px;
-
-    background:
-        rgba(216,184,83,.09);
-
-    font-size:17px;
-}
-
-.quickStat b{
-    display:block;
+    background:linear-gradient(145deg,#253f37,#101b18);
+    border:1px solid rgba(255,255,255,.12);
+    color:white;
     font-size:18px;
 }
 
-.quickStat small{
+/* SCREENS */
+.screen{
+    position:absolute;
+    inset:64px 0 0;
+    display:none;
+    overflow:auto;
+}
+
+.screen.active{
     display:block;
-
-    margin-top:2px;
-
-    color:#819a90;
-
-    font-size:7px;
-    letter-spacing:.7px;
 }
 
-
-/* SECTION */
-
-.sectionHeader{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-
-    margin:
-        28px 2px 12px;
+/* HOME */
+.home{
+    padding:18px 16px 35px;
 }
 
-.sectionHeader span{
-    color:#809b90;
-
-    font-size:8px;
-    letter-spacing:1.5px;
+.hero{
+    max-width:1050px;
+    margin:auto;
+    min-height:190px;
+    border-radius:25px;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(246,200,95,.16),transparent 30%),
+        linear-gradient(135deg,#123d2e,#09251c 60%,#071812);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 18px 50px rgba(0,0,0,.3);
 }
 
-.sectionHeader h2{
-    margin-top:4px;
-    font-size:20px;
+.hero:after{
+    content:"♠ ♥ ♦ ♣";
+    position:absolute;
+    right:-10px;
+    bottom:-20px;
+    font-size:85px;
+    letter-spacing:5px;
+    opacity:.07;
+    transform:rotate(-8deg);
 }
 
-.sectionHeader button{
-    background:none;
-    color:#d7b957;
+.heroSmall{
+    color:#b9c9c3;
+    font-size:12px;
+    margin-bottom:8px;
+}
 
-    font-size:9px;
+.hero h1{
+    font-size:31px;
+    line-height:1.05;
+    margin-bottom:8px;
+}
+
+.hero h1 span{
+    color:var(--gold);
+}
+
+.hero p{
+    max-width:540px;
+    color:#b8c5c1;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.playMain{
+    margin-top:20px;
+    padding:13px 24px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#f5cf68,#c98a20);
+    color:#17130a;
+    font-weight:950;
+    box-shadow:0 10px 25px rgba(228,174,54,.18);
+}
+
+.sectionTitle{
+    max-width:1050px;
+    margin:24px auto 12px;
+    font-size:16px;
     font-weight:900;
 }
 
-
-/* MODES */
-
-.royaleModes{
+.modeGrid{
+    max-width:1050px;
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:11px;
+    gap:12px;
 }
 
-.royaleMode{
-    position:relative;
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #13241b,
-            #09120d
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.065);
-
-    cursor:pointer;
-
-    transition:
-        transform .2s,
-        border-color .2s;
-}
-
-.royaleMode:hover{
-    transform:translateY(-5px);
-
-    border-color:
-        rgba(210,177,75,.3);
-}
-
-.modeRibbon{
-    position:absolute;
-
-    top:10px;
-    left:10px;
-
-    z-index:5;
-
-    padding:5px 7px;
-
-    border-radius:6px;
-
-    background:#0ca967;
-
+.mode{
+    min-height:145px;
+    padding:17px;
+    text-align:left;
+    border-radius:19px;
+    background:linear-gradient(150deg,#12241f,#0b1613);
+    border:1px solid rgba(255,255,255,.08);
     color:#fff;
-
-    font-size:7px;
-    font-weight:1000;
+    transition:.15s;
 }
 
-.modeVisual{
-    height:145px;
+.mode:active{
+    transform:scale(.97);
+}
 
-    position:relative;
-    overflow:hidden;
-
+.modeIcon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
     display:grid;
     place-items:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(31,173,109,.2),
-            transparent 65%
-        );
+    font-size:25px;
+    margin-bottom:14px;
+    background:rgba(246,200,95,.1);
 }
 
-.miniTable{
-    position:absolute;
-
-    width:130px;
-    height:80px;
-
-    border-radius:50%;
-
-    background:#0e5538;
-
-    border:7px solid #422914;
-
-    box-shadow:
-        0 15px 30px
-        rgba(0,0,0,.5);
+.mode h3{
+    font-size:14px;
+    margin-bottom:5px;
 }
 
-.miniCard{
-    position:absolute;
-
-    width:52px;
-    height:72px;
-
-    padding:5px;
-
-    border-radius:6px;
-
-    background:#fff;
-    color:#111;
-
-    font-family:Georgia,serif;
-
-    font-size:12px;
-
-    box-shadow:
-        0 7px 15px
-        rgba(0,0,0,.5);
-}
-
-.mc1{
-    transform:
-        translate(-25px,-4px)
-        rotate(-12deg);
-}
-
-.mc2{
-    transform:
-        translate(0,-9px);
-    z-index:2;
-}
-
-.mc3{
-    transform:
-        translate(27px,-1px)
-        rotate(12deg);
-    z-index:3;
-}
-
-.redCard{
-    color:#c71928;
-}
-
-.pairVisual{
-    background:
-        radial-gradient(
-            circle,
-            rgba(94,157,231,.18),
-            transparent 65%
-        );
-}
-
-.pairAvatar{
-    font-size:55px;
-
-    filter:
-        drop-shadow(
-            0 12px 20px
-            rgba(0,0,0,.45)
-        );
-}
-
-.spadeVisual{
-    background:
-        radial-gradient(
-            circle,
-            rgba(150,65,190,.22),
-            transparent 65%
-        );
-}
-
-.hugeSuit{
-    font-size:90px;
-
-    color:#fff;
-
-    text-shadow:
-        0 10px 35px
-        rgba(0,0,0,.5);
-}
-
-.buriedVisual{
-    background:
-        radial-gradient(
-            circle,
-            rgba(211,169,55,.15),
-            transparent 65%
-        );
-}
-
-.buriedCards{
-    display:flex;
-    align-items:center;
-}
-
-.buriedCards span{
-    font-size:60px;
-
-    margin-left:-25px;
-
-    filter:
-        drop-shadow(
-            0 10px 15px
-            rgba(0,0,0,.5)
-        );
-}
-
-.buriedCards span:first-child{
-    margin-left:0;
-}
-
-.modeInfo{
-    padding:13px 14px 15px;
-}
-
-.modeTopLine{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.modeNumber{
-    color:#d7b957;
-    font-size:8px;
-    font-weight:900;
-}
-
-.modePlayers{
-    color:#70897e;
-    font-size:7px;
-}
-
-.modeInfo h3{
-    margin-top:7px;
-    font-size:15px;
-}
-
-.modeInfo p{
-    margin-top:5px;
-
-    min-height:34px;
-
-    color:#839b91;
-
-    font-size:9px;
+.mode p{
+    font-size:11px;
+    color:#87958f;
     line-height:1.4;
 }
 
-.modeInfo button{
-    margin-top:11px;
-
-    width:100%;
-    height:34px;
-
-    border-radius:9px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    color:#d9bd5d;
-
-    font-size:8px;
-}
-
-.modeInfo button b{
-    float:right;
-    font-size:15px;
-}
-
-
-/* DAILY */
-
-.dailyPanel{
-    min-height:105px;
-
-    margin-top:13px;
-    padding:15px 17px;
-
-    display:flex;
-    align-items:center;
-    gap:13px;
-
-    border-radius:19px;
-
-    background:
-        radial-gradient(
-            circle at 10% 50%,
-            rgba(221,183,64,.15),
-            transparent 35%
-        ),
-        linear-gradient(
-            120deg,
-            #201b0d,
-            #11160f
-        );
-
-    border:
-        1px solid
-        rgba(216,183,75,.15);
-}
-
-.dailyIcon{
-    width:55px;
-    height:55px;
-
+/* CARDS HOME */
+.quickGrid{
+    max-width:1050px;
+    margin:auto;
     display:grid;
-    place-items:center;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
 
-    border-radius:16px;
+.quick{
+    border-radius:18px;
+    padding:17px;
+    background:#0c1714;
+    border:1px solid rgba(255,255,255,.07);
+}
 
+.quick b{
+    display:block;
+    margin-bottom:7px;
+}
+
+.quick span{
+    color:#9aa7a2;
+    font-size:12px;
+}
+
+/* GAME */
+#gameScreen{
     background:
-        rgba(218,181,67,.1);
-
-    font-size:28px;
+        radial-gradient(ellipse at center,#17583b 0,#0c412c 35%,#062519 72%,#03130c 100%);
 }
 
-.dailyTitle{
-    color:#d9b957;
-
-    font-size:8px;
-    letter-spacing:1.5px;
+.gameTop{
+    position:absolute;
+    top:10px;
+    left:12px;
+    right:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
 }
 
-.dailyText h3{
-    margin-top:4px;
-    font-size:14px;
+.backBtn,
+.soundBtn{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:rgba(0,0,0,.32);
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+    backdrop-filter:blur(8px);
 }
 
-.dailyText p{
-    margin-top:3px;
-
-    color:#8b9e96;
-    font-size:9px;
-}
-
-.dailyReward{
-    margin-left:auto;
-
+.gameInfo{
     display:flex;
     align-items:center;
     gap:8px;
 }
 
-.dailyReward div{
-    color:#e9c95f;
-
-    font-size:14px;
-    font-weight:900;
-}
-
-.dailyReward button{
-    height:38px;
-
-    padding:0 17px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e4bd50,
-            #8d681c
-        );
-
-    color:#171108;
-
-    font-size:9px;
-}
-
-
-/* MISSIONS */
-
-.missionGrid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-}
-
-.mission{
-    min-height:87px;
-
-    padding:11px;
-
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    border-radius:15px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.05);
-}
-
-.missionIcon{
-    width:35px;
-    height:35px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:10px;
-
-    background:
-        rgba(14,171,105,.1);
-
-    color:#d7b954;
-    font-size:16px;
-}
-
-.missionBody{
-    flex:1;
-}
-
-.missionBody b{
-    display:block;
-    font-size:10px;
-}
-
-.missionBody small{
-    color:#789188;
-    font-size:7px;
-}
-
-.missionProgress{
-    height:4px;
-
-    margin:
-        7px 0 3px;
-
-    border-radius:10px;
-
-    background:#06100c;
-
-    overflow:hidden;
-}
-
-.missionProgress span{
-    display:block;
-    height:100%;
-    background:#0db16d;
-}
-
-.mission>strong{
-    color:#d9bd59;
-    font-size:9px;
-}
-
-
-/* SEASON */
-
-.seasonPanel{
-    min-height:145px;
-
-    margin-top:13px;
-
-    display:flex;
-    align-items:center;
-
-    position:relative;
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            125deg,
-            #172d22,
-            #09120e
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.065);
-}
-
-.seasonArtwork{
-    width:180px;
-    height:145px;
-
-    position:relative;
-
-    display:grid;
-    place-items:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(21,183,112,.25),
-            transparent 65%
-        );
-}
-
-.seasonNumber{
-    position:absolute;
-
-    left:15px;
-    top:13px;
-
-    color:#d6b852;
-
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-.seasonSuit{
-    font-size:90px;
-    color:#fff;
-
-    text-shadow:
-        0 15px 35px
-        rgba(0,0,0,.45);
-}
-
-.seasonInfo{
-    padding:20px 15px;
-    flex:1;
-}
-
-.seasonInfo>span{
-    color:#7f988e;
-    font-size:7px;
-    letter-spacing:1.5px;
-}
-
-.seasonInfo h2{
-    margin-top:5px;
-    font-size:20px;
-}
-
-.seasonInfo p{
-    margin-top:5px;
-    color:#8ca49a;
-    font-size:9px;
-}
-
-.seasonProgress{
-    margin-top:12px;
-    max-width:400px;
-}
-
-.seasonProgressTop{
-    display:flex;
-    justify-content:space-between;
-
-    color:#81988f;
-
-    font-size:7px;
-
-    margin-bottom:5px;
-}
-
-.seasonBar{
-    height:6px;
-
-    border-radius:10px;
-
-    background:#06100b;
-
-    overflow:hidden;
-}
-
-.seasonBar span{
-    display:block;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0aaa68,
-            #e5c35b
-        );
-}
-
-.seasonButton{
-    width:43px;
-    height:43px;
-
-    margin-right:18px;
-
-    border-radius:13px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    font-size:20px;
-
-    color:#dfc15c;
-}
-
-
-/* BOTTOM */
-
-.bottomNav{
-    position:fixed;
-
-    left:50%;
-    bottom:10px;
-
-    transform:translateX(-50%);
-
-    width:min(620px,94vw);
-    height:67px;
-
-    z-index:100;
-
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    align-items:center;
-
-    padding:5px 9px;
-
-    border-radius:21px;
-
-    background:
-        rgba(5,13,9,.94);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.55);
-
-    backdrop-filter:blur(18px);
-}
-
-.navItem{
-    height:55px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    gap:3px;
-
-    background:none;
-
-    color:#71887e;
-    font-size:19px;
-}
-
-.navItem small{
-    font-size:6px;
-    letter-spacing:.6px;
-}
-
-.navItem.active{
-    color:#e3c45d;
-}
-
-.navPlay{
-    position:relative;
-}
-
-.navPlay div{
-    width:48px;
-    height:48px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:16px;
-
-    margin-top:-22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #19c77d,
-            #087b4c
-        );
-
-    border:
-        3px solid
-        #09140f;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,191,113,.35);
-
-    color:#fff;
-    font-size:17px;
-}
-
-
-/* =========================================================
-   GAME
-========================================================= */
-
-.gameScreen{
-    min-height:100vh;
-    position:relative;
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            #12613d 0%,
-            #073522 40%,
-            #03170e 100%
-        );
-}
-
-.gameTop{
-    height:65px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 12px;
-
-    position:relative;
-    z-index:20;
-
-    background:
-        rgba(2,11,7,.7);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    backdrop-filter:blur(14px);
-}
-
-.gameBack{
-    width:40px;
-    height:40px;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    font-size:20px;
-}
-
-.gameTitle{
-    text-align:center;
-}
-
-.gameTitle b{
-    display:block;
-    font-size:12px;
-}
-
-.gameTitle small{
-    color:#d8b957;
-    font-size:7px;
-    letter-spacing:1.3px;
-}
-
-.gameTopRight{
-    display:flex;
-    gap:6px;
-}
-
 .gameBadge{
-    padding:7px 9px;
-
-    border-radius:9px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    color:#d8bc61;
-
-    font-size:8px;
+    padding:8px 12px;
+    border-radius:12px;
+    background:rgba(0,0,0,.3);
+    border:1px solid rgba(255,255,255,.08);
+    font-size:11px;
+    font-weight:800;
 }
 
-.tableArea{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:min(850px,94vw);
-    height:min(580px,72vh);
-
-    transform:translate(-50%,-50%);
-}
-
+/* TABLE */
 .table{
     position:absolute;
-
-    inset:35px 20px 25px;
-
-    border-radius:48%;
-
+    left:50%;
+    top:49%;
+    transform:translate(-50%,-50%);
+    width:min(760px,82vw);
+    height:min(430px,50vh);
+    border-radius:50%;
     background:
-        radial-gradient(
-            ellipse at center,
-            #117048,
-            #095133 58%,
-            #063b26 100%
-        );
-
-    border:
-        18px solid
-        #3b2412;
-
+        radial-gradient(ellipse at center,#137447 0,#0b5b38 45%,#08452c 72%,#063521 100%);
+    border:12px solid #553719;
     box-shadow:
-        inset 0 0 0 3px
-        rgba(255,255,255,.07),
-
-        inset 0 0 70px
-        rgba(0,0,0,.5),
-
-        0 35px 70px
-        rgba(0,0,0,.55);
+        inset 0 0 0 3px rgba(255,255,255,.08),
+        inset 0 0 50px rgba(0,0,0,.3),
+        0 20px 50px rgba(0,0,0,.4);
 }
 
-.table::after{
+.table:before{
     content:"";
-
     position:absolute;
-    inset:0;
-
-    border-radius:48%;
-
-    opacity:.035;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            #fff 0,
-            #fff 1px,
-            transparent 1px,
-            transparent 5px
-        );
+    inset:12px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.tableLogo{
+.centerMark{
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
-    color:rgba(255,255,255,.055);
-
-    font-family:Georgia,serif;
-
-    font-size:48px;
-    font-weight:900;
-
-    letter-spacing:4px;
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:rgba(255,255,255,.13);
+    font-size:42px;
 }
 
-.seat{
+/* PLAYERS */
+.player{
     position:absolute;
-
-    z-index:10;
-
+    z-index:20;
     display:flex;
     flex-direction:column;
     align-items:center;
-
-    gap:4px;
+    gap:5px;
 }
 
-.seat.top{
-    top:0;
+.player.top{
     left:50%;
+    top:-38px;
     transform:translateX(-50%);
 }
 
-.seat.left{
-    left:0;
+.player.left{
+    left:-62px;
     top:50%;
     transform:translateY(-50%);
 }
 
-.seat.right{
-    right:0;
+.player.right{
+    right:-62px;
     top:50%;
     transform:translateY(-50%);
 }
 
-.seat.bottom{
-    bottom:-2px;
-    left:50%;
-    transform:translateX(-50%);
+.player.bottom{
+    display:none;
 }
 
 .avatar{
-    width:48px;
-    height:48px;
-
+    width:46px;
+    height:46px;
+    border-radius:50%;
     display:grid;
     place-items:center;
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #2a5540,
-            #102a1d
-        );
-
-    border:
-        2px solid
-        rgba(255,255,255,.13);
-
-    box-shadow:
-        0 8px 20px
-        rgba(0,0,0,.35);
-
+    background:linear-gradient(145deg,#314d43,#14231e);
+    border:2px solid rgba(255,255,255,.18);
+    box-shadow:0 6px 20px rgba(0,0,0,.3);
     font-size:21px;
 }
 
-.seat.bottom .avatar{
-    width:56px;
-    height:56px;
-
-    border-color:#dfbd55;
-}
-
-.seatName{
+.playerName{
+    background:rgba(0,0,0,.35);
+    border-radius:9px;
     padding:4px 8px;
-
-    border-radius:7px;
-
-    background:
-        rgba(2,10,6,.75);
-
-    font-size:8px;
+    font-size:10px;
+    white-space:nowrap;
 }
 
-.turnSeat .avatar{
-    border-color:#23d78a;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(35,215,138,.12),
-
-        0 0 25px
-        rgba(35,215,138,.4);
+.bidTag{
+    font-size:10px;
+    color:var(--gold);
+    font-weight:900;
 }
 
-.thinking{
+/* AI CARDS */
+.aiCards{
+    position:absolute;
     display:flex;
-    gap:3px;
+    gap:2px;
 }
 
-.thinking i{
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:#d9bd5b;
-
-    animation:think 1s infinite;
+.aiCards.topCards{
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
-.thinking i:nth-child(2){
-    animation-delay:.15s;
+.aiCards.leftCards{
+    left:24px;
+    top:50%;
+    transform:translateY(-50%) rotate(90deg);
 }
 
-.thinking i:nth-child(3){
-    animation-delay:.3s;
+.aiCards.rightCards{
+    right:24px;
+    top:50%;
+    transform:translateY(-50%) rotate(-90deg);
 }
 
-@keyframes think{
-    0%,100%{
-        transform:translateY(0);
-        opacity:.3;
-    }
-
-    50%{
-        transform:translateY(-4px);
-        opacity:1;
-    }
+.miniCard{
+    width:25px;
+    height:37px;
+    border-radius:4px;
+    background:
+        linear-gradient(135deg,#a71919,#5e0909);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 2px 5px rgba(0,0,0,.4);
 }
-
 
 /* TRICK */
-
 .trick{
     position:absolute;
-
     left:50%;
     top:50%;
-
-    width:190px;
-    height:160px;
-
     transform:translate(-50%,-50%);
-
-    z-index:8;
+    width:280px;
+    height:210px;
+    z-index:30;
 }
 
 .played{
     position:absolute;
-
-    width:67px;
-    height:94px;
-
-    padding:5px;
-
-    border-radius:8px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #dedede
-        );
-
+    width:68px;
+    height:96px;
+    border-radius:9px;
+    background:#fff;
     color:#111;
-
-    font-family:Georgia,serif;
-
-    box-shadow:
-        0 12px 25px
-        rgba(0,0,0,.45);
-
-    border:1px solid #aaa;
-
-    font-weight:900;
-
-    transition:.25s;
+    border:1px solid #d6d6d6;
+    box-shadow:0 7px 18px rgba(0,0,0,.38);
+    padding:6px;
 }
 
-.played b{
-    font-size:16px;
-}
-
-.played span{
-    display:block;
-    text-align:center;
-    margin-top:9px;
-    font-size:34px;
-}
-
-.played.red{
-    color:#c51627;
-}
-
-.played.p0{
-    left:62px;
+.played.north{
+    left:50%;
     top:0;
+    transform:translateX(-50%) rotate(-2deg);
 }
 
-.played.p1{
-    left:0;
-    top:34px;
-    transform:rotate(-8deg);
+.played.west{
+    left:5px;
+    top:50%;
+    transform:translateY(-50%) rotate(-7deg);
 }
 
-.played.p2{
-    left:62px;
-    top:60px;
-    transform:rotate(2deg);
+.played.east{
+    right:5px;
+    top:50%;
+    transform:translateY(-50%) rotate(6deg);
 }
 
-.played.p3{
-    right:0;
-    top:34px;
-    transform:rotate(8deg);
-}
-
-
-/* HAND */
-
-.handPanel{
-    position:absolute;
-
+.played.south{
     left:50%;
     bottom:0;
+    transform:translateX(-50%) rotate(2deg);
+}
 
+.played .big{
+    font-size:28px;
+    text-align:center;
+    margin-top:14px;
+}
+
+.redCard{
+    color:#bd1c1c;
+}
+
+/* DECISION PANEL */
+#decisionPanel{
+    position:absolute;
+    top:72px;
+    left:50%;
     transform:translateX(-50%);
-
-    width:min(720px,96vw);
-
-    padding:
-        10px
-        10px
-        15px;
-
-    z-index:30;
+    width:min(455px,calc(100vw - 20px));
+    z-index:180;
+    display:none;
 }
 
-.handInfo{
+.decision{
+    padding:14px;
+    border-radius:20px;
+    background:linear-gradient(150deg,#13231f,#091310);
+    border:1px solid rgba(246,200,95,.2);
+    box-shadow:0 18px 50px rgba(0,0,0,.5);
+    backdrop-filter:blur(14px);
+}
+
+.decisionHead{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-
-    margin-bottom:7px;
-
-    padding:0 4px;
+    align-items:center;
+    margin-bottom:11px;
 }
 
-.handInfo span{
-    color:#8fa99e;
-    font-size:8px;
+.decisionHead strong{
+    font-size:15px;
 }
 
-.handGrid{
+.decisionHead span{
+    color:var(--gold);
+    font-size:11px;
+}
+
+.bidButtons{
     display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+}
 
-    grid-template-columns:
-        repeat(5,1fr);
+.bidBtn{
+    min-height:43px;
+    border-radius:11px;
+    background:#162923;
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
+    font-weight:850;
+}
 
-    gap:6px;
+.bidBtn:hover{
+    border-color:rgba(246,200,95,.5);
+}
 
-    align-items:end;
+.bidBtn.pass{
+    color:#ff8d8d;
+}
+
+.trumpButtons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.trumpBtn{
+    height:55px;
+    border-radius:14px;
+    background:#162923;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.08);
+    font-size:23px;
+}
+
+.trumpBtn.red{
+    color:#ef4e4e;
+}
+
+/* HAND */
+.handZone{
+    position:absolute;
+    z-index:110;
+    left:50%;
+    bottom:8px;
+    transform:translateX(-50%);
+    width:min(760px,96vw);
+    padding:8px 5px 7px;
+    border-radius:18px;
+    background:linear-gradient(180deg,rgba(3,11,8,.12),rgba(3,11,8,.72));
+}
+
+.handTitle{
+    text-align:center;
+    font-size:9px;
+    color:rgba(255,255,255,.55);
+    margin-bottom:5px;
+}
+
+.hand{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    align-items:center;
+}
+
+.handRow{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    height:83px;
 }
 
 .card{
     position:relative;
-
-    min-width:0;
-
-    aspect-ratio:
-        2.5 / 3.5;
-
-    padding:5px;
-
+    flex:0 0 auto;
+    width:63px;
+    height:87px;
+    margin-left:-13px;
     border-radius:8px;
-
     background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #ececec 65%,
-            #d7d7d7
-        );
-
-    border:
-        1px solid
-        rgba(0,0,0,.35);
-
-    color:#111;
-
-    font-family:Georgia,serif;
-
+        linear-gradient(145deg,#ffffff,#f0f0ed);
+    color:#101010;
+    border:1px solid #c7c7c7;
     box-shadow:
-        0 7px 15px
-        rgba(0,0,0,.38),
-
-        inset 0 0 0 1px
-        rgba(255,255,255,.8);
-
+        0 5px 12px rgba(0,0,0,.42),
+        inset 0 0 0 1px rgba(255,255,255,.8);
+    transition:
+        transform .14s ease,
+        margin .14s ease,
+        box-shadow .14s ease;
     cursor:pointer;
 
-    transition:
-        transform .16s,
-        filter .16s;
+    /* ÖNEMLİ:
+       Kartlar hiçbir zaman şeffaflaşmaz. */
+    opacity:1 !important;
+    filter:none !important;
+}
+
+.card:first-child{
+    margin-left:0;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-7px);
+    z-index:20;
 }
 
-.card:active{
-    transform:translateY(-12px) scale(1.03);
+.card.selected{
+    transform:translateY(-15px) scale(1.04);
+    z-index:30;
+    box-shadow:
+        0 12px 22px rgba(0,0,0,.45),
+        0 0 0 2px rgba(246,200,95,.8);
 }
 
 .card.red{
-    color:#c6192c;
-}
-
-.card.disabled{
-    filter:
-        brightness(.55)
-        saturate(.35);
-
-    cursor:not-allowed;
+    color:#c71f27;
 }
 
 .cardCorner{
     position:absolute;
-
     left:5px;
     top:4px;
-
-    display:flex;
-    flex-direction:column;
-
-    line-height:.9;
-
-    font-weight:900;
+    font-weight:950;
+    font-size:15px;
+    line-height:13px;
 }
 
-.cardCorner .rank{
-    font-size:13px;
+.cardCorner span{
+    display:block;
+    font-size:12px;
 }
 
-.cardCorner .suit{
-    font-size:11px;
-}
-
-.cardCenter{
+.cardSuit{
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
-    font-size:35px;
-}
-
-.cardBottomCorner{
-    position:absolute;
-
-    right:5px;
-    bottom:4px;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-
-    transform:rotate(180deg);
-
-    line-height:.9;
-
+    font-size:31px;
     font-weight:900;
 }
 
-.cardBottomCorner .rank{
-    font-size:13px;
-}
-
-.cardBottomCorner .suit{
-    font-size:11px;
-}
-
-
-/* BOTTOM ACTION */
-
-.gameActions{
+.cardBottom{
     position:absolute;
-
-    right:12px;
-    bottom:105px;
-
-    z-index:40;
-
-    display:flex;
-    gap:7px;
+    right:5px;
+    bottom:4px;
+    transform:rotate(180deg);
+    font-weight:950;
+    font-size:15px;
+    line-height:13px;
 }
 
-.gameAction{
-    width:42px;
-    height:42px;
+.cardBottom span{
+    display:block;
+    font-size:12px;
+}
 
+/* STATUS */
+.status{
+    position:absolute;
+    left:50%;
+    top:calc(50% + 112px);
+    transform:translateX(-50%);
+    z-index:80;
+    padding:8px 13px;
     border-radius:12px;
-
-    background:
-        rgba(2,11,7,.82);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    font-size:17px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.08);
+    font-size:11px;
+    white-space:nowrap;
 }
 
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.overlay{
-    position:fixed;
-
-    inset:0;
-
+/* TOAST */
+#toast{
+    position:absolute;
+    left:50%;
+    top:75%;
+    transform:translate(-50%,20px);
+    opacity:0;
     z-index:500;
+    padding:11px 15px;
+    border-radius:12px;
+    background:#101b18;
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    font-size:12px;
+    pointer-events:none;
+    transition:.25s;
+}
 
+#toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* PROFILE */
+.profilePage{
+    padding:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.profileCard{
+    border-radius:22px;
+    padding:22px;
+    background:linear-gradient(145deg,#12251f,#0a1512);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.profileTop{
     display:flex;
     align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:
-        rgba(0,0,0,.72);
-
-    backdrop-filter:blur(10px);
+    gap:15px;
 }
 
-.modal{
-    width:min(440px,94vw);
-
-    padding:20px;
-
+.bigAvatar{
+    width:72px;
+    height:72px;
     border-radius:22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #14271d,
-            #07120d
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.6);
-
-    animation:
-        modalIn .2s ease;
-}
-
-@keyframes modalIn{
-    from{
-        opacity:0;
-        transform:translateY(15px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
-
-.modal h2{
-    font-size:20px;
-}
-
-.modal p{
-    color:#8fa69c;
-    font-size:11px;
-    line-height:1.5;
-    margin-top:7px;
-}
-
-.modalClose{
-    float:right;
-
-    width:32px;
-    height:32px;
-
-    border-radius:9px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    font-size:16px;
-}
-
-.modalGrid{
     display:grid;
+    place-items:center;
+    background:linear-gradient(145deg,#315b4c,#15251f);
+    font-size:36px;
+}
 
-    grid-template-columns:
-        repeat(4,1fr);
+.level{
+    color:var(--gold);
+    font-weight:900;
+    font-size:12px;
+    margin-top:5px;
+}
 
-    gap:8px;
+.xpBar{
+    height:8px;
+    border-radius:20px;
+    background:#07100d;
+    overflow:hidden;
+    margin-top:13px;
+}
 
+.xpFill{
+    height:100%;
+    width:45%;
+    background:linear-gradient(90deg,#dca52e,#f8d873);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
     margin-top:18px;
 }
 
-.modalButton{
-    height:46px;
-
-    border-radius:11px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-    color:#e5c55e;
-
-    font-size:12px;
-    font-weight:900;
+.stat{
+    padding:15px 10px;
+    text-align:center;
+    border-radius:15px;
+    background:rgba(255,255,255,.045);
 }
 
-.modalButton:hover{
-    background:#0b8958;
-    color:#fff;
-}
-
-.profileStats{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:8px;
-
-    margin-top:16px;
-}
-
-.profileStat{
-    padding:12px;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,255,255,.045);
-}
-
-.profileStat span{
-    color:#81998f;
-    font-size:8px;
-}
-
-.profileStat b{
+.stat b{
     display:block;
-    margin-top:4px;
     font-size:18px;
 }
 
-.toast{
-    position:fixed;
-
-    left:50%;
-    bottom:88px;
-
-    transform:
-        translateX(-50%)
-        translateY(20px);
-
-    z-index:1000;
-
-    padding:11px 16px;
-
-    border-radius:11px;
-
-    background:
-        rgba(4,12,8,.95);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    color:#fff;
-
+.stat span{
     font-size:10px;
-
-    opacity:0;
-
-    transition:.25s;
-
-    pointer-events:none;
+    color:#87958f;
 }
 
-.toast.show{
-    opacity:1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
+/* DAILY */
+.reward{
+    max-width:600px;
+    margin:25px auto;
+    padding:25px;
+    border-radius:23px;
+    text-align:center;
+    background:linear-gradient(145deg,#172b24,#0b1713);
+    border:1px solid rgba(246,200,95,.16);
 }
 
+.rewardIcon{
+    font-size:55px;
+    margin-bottom:10px;
+}
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.reward button{
+    margin-top:18px;
+    padding:13px 25px;
+    border-radius:13px;
+    background:linear-gradient(135deg,#f4cd69,#c58b25);
+    font-weight:950;
+}
 
-@media(max-width:900px){
+/* SETTINGS */
+.settings{
+    max-width:650px;
+    margin:auto;
+    padding:20px;
+}
 
-    .royaleModes{
-        grid-template-columns:
-            repeat(2,1fr);
+.setting{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px;
+    margin-bottom:10px;
+    border-radius:16px;
+    background:#0d1b17;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.setting span{
+    color:#aebbb6;
+    font-size:12px;
+}
+
+.toggle{
+    width:47px;
+    height:26px;
+    border-radius:20px;
+    background:#1d312a;
+    position:relative;
+}
+
+.toggle:after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    left:3px;
+    top:3px;
+    background:#fff;
+    transition:.2s;
+}
+
+.toggle.on{
+    background:#a77720;
+}
+
+.toggle.on:after{
+    left:24px;
+}
+
+/* RESULT */
+.resultOverlay{
+    position:absolute;
+    inset:0;
+    z-index:400;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(1,6,4,.72);
+    backdrop-filter:blur(10px);
+}
+
+.resultCard{
+    width:min(420px,calc(100vw - 30px));
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+    background:linear-gradient(150deg,#13251f,#08120f);
+    border:1px solid rgba(246,200,95,.25);
+    box-shadow:0 25px 80px rgba(0,0,0,.6);
+}
+
+.resultCard h2{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.resultRows{
+    display:grid;
+    gap:7px;
+    margin:15px 0;
+}
+
+.resultRow{
+    display:flex;
+    justify-content:space-between;
+    padding:11px 13px;
+    border-radius:11px;
+    background:rgba(255,255,255,.045);
+    font-size:12px;
+}
+
+.resultButtons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.resultButtons button{
+    padding:13px;
+    border-radius:12px;
+    background:#172923;
+    color:white;
+}
+
+.resultButtons button.primary{
+    background:linear-gradient(135deg,#f4cd69,#c58b25);
+    color:#17130a;
+    font-weight:900;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+
+    .modeGrid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .quickStats{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .missionGrid{
+    .quickGrid{
         grid-template-columns:1fr;
     }
 
-    .heroCards{
-        opacity:.5;
-        right:-80px;
+    .table{
+        width:78vw;
+        height:43vh;
     }
 
-}
-
-@media(max-width:600px){
-
-    .royaleHeader{
-        height:64px;
-        padding:8px 10px;
+    .card{
+        width:56px;
+        height:79px;
+        margin-left:-12px;
     }
 
-    .brandMark{
-        width:38px;
-        height:38px;
+    .handRow{
+        height:76px;
     }
 
-    .brandTitle{
-        font-size:12px;
+    .cardSuit{
+        font-size:27px;
     }
 
-    .brandSub{
-        font-size:6px;
-    }
-
-    .headerCoin{
-        height:36px;
-        font-size:10px;
-    }
-
-    .headerProfile{
-        width:38px;
-        height:38px;
-    }
-
-    .royaleContent{
-        padding:
-            12px
-            9px
-            110px;
-    }
-
-    .playerStrip{
-        min-height:67px;
-        padding:8px;
-    }
-
-    .bigAvatar{
-        width:42px;
-        height:42px;
-    }
-
-    .levelProgress{
-        width:42%;
-    }
-
-    .royaleHero{
-        min-height:430px;
-        border-radius:22px;
-    }
-
-    .heroLeft{
-        padding:27px 21px;
-    }
-
-    .royaleHero h1{
-        font-size:42px;
-    }
-
-    .royaleHero p{
-        font-size:11px;
-        max-width:300px;
-    }
-
-    .heroCards{
-        top:auto;
-        right:-55px;
-        bottom:-60px;
-
-        transform:scale(.7);
-
-        opacity:.62;
-    }
-
-    .heroButtons{
-        flex-direction:column;
-        align-items:stretch;
-        width:230px;
-    }
-
-    .heroSecondary{
-        height:43px;
-    }
-
-    .quickStats{
-        gap:6px;
-    }
-
-    .quickStat{
-        min-height:63px;
-        padding:9px;
-    }
-
-    .qsIcon{
-        width:31px;
-        height:31px;
-        font-size:14px;
-    }
-
-    .quickStat b{
-        font-size:15px;
-    }
-
-    .royaleModes{
-        gap:7px;
-    }
-
-    .modeVisual{
-        height:110px;
-    }
-
-    .modeInfo{
-        padding:10px;
-    }
-
-    .modeInfo h3{
+    .cardCorner,
+    .cardBottom{
         font-size:13px;
     }
 
-    .modeInfo p{
-        font-size:8px;
+    .cardCorner span,
+    .cardBottom span{
+        font-size:10px;
     }
 
-    .dailyPanel{
-        padding:12px;
+    .status{
+        top:calc(50% + 94px);
+    }
+}
+
+@media(max-width:520px){
+
+    .topbar{
+        height:58px;
+        padding:7px 9px;
     }
 
-    .dailyIcon{
-        width:44px;
-        height:44px;
-        font-size:22px;
+    .screen{
+        inset:58px 0 0;
     }
 
-    .dailyText h3{
+    .logoText{
+        font-size:14px;
+    }
+
+    .coinBox{
+        padding:7px 8px;
         font-size:11px;
     }
 
-    .dailyText p{
-        display:none;
+    .hero{
+        min-height:175px;
+        padding:19px;
+        border-radius:20px;
     }
 
-    .dailyReward{
-        flex-direction:column;
-        gap:4px;
+    .hero h1{
+        font-size:25px;
     }
 
-    .dailyReward div{
-        font-size:11px;
-    }
-
-    .dailyReward button{
-        height:32px;
-    }
-
-    .seasonArtwork{
-        width:100px;
-    }
-
-    .seasonSuit{
-        font-size:65px;
-    }
-
-    .seasonInfo{
-        padding:14px 5px;
-    }
-
-    .seasonInfo h2{
-        font-size:15px;
-    }
-
-    .seasonButton{
-        margin-right:8px;
-        width:37px;
-        height:37px;
-    }
-
-    .bottomNav{
-        bottom:6px;
-        height:61px;
-        border-radius:19px;
-    }
-
-    .navItem{
-        height:50px;
-    }
-
-    .navPlay div{
-        width:45px;
-        height:45px;
-    }
-
-    .tableArea{
-        width:100vw;
-        height:65vh;
+    .mode{
+        min-height:132px;
+        padding:14px;
     }
 
     .table{
-        inset:
-            45px
-            5px
-            70px;
-
-        border-width:12px;
+        width:76vw;
+        height:38vh;
+        border-width:8px;
     }
 
-    .seat.left{
-        left:4px;
+    .player.left{
+        left:-43px;
     }
 
-    .seat.right{
-        right:4px;
+    .player.right{
+        right:-43px;
     }
 
     .avatar{
         width:39px;
         height:39px;
-        font-size:17px;
+        font-size:18px;
     }
 
-    .seat.bottom .avatar{
-        width:50px;
-        height:50px;
-    }
-
-    .seatName{
-        font-size:7px;
-    }
-
-    .trick{
-        transform:
-            translate(-50%,-50%)
-            scale(.78);
-    }
-
-    .handPanel{
-        width:100%;
-        padding:
-            5px
-            5px
-            9px;
-    }
-
-    .handGrid{
-        gap:4px;
-    }
-
-    .card{
-        border-radius:6px;
-        padding:3px;
-    }
-
-    .cardCorner{
-        left:3px;
-        top:3px;
-    }
-
-    .cardCorner .rank,
-    .cardBottomCorner .rank{
-        font-size:10px;
-    }
-
-    .cardCorner .suit,
-    .cardBottomCorner .suit{
+    .playerName{
         font-size:8px;
     }
 
-    .cardCenter{
-        font-size:25px;
+    .trick{
+        transform:translate(-50%,-50%) scale(.8);
     }
 
-}
-
-
-/* =========================================================
-   DEAL ANIMATION
-========================================================= */
-
-.deal{
-    animation:
-        dealCard .35s both;
-}
-
-@keyframes dealCard{
-    from{
-        opacity:0;
-        transform:
-            translateY(30px)
-            scale(.85)
-            rotate(3deg);
+    .played{
+        width:60px;
+        height:85px;
     }
 
-    to{
-        opacity:1;
-        transform:none;
+    .handZone{
+        bottom:4px;
+        width:100vw;
+        padding-left:2px;
+        padding-right:2px;
+    }
+
+    .hand{
+        gap:2px;
+    }
+
+    .handRow{
+        height:67px;
+    }
+
+    .card{
+        width:49px;
+        height:69px;
+        margin-left:-11px;
+        border-radius:7px;
+    }
+
+    .cardCorner{
+        left:4px;
+        top:3px;
+        font-size:11px;
+        line-height:10px;
+    }
+
+    .cardCorner span{
+        font-size:9px;
+    }
+
+    .cardSuit{
+        font-size:22px;
+    }
+
+    .cardBottom{
+        right:4px;
+        bottom:3px;
+        font-size:11px;
+        line-height:10px;
+    }
+
+    .cardBottom span{
+        font-size:9px;
+    }
+
+    .status{
+        top:calc(50% + 75px);
+        font-size:9px;
+    }
+
+    #decisionPanel{
+        top:64px;
+    }
+
+    .decision{
+        padding:11px;
+        border-radius:17px;
+    }
+
+    .bidBtn{
+        min-height:39px;
+        font-size:12px;
+    }
+
+    .trumpBtn{
+        height:48px;
     }
 }
 
-
-/* =========================================================
-   PULSE
-========================================================= */
-
-.pulse{
-    animation:
-        pulseGlow 1.8s infinite;
-}
-
-@keyframes pulseGlow{
-    0%,100%{
-        box-shadow:
-            0 0 0
-            rgba(32,213,138,0);
+@media(max-width:370px){
+    .card{
+        width:45px;
+        height:64px;
+        margin-left:-10px;
     }
 
-    50%{
-        box-shadow:
-            0 0 25px
-            rgba(32,213,138,.25);
+    .handRow{
+        height:63px;
+    }
+
+    .cardSuit{
+        font-size:20px;
     }
 }
 </style>
@@ -2631,2512 +1169,1809 @@ body{
 
 <body>
 
-<div id="app"></div>
+<div id="app">
 
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="logo">
+        <div class="logoMark">♠</div>
+        <div class="logoText">
+            BATAK ROYALE
+            <span>ROYAL EDITION</span>
+        </div>
+    </div>
+
+    <div class="topRight">
+        <div class="coinBox">
+            🪙 <span id="coinText">2500</span>
+        </div>
+        <button class="profileBtn" onclick="showScreen('profileScreen')">👤</button>
+    </div>
+</div>
+
+<!-- HOME -->
+<section id="homeScreen" class="screen active">
+<div class="home">
+
+    <div class="hero">
+        <div class="heroSmall">KRAL MASASINA HOŞ GELDİN</div>
+        <h1>BATAK <span>ROYALE X</span></h1>
+        <p>
+            Gerçekçi kart tasarımı, gelişmiş yapay zekâ,
+            seviye sistemi, günlük ödüller ve dört farklı
+            Batak modu.
+        </p>
+        <button class="playMain" onclick="startGame('ihaleli')">
+            ▶ OYUNA BAŞLA
+        </button>
+    </div>
+
+    <div class="sectionTitle">Oyun Modları</div>
+
+    <div class="modeGrid">
+
+        <button class="mode" onclick="startGame('ihaleli')">
+            <div class="modeIcon">♠</div>
+            <h3>İhaleli Batak</h3>
+            <p>İhaleyi yükselt, kozu seç ve masayı domine et.</p>
+        </button>
+
+        <button class="mode" onclick="startGame('esli')">
+            <div class="modeIcon">🤝</div>
+            <h3>Eşli Batak</h3>
+            <p>Takım arkadaşınla birlikte rakipleri geç.</p>
+        </button>
+
+        <button class="mode" onclick="startGame('koz')">
+            <div class="modeIcon">♠</div>
+            <h3>Koz Maça</h3>
+            <p>Maça koz. Elini doğru yönet ve tüm elleri topla.</p>
+        </button>
+
+        <button class="mode" onclick="startGame('gommeli')">
+            <div class="modeIcon">🂠</div>
+            <h3>Gömmeli Batak</h3>
+            <p>Göm, değiştir ve güçlü elini oluştur.</p>
+        </button>
+
+    </div>
+
+    <div class="sectionTitle">Hızlı Bilgi</div>
+
+    <div class="quickGrid">
+
+        <div class="quick">
+            <b>🏆 Seviye <span id="levelText">1</span></b>
+            <span>XP kazanarak yeni seviyelerin kilidini aç.</span>
+        </div>
+
+        <div class="quick">
+            <b>🎁 Günlük Ödül</b>
+            <span>Her gün giriş yaparak ücretsiz coin kazan.</span>
+        </div>
+
+        <div class="quick">
+            <b>📊 İstatistik</b>
+            <span>Galibiyetlerini ve oyun performansını takip et.</span>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+<!-- PROFILE -->
+<section id="profileScreen" class="screen">
+
+<div class="profilePage">
+
+    <div class="profileCard">
+
+        <div class="profileTop">
+
+            <div class="bigAvatar">👑</div>
+
+            <div>
+                <h2>Zafer</h2>
+                <div class="level">
+                    SEVİYE <span id="profileLevel">1</span>
+                </div>
+                <div style="font-size:11px;color:#87958f;margin-top:5px">
+                    Batak Oyuncusu
+                </div>
+            </div>
+
+        </div>
+
+        <div class="xpBar">
+            <div class="xpFill" id="xpFill"></div>
+        </div>
+
+        <div style="font-size:10px;color:#87958f;margin-top:6px;text-align:right">
+            <span id="xpText">450 / 1000 XP</span>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <b id="gamesText">0</b>
+                <span>Oyun</span>
+            </div>
+
+            <div class="stat">
+                <b id="winsText">0</b>
+                <span>Galibiyet</span>
+            </div>
+
+            <div class="stat">
+                <b id="winRateText">%0</b>
+                <span>Kazanma</span>
+            </div>
+
+            <div class="stat">
+                <b id="bestBidText">0</b>
+                <span>En Yüksek</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="playMain"
+            style="margin-top:15px"
+            onclick="showScreen('homeScreen')">
+        ← ANA MENÜ
+    </button>
+
+</div>
+
+</section>
+
+<!-- DAILY -->
+<section id="dailyScreen" class="screen">
+
+<div class="reward">
+
+    <div class="rewardIcon">🎁</div>
+
+    <h2>Günlük Ödül</h2>
+
+    <p style="color:#9aa8a2;font-size:12px;margin-top:8px">
+        Bugünkü ödülünü al ve kasanı büyüt.
+    </p>
+
+    <div style="font-size:28px;color:#ffd45b;margin-top:15px">
+        🪙 +500
+    </div>
+
+    <button onclick="claimReward()">
+        ÖDÜLÜ AL
+    </button>
+
+</div>
+
+</section>
+
+<!-- SETTINGS -->
+<section id="settingsScreen" class="screen">
+
+<div class="settings">
+
+    <div class="setting">
+        <div>
+            <b>Sesler</b>
+            <br>
+            <span>Kart ve oyun sesleri</span>
+        </div>
+        <button id="soundToggle"
+                class="toggle on"
+                onclick="toggleSound()">
+        </button>
+    </div>
+
+    <div class="setting">
+        <div>
+            <b>Titreşim</b>
+            <br>
+            <span>Kart oynarken titreşim</span>
+        </div>
+        <button id="vibrationToggle"
+                class="toggle on"
+                onclick="toggleVibration()">
+        </button>
+    </div>
+
+    <button class="playMain"
+            onclick="showScreen('homeScreen')">
+        ← ANA MENÜ
+    </button>
+
+</div>
+
+</section>
+
+<!-- GAME -->
+<section id="gameScreen" class="screen">
+
+    <div class="gameTop">
+
+        <button class="backBtn" onclick="exitGame()">
+            ←
+        </button>
+
+        <div class="gameInfo">
+            <div class="gameBadge" id="modeBadge">
+                İHALELİ
+            </div>
+
+            <div class="gameBadge">
+                Koz: <span id="trumpText">—</span>
+            </div>
+        </div>
+
+        <button class="soundBtn" onclick="toggleSound()">
+            🔊
+        </button>
+
+    </div>
+
+    <div class="table">
+
+        <div class="centerMark">♠</div>
+
+        <!-- TOP PLAYER -->
+        <div class="player top">
+
+            <div class="avatar">🤖</div>
+
+            <div class="playerName">
+                Mehmet
+            </div>
+
+            <div class="bidTag" id="aiTopBid"></div>
+
+        </div>
+
+        <!-- LEFT PLAYER -->
+        <div class="player left">
+
+            <div class="avatar">🤖</div>
+
+            <div class="playerName">
+                Ahmet
+            </div>
+
+            <div class="bidTag" id="aiLeftBid"></div>
+
+        </div>
+
+        <!-- RIGHT PLAYER -->
+        <div class="player right">
+
+            <div class="avatar">🤖</div>
+
+            <div class="playerName">
+                Hasan
+            </div>
+
+            <div class="bidTag" id="aiRightBid"></div>
+
+        </div>
+
+        <div class="aiCards topCards" id="topCards"></div>
+        <div class="aiCards leftCards" id="leftCards"></div>
+        <div class="aiCards rightCards" id="rightCards"></div>
+
+        <div class="trick" id="trick">
+
+            <div class="played north" id="played2"></div>
+            <div class="played west" id="played1"></div>
+            <div class="played east" id="played3"></div>
+            <div class="played south" id="played0"></div>
+
+        </div>
+
+    </div>
+
+    <div class="status" id="statusText">
+        Oyun hazırlanıyor...
+    </div>
+
+    <!-- DECISION -->
+    <div id="decisionPanel"></div>
+
+    <!-- HAND -->
+    <div class="handZone">
+
+        <div class="handTitle">
+            ELİN — 7 + 6 KART
+        </div>
+
+        <div class="hand" id="hand">
+
+            <div class="handRow" id="handRow1"></div>
+            <div class="handRow" id="handRow2"></div>
+
+        </div>
+
+    </div>
+
+    <!-- RESULT -->
+    <div class="resultOverlay" id="resultOverlay">
+
+        <div class="resultCard">
+
+            <h2 id="resultTitle">
+                EL BİTTİ
+            </h2>
+
+            <div class="resultRows">
+
+                <div class="resultRow">
+                    <span>Sen</span>
+                    <b id="resultYou">0</b>
+                </div>
+
+                <div class="resultRow">
+                    <span>Mehmet</span>
+                    <b id="resultMehmet">0</b>
+                </div>
+
+                <div class="resultRow">
+                    <span>Ahmet</span>
+                    <b id="resultAhmet">0</b>
+                </div>
+
+                <div class="resultRow">
+                    <span>Hasan</span>
+                    <b id="resultHasan">0</b>
+                </div>
+
+            </div>
+
+            <div style="color:#ffd45b;font-size:18px;margin-bottom:15px">
+                🪙 +<span id="resultCoins">0</span>
+            </div>
+
+            <div class="resultButtons">
+
+                <button onclick="exitGame()">
+                    Menü
+                </button>
+
+                <button class="primary" onclick="restartGame()">
+                    Tekrar Oyna
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+</div>
 
 <script>
-/* =========================================================
-   BATAK ROYALE X
-   SINGLE FILE EDITION
-========================================================= */
-
 
 /* =========================================================
-   DATA
+   BATak ROYALE X
+   SINGLE FILE GAME
 ========================================================= */
+
+/* ---------------- DATA ---------------- */
 
 const suits = [
-    {
-        key:"spades",
-        symbol:"♠",
-        name:"Maça",
-        red:false
-    },
-    {
-        key:"hearts",
-        symbol:"♥",
-        name:"Kupa",
-        red:true
-    },
-    {
-        key:"diamonds",
-        symbol:"♦",
-        name:"Karo",
-        red:true
-    },
-    {
-        key:"clubs",
-        symbol:"♣",
-        name:"Sinek",
-        red:false
-    }
+    {key:"S",symbol:"♠",red:false},
+    {key:"H",symbol:"♥",red:true},
+    {key:"D",symbol:"♦",red:true},
+    {key:"C",symbol:"♣",red:false}
 ];
 
 const ranks = [
-    "2","3","4","5","6","7","8","9","10",
-    "J","Q","K","A"
+    {r:"2",v:2},
+    {r:"3",v:3},
+    {r:"4",v:4},
+    {r:"5",v:5},
+    {r:"6",v:6},
+    {r:"7",v:7},
+    {r:"8",v:8},
+    {r:"9",v:9},
+    {r:"10",v:10},
+    {r:"J",v:11},
+    {r:"Q",v:12},
+    {r:"K",v:13},
+    {r:"A",v:14}
 ];
 
-let profile = {
-    coins:12450,
-    xp:94,
-    level:4,
-    wins:17,
-    games:31,
-    bestBid:11,
-    daily:false,
-    sound:true
-};
+let deck=[];
+let players=[
+    {name:"Sen",hand:[],score:0,tricks:0},
+    {name:"Ahmet",hand:[],score:0,tricks:0},
+    {name:"Mehmet",hand:[],score:0,tricks:0},
+    {name:"Hasan",hand:[],score:0,tricks:0}
+];
 
-let game = null;
+let currentPlayer=0;
+let leadSuit=null;
+let trump=null;
+let trickCards=[];
+let selectedCard=-1;
 
+let mode="ihaleli";
 
-/* =========================================================
-   STORAGE
-========================================================= */
+let bidTurn=0;
+let highestBid=0;
+let highestBidder=-1;
+let passes=0;
+let bidding=true;
 
-function saveProfile(){
-    localStorage.setItem(
-        "batakRoyaleXProfile",
-        JSON.stringify(profile)
-    );
+let trickNumber=0;
+
+let soundEnabled=true;
+let vibrationEnabled=true;
+
+let coins=Number(localStorage.getItem("brx_coins")||2500);
+let xp=Number(localStorage.getItem("brx_xp")||450);
+let games=Number(localStorage.getItem("brx_games")||0);
+let wins=Number(localStorage.getItem("brx_wins")||0);
+let bestBid=Number(localStorage.getItem("brx_bestBid")||0);
+
+/* ---------------- DOM ---------------- */
+
+const $=id=>document.getElementById(id);
+
+/* ---------------- SAVE ---------------- */
+
+function saveData(){
+
+    localStorage.setItem("brx_coins",coins);
+    localStorage.setItem("brx_xp",xp);
+    localStorage.setItem("brx_games",games);
+    localStorage.setItem("brx_wins",wins);
+    localStorage.setItem("brx_bestBid",bestBid);
+
+    updateProfile();
+
 }
 
-function loadProfile(){
+function level(){
 
-    try{
+    return Math.max(1,Math.floor(xp/1000)+1);
 
-        const data =
-            localStorage.getItem(
-                "batakRoyaleXProfile"
-            );
+}
 
-        if(data){
+function updateProfile(){
 
-            profile = {
-                ...profile,
-                ...JSON.parse(data)
-            };
+    $("coinText").textContent=coins;
+    $("levelText").textContent=level();
+    $("profileLevel").textContent=level();
+
+    $("gamesText").textContent=games;
+    $("winsText").textContent=wins;
+
+    let rate=games ? Math.round(wins/games*100):0;
+
+    $("winRateText").textContent="%"+rate;
+    $("bestBidText").textContent=bestBid;
+
+    let inside=xp%1000;
+
+    $("xpText").textContent=inside+" / 1000 XP";
+    $("xpFill").style.width=Math.min(100,inside/10)+"%";
+
+}
+
+/* ---------------- SCREEN ---------------- */
+
+function showScreen(id){
+
+    document.querySelectorAll(".screen")
+        .forEach(x=>x.classList.remove("active"));
+
+    $(id).classList.add("active");
+
+}
+
+/* ---------------- DECK ---------------- */
+
+function createDeck(){
+
+    deck=[];
+
+    for(const s of suits){
+
+        for(const r of ranks){
+
+            deck.push({
+                suit:s.key,
+                symbol:s.symbol,
+                rank:r.r,
+                value:r.v,
+                red:s.red
+            });
 
         }
-
-    }catch(e){}
-
-}
-
-loadProfile();
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function $(id){
-    return document.getElementById(id);
-}
-
-function esc(text){
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;");
-}
-
-function toast(message){
-
-    let el =
-        document.querySelector(".toast");
-
-    if(!el){
-
-        el =
-            document.createElement("div");
-
-        el.className="toast";
-
-        document.body.appendChild(el);
 
     }
 
-    el.textContent=message;
-
-    el.classList.add("show");
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-    window.toastTimer =
-        setTimeout(()=>{
-            el.classList.remove("show");
-        },1800);
 }
 
+function shuffle(){
 
-/* =========================================================
-   SOUND
-========================================================= */
+    for(let i=deck.length-1;i>0;i--){
 
-let audioCtx = null;
+        const j=Math.floor(Math.random()*(i+1));
 
-function sound(type="click"){
+        [deck[i],deck[j]]=[deck[j],deck[i]];
 
-    if(!profile.sound) return;
+    }
 
-    try{
+}
 
-        if(!audioCtx){
+/* ---------------- START GAME ---------------- */
 
-            audioCtx =
-                new (
-                    window.AudioContext ||
-                    window.webkitAudioContext
-                )();
+function startGame(selectedMode){
+
+    mode=selectedMode;
+
+    showScreen("gameScreen");
+
+    resetGame();
+
+}
+
+function resetGame(){
+
+    players=[
+        {name:"Sen",hand:[],score:0,tricks:0},
+        {name:"Ahmet",hand:[],score:0,tricks:0},
+        {name:"Mehmet",hand:[],score:0,tricks:0},
+        {name:"Hasan",hand:[],score:0,tricks:0}
+    ];
+
+    createDeck();
+    shuffle();
+
+    for(let i=0;i<52;i++){
+
+        players[i%4].hand.push(deck[i]);
+
+    }
+
+    players.forEach(p=>{
+        p.hand.sort((a,b)=>{
+
+            const suitOrder={S:0,H:1,D:2,C:3};
+
+            if(suitOrder[a.suit]!==suitOrder[b.suit])
+                return suitOrder[a.suit]-suitOrder[b.suit];
+
+            return b.value-a.value;
+
+        });
+    });
+
+    currentPlayer=0;
+    leadSuit=null;
+    trump=null;
+    trickCards=[];
+    selectedCard=-1;
+
+    bidTurn=0;
+    highestBid=0;
+    highestBidder=-1;
+    passes=0;
+    bidding=true;
+
+    trickNumber=0;
+
+    $("resultOverlay").style.display="none";
+
+    updateModeBadge();
+
+    clearPlayed();
+    renderAIHands();
+    renderHand();
+
+    $("trumpText").textContent="—";
+
+    setStatus("İhale başlıyor...");
+
+    setTimeout(startBidding,600);
+
+}
+
+/* ---------------- MODE ---------------- */
+
+function updateModeBadge(){
+
+    const names={
+        ihaleli:"İHALELİ",
+        esli:"EŞLİ",
+        koz:"KOZ MAÇA",
+        gommeli:"GÖMMELİ"
+    };
+
+    $("modeBadge").textContent=names[mode]||"BATAK";
+
+}
+
+/* ---------------- BIDDING ---------------- */
+
+function startBidding(){
+
+    bidding=true;
+
+    bidTurn=0;
+    highestBid=0;
+    highestBidder=-1;
+    passes=0;
+
+    showBidForPlayer();
+
+}
+
+function showBidForPlayer(){
+
+    renderHand();
+
+    if(bidTurn===0){
+
+        setStatus("Sıra sende — kaç alabileceğini seç.");
+
+        openBidPanel();
+
+    }else{
+
+        closeDecision();
+
+        setStatus(players[bidTurn].name+" düşünüyor...");
+
+        setTimeout(()=>{
+
+            aiBid(bidTurn);
+
+        },700);
+
+    }
+
+}
+
+/* ---------------- BID PANEL ---------------- */
+
+function openBidPanel(){
+
+    const minBid=Math.max(5,highestBid+1);
+
+    let buttons="";
+
+    for(let i=minBid;i<=13;i++){
+
+        buttons+=`
+            <button class="bidBtn"
+                onclick="playerBid(${i})">
+                ${i}
+            </button>
+        `;
+
+    }
+
+    buttons+=`
+        <button class="bidBtn pass"
+            onclick="playerPass()">
+            PAS
+        </button>
+    `;
+
+    $("decisionPanel").innerHTML=`
+
+        <div class="decision">
+
+            <div class="decisionHead">
+                <strong>Kaç alabilirsin?</strong>
+                <span>
+                    ${highestBid?("Mevcut: "+highestBid):"Henüz ihale yok"}
+                </span>
+            </div>
+
+            <div class="bidButtons">
+                ${buttons}
+            </div>
+
+        </div>
+    `;
+
+    $("decisionPanel").style.display="block";
+
+}
+
+/* ---------------- PLAYER BID ---------------- */
+
+function playerBid(value){
+
+    if(bidTurn!==0 || !bidding)return;
+
+    if(value<=highestBid){
+
+        toast("Daha yüksek bir ihale vermelisin.");
+        return;
+
+    }
+
+    acceptBid(0,value);
+
+}
+
+function playerPass(){
+
+    if(bidTurn!==0 || !bidding)return;
+
+    acceptPass(0);
+
+}
+
+/* ---------------- BID LOGIC ---------------- */
+
+function acceptBid(player,value){
+
+    highestBid=value;
+    highestBidder=player;
+
+    passes=0;
+
+    if(value>bestBid){
+
+        bestBid=value;
+
+    }
+
+    toast(players[player].name+" "+value+" dedi.");
+
+    nextBidTurn();
+
+}
+
+function acceptPass(player){
+
+    passes++;
+
+    toast(players[player].name+" pas geçti.");
+
+    /* Hiç kimse ihale vermediyse son oyuncuda
+       zorunlu minimum ihale */
+    if(highestBidder===-1 && passes>=3){
+
+        highestBid=5;
+        highestBidder=player;
+
+        toast(players[player].name+" zorunlu olarak 5 aldı.");
+
+        finishBidding();
+        return;
+
+    }
+
+    /* Birisi ihale verdikten sonra üç kişi pas
+       geçerse ihale biter */
+    if(highestBidder!==-1 && passes>=3){
+
+        finishBidding();
+        return;
+
+    }
+
+    nextBidTurn();
+
+}
+
+function nextBidTurn(){
+
+    bidTurn=(bidTurn+1)%4;
+
+    if(bidTurn===0 && highestBidder!==-1){
+
+        /* herkes yeniden konuşabilir;
+           ama ihale sahibi dışındaki üç kişi
+           pas geçtiğinde bitmesi için özel kontrol */
+    }
+
+    showBidForPlayer();
+
+}
+
+/* Daha düzgün ihale turu:
+   ilk tekliften sonra diğer üç oyuncu konuşur */
+let bidParticipants=[];
+
+function finishBidding(){
+
+    bidding=false;
+
+    closeDecision();
+
+    if(highestBidder===-1){
+
+        highestBidder=0;
+        highestBid=5;
+
+    }
+
+    setStatus(
+        players[highestBidder].name+
+        " "+highestBid+" aldı."
+    );
+
+    setTimeout(()=>{
+
+        chooseTrump();
+
+    },900);
+
+}
+
+/* AI BID */
+
+function aiBid(player){
+
+    if(!bidding)return;
+
+    const hand=players[player].hand;
+
+    let strength=0;
+
+    hand.forEach(c=>{
+
+        if(c.value>=11)strength++;
+
+        if(c.value===14)strength+=1.2;
+
+    });
+
+    let possible=Math.min(
+        13,
+        Math.max(
+            5,
+            Math.round(4+strength*.65)
+        )
+    );
+
+    /* Eğer mevcut teklif yüksekse çoğu zaman pas */
+    if(
+        highestBid>=possible ||
+        Math.random()<0.22
+    ){
+
+        acceptPass(player);
+
+    }else{
+
+        let bid=Math.max(
+            highestBid+1,
+            Math.min(13,possible)
+        );
+
+        acceptBid(player,bid);
+
+    }
+
+}
+
+/* ---------------- TRUMP ---------------- */
+
+function chooseTrump(){
+
+    if(mode==="koz"){
+
+        trump="S";
+
+        $("trumpText").textContent="♠";
+
+        setStatus("Koz Maça — oyun başlıyor.");
+
+        beginPlay();
+
+        return;
+
+    }
+
+    if(highestBidder===0){
+
+        openTrumpPanel();
+
+    }else{
+
+        let aiTrump=bestTrump(highestBidder);
+
+        trump=aiTrump;
+
+        $("trumpText").textContent=
+            suits.find(s=>s.key===trump).symbol;
+
+        setStatus(
+            players[highestBidder].name+
+            " "+suits.find(s=>s.key===trump).symbol+
+            " kozunu seçti."
+        );
+
+        setTimeout(beginPlay,900);
+
+    }
+
+}
+
+/* ---------------- TRUMP PANEL ---------------- */
+
+function openTrumpPanel(){
+
+    renderHand();
+
+    $("decisionPanel").innerHTML=`
+
+        <div class="decision">
+
+            <div class="decisionHead">
+                <strong>Kozunu seç</strong>
+                <span>${highestBid} el</span>
+            </div>
+
+            <div class="trumpButtons">
+
+                <button class="trumpBtn"
+                    onclick="selectTrump('S')">
+                    ♠
+                </button>
+
+                <button class="trumpBtn red"
+                    onclick="selectTrump('H')">
+                    ♥
+                </button>
+
+                <button class="trumpBtn red"
+                    onclick="selectTrump('D')">
+                    ♦
+                </button>
+
+                <button class="trumpBtn"
+                    onclick="selectTrump('C')">
+                    ♣
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+    $("decisionPanel").style.display="block";
+
+}
+
+function selectTrump(s){
+
+    trump=s;
+
+    $("trumpText").textContent=
+        suits.find(x=>x.key===s).symbol;
+
+    closeDecision();
+
+    setStatus(
+        "Koz "+suits.find(x=>x.key===s).symbol+
+        " seçildi."
+    );
+
+    setTimeout(beginPlay,500);
+
+}
+
+function bestTrump(player){
+
+    const counts={
+        S:0,
+        H:0,
+        D:0,
+        C:0
+    };
+
+    players[player].hand.forEach(c=>{
+        counts[c.suit]++;
+    });
+
+    return Object.keys(counts)
+        .sort((a,b)=>counts[b]-counts[a])[0];
+
+}
+
+/* ---------------- PLAY ---------------- */
+
+function beginPlay(){
+
+    trickNumber=0;
+
+    currentPlayer=highestBidder;
+
+    leadSuit=null;
+    trickCards=[];
+
+    clearPlayed();
+
+    renderAIHands();
+    renderHand();
+
+    setStatus(
+        players[currentPlayer].name+
+        " oyuna başlıyor."
+    );
+
+    setTimeout(playTurn,600);
+
+}
+
+/* ---------------- LEGAL MOVE ---------------- */
+
+function canPlay(card){
+
+    if(!leadSuit)return true;
+
+    const hasLead=
+        players[currentPlayer].hand
+            .some(c=>c.suit===leadSuit);
+
+    if(hasLead){
+
+        return card.suit===leadSuit;
+
+    }
+
+    return true;
+
+}
+
+/* ---------------- PLAY TURN ---------------- */
+
+function playTurn(){
+
+    if(bidding)return;
+
+    if(currentPlayer===0){
+
+        renderHand();
+
+        setStatus("Sıra sende — bir kart seç.");
+
+        return;
+
+    }
+
+    setStatus(players[currentPlayer].name+" kart seçiyor...");
+
+    setTimeout(()=>{
+
+        const index=chooseAICard(currentPlayer);
+
+        playCard(index);
+
+    },650);
+
+}
+
+/* ---------------- AI CARD ---------------- */
+
+function chooseAICard(player){
+
+    const hand=players[player].hand;
+
+    const legal=[];
+
+    hand.forEach((c,i)=>{
+
+        if(canPlayForPlayer(c,player))
+            legal.push({c,i});
+
+    });
+
+    if(!legal.length)return 0;
+
+    /* İlk kart */
+    if(!leadSuit){
+
+        /* Kozu gereksiz kullanma */
+        const nonTrump=
+            legal.filter(x=>x.c.suit!==trump);
+
+        const list=nonTrump.length?
+            nonTrump:
+            legal;
+
+        list.sort((a,b)=>a.c.value-b.c.value);
+
+        return list[0].i;
+
+    }
+
+    /* Eli kazanabiliyorsa kazanacak en düşük kart */
+    const winner=legal
+        .filter(x=>cardBeatsCurrent(x.c))
+        .sort((a,b)=>a.c.value-b.c.value);
+
+    if(winner.length)
+        return winner[0].i;
+
+    /* Kazanamıyorsa en düşük kart */
+    legal.sort((a,b)=>{
+
+        let av=a.c.value;
+        let bv=b.c.value;
+
+        if(a.c.suit===trump)av+=30;
+        if(b.c.suit===trump)bv+=30;
+
+        return av-bv;
+
+    });
+
+    return legal[0].i;
+
+}
+
+function canPlayForPlayer(card,player){
+
+    if(!leadSuit)return true;
+
+    const hand=players[player].hand;
+
+    const hasLead=
+        hand.some(c=>c.suit===leadSuit);
+
+    if(hasLead)
+        return card.suit===leadSuit;
+
+    return true;
+
+}
+
+/* ---------------- CARD STRENGTH ---------------- */
+
+function cardBeatsCurrent(card){
+
+    if(!trickCards.length)return true;
+
+    let currentWinner=trickCards[0];
+
+    for(let i=1;i<trickCards.length;i++){
+
+        if(beats(trickCards[i].card,currentWinner.card))
+            currentWinner=trickCards[i];
+
+    }
+
+    return beats(card,currentWinner.card);
+
+}
+
+function beats(a,b){
+
+    if(a.suit===b.suit)
+        return a.value>b.value;
+
+    if(a.suit===trump && b.suit!==trump)
+        return true;
+
+    if(a.suit!==trump && b.suit===trump)
+        return false;
+
+    if(a.suit===leadSuit && b.suit!==leadSuit)
+        return true;
+
+    return false;
+
+}
+
+/* ---------------- PLAY CARD ---------------- */
+
+function playCard(index){
+
+    if(bidding)return;
+
+    if(currentPlayer!==0 && index<0)return;
+
+    const hand=players[currentPlayer].hand;
+
+    if(index<0 || index>=hand.length)return;
+
+    const card=hand[index];
+
+    /* ÖNEMLİ:
+       Kartı şeffaflaştırmıyoruz.
+       Sadece oynanmasını engelliyoruz. */
+
+    if(currentPlayer===0 && !canPlay(card)){
+
+        toast(
+            "Bu karta basamazsın. "+
+            suits.find(s=>s.key===leadSuit).symbol+
+            " vermelisin."
+        );
+
+        return;
+
+    }
+
+    if(!canPlayForPlayer(card,currentPlayer)){
+
+        return;
+
+    }
+
+    hand.splice(index,1);
+
+    trickCards.push({
+        player:currentPlayer,
+        card:card
+    });
+
+    if(!leadSuit){
+
+        leadSuit=card.suit;
+
+    }
+
+    renderPlayedCard(
+        currentPlayer,
+        card
+    );
+
+    renderHand();
+    renderAIHands();
+
+    playSound("card");
+
+    if(vibrationEnabled && navigator.vibrate)
+        navigator.vibrate(15);
+
+    if(trickCards.length===4){
+
+        setTimeout(resolveTrick,850);
+
+    }else{
+
+        currentPlayer=(currentPlayer+1)%4;
+
+        setTimeout(playTurn,450);
+
+    }
+
+}
+
+/* ---------------- PLAYED CARD ---------------- */
+
+function renderPlayedCard(player,card){
+
+    const positions={
+        0:"played0",
+        1:"played1",
+        2:"played2",
+        3:"played3"
+    };
+
+    const el=$(positions[player]);
+
+    el.className=
+        "played "+
+        (
+            player===0?"south":
+            player===1?"west":
+            player===2?"north":
+            "east"
+        )+
+        (card.red?" redCard":"");
+
+    el.innerHTML=`
+
+        <div style="
+            font-weight:900;
+            font-size:14px;
+            line-height:13px;
+        ">
+            ${card.rank}<br>
+            ${card.symbol}
+        </div>
+
+        <div class="big">
+            ${card.symbol}
+        </div>
+
+    `;
+
+}
+
+function clearPlayed(){
+
+    [
+        "played0",
+        "played1",
+        "played2",
+        "played3"
+    ].forEach(id=>{
+
+        $(id).innerHTML="";
+        $(id).className="played";
+
+    });
+
+}
+
+/* ---------------- TRICK ---------------- */
+
+function resolveTrick(){
+
+    let winner=trickCards[0];
+
+    for(let i=1;i<trickCards.length;i++){
+
+        if(
+            beats(
+                trickCards[i].card,
+                winner.card
+            )
+        ){
+
+            winner=trickCards[i];
 
         }
 
-        const osc =
+    }
+
+    players[winner.player].tricks++;
+
+    currentPlayer=winner.player;
+
+    toast(
+        players[winner.player].name+
+        " eli aldı."
+    );
+
+    setTimeout(()=>{
+
+        trickCards=[];
+        leadSuit=null;
+
+        clearPlayed();
+
+        trickNumber++;
+
+        renderAIHands();
+        renderHand();
+
+        if(trickNumber>=13){
+
+            finishGame();
+
+        }else{
+
+            setStatus(
+                players[currentPlayer].name+
+                " oynuyor."
+            );
+
+            setTimeout(playTurn,400);
+
+        }
+
+    },700);
+
+}
+
+/* ---------------- HAND RENDER ---------------- */
+
+function renderHand(){
+
+    const row1=$("handRow1");
+    const row2=$("handRow2");
+
+    row1.innerHTML="";
+    row2.innerHTML="";
+
+    const hand=players[0].hand;
+
+    hand.forEach((card,index)=>{
+
+        const el=createCard(card,index);
+
+        if(index<7)
+            row1.appendChild(el);
+        else
+            row2.appendChild(el);
+
+    });
+
+}
+
+function createCard(card,index){
+
+    const el=document.createElement("div");
+
+    /*
+       Burada disabled classı EKLENMİYOR.
+       Böylece kartlar oyun sırasında hiçbir zaman
+       opacity düşürüp şeffaflaşmıyor.
+    */
+
+    el.className=
+        "card "+
+        (card.red?"red":"black");
+
+    el.innerHTML=`
+
+        <div class="cardCorner">
+            ${card.rank}
+            <span>${card.symbol}</span>
+        </div>
+
+        <div class="cardSuit">
+            ${card.symbol}
+        </div>
+
+        <div class="cardBottom">
+            ${card.rank}
+            <span>${card.symbol}</span>
+        </div>
+
+    `;
+
+    el.addEventListener("click",()=>{
+
+        playCard(index);
+
+    });
+
+    return el;
+
+}
+
+/* ---------------- AI HANDS ---------------- */
+
+function renderAIHands(){
+
+    renderMini(
+        "topCards",
+        players[2].hand.length
+    );
+
+    renderMini(
+        "leftCards",
+        players[1].hand.length
+    );
+
+    renderMini(
+        "rightCards",
+        players[3].hand.length
+    );
+
+}
+
+function renderMini(id,count){
+
+    const box=$(id);
+
+    box.innerHTML="";
+
+    const visible=Math.min(count,7);
+
+    for(let i=0;i<visible;i++){
+
+        const c=document.createElement("div");
+
+        c.className="miniCard";
+
+        box.appendChild(c);
+
+    }
+
+}
+
+/* ---------------- PANEL ---------------- */
+
+function closeDecision(){
+
+    $("decisionPanel").style.display="none";
+    $("decisionPanel").innerHTML="";
+
+}
+
+/* ---------------- STATUS ---------------- */
+
+function setStatus(text){
+
+    $("statusText").textContent=text;
+
+}
+
+/* ---------------- TOAST ---------------- */
+
+let toastTimer=null;
+
+function toast(text){
+
+    const el=$("toast");
+
+    el.textContent=text;
+    el.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer=setTimeout(()=>{
+
+        el.classList.remove("show");
+
+    },1800);
+
+}
+
+/* ---------------- RESULT ---------------- */
+
+function finishGame(){
+
+    games++;
+
+    /* teklif sahibi hedefini tutturdu mu */
+    const bidderTricks=
+        players[highestBidder].tricks;
+
+    const success=
+        bidderTricks>=highestBid;
+
+    if(success){
+
+        players[highestBidder].score+=highestBid;
+
+        if(highestBidder===0){
+
+            wins++;
+
+            coins+=250;
+            xp+=120;
+
+        }
+
+    }else{
+
+        players[highestBidder].score-=highestBid;
+
+        if(highestBidder===0){
+
+            coins+=50;
+            xp+=35;
+
+        }
+
+    }
+
+    /* Her oyuncunun ayrı skoru */
+    players.forEach((p,i)=>{
+
+        if(i!==highestBidder){
+
+            p.score+=p.tricks;
+
+        }
+
+    });
+
+    saveData();
+
+    $("resultTitle").textContent=
+        highestBidder===0 && success?
+        "🎉 KAZANDIN!":
+        "EL BİTTİ";
+
+    $("resultYou").textContent=
+        players[0].score;
+
+    $("resultAhmet").textContent=
+        players[1].score;
+
+    $("resultMehmet").textContent=
+        players[2].score;
+
+    $("resultHasan").textContent=
+        players[3].score;
+
+    $("resultCoins").textContent=
+        success && highestBidder===0?
+        250:
+        50;
+
+    $("resultOverlay").style.display="flex";
+
+}
+
+function restartGame(){
+
+    $("resultOverlay").style.display="none";
+
+    resetGame();
+
+}
+
+/* ---------------- EXIT ---------------- */
+
+function exitGame(){
+
+    $("resultOverlay").style.display="none";
+
+    closeDecision();
+
+    showScreen("homeScreen");
+
+}
+
+/* ---------------- DAILY ---------------- */
+
+function claimReward(){
+
+    const today=new Date()
+        .toISOString()
+        .slice(0,10);
+
+    const last=
+        localStorage.getItem("brx_daily");
+
+    if(last===today){
+
+        toast("Bugünkü ödülünü zaten aldın.");
+
+        return;
+
+    }
+
+    coins+=500;
+
+    localStorage.setItem(
+        "brx_daily",
+        today
+    );
+
+    saveData();
+
+    toast("🎁 +500 coin kazandın!");
+
+}
+
+/* ---------------- SOUND ---------------- */
+
+let audioCtx=null;
+
+function playSound(type){
+
+    if(!soundEnabled)return;
+
+    try{
+
+        if(!audioCtx)
+            audioCtx=new(
+                window.AudioContext||
+                window.webkitAudioContext
+            )();
+
+        const osc=
             audioCtx.createOscillator();
 
-        const gain =
+        const gain=
             audioCtx.createGain();
 
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        let frequency=500;
+        if(type==="card"){
 
-        if(type==="card")
-            frequency=650;
+            osc.frequency.value=180;
 
-        if(type==="win")
-            frequency=850;
+        }else{
 
-        if(type==="coin")
-            frequency=1000;
+            osc.frequency.value=420;
 
-        osc.frequency.value=frequency;
+        }
 
-        gain.gain.setValueAtTime(
-            .0001,
-            audioCtx.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .08,
-            audioCtx.currentTime+.01
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .0001,
-            audioCtx.currentTime+.12
-        );
+        gain.gain.value=.035;
 
         osc.start();
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioCtx.currentTime+.08
+        );
+
         osc.stop(
-            audioCtx.currentTime+.13
+            audioCtx.currentTime+.08
         );
 
     }catch(e){}
+
 }
-
-
-/* =========================================================
-   HOME
-========================================================= */
-
-function renderHome(){
-
-    const xpMax =
-        profile.level * 150;
-
-    const xpPercent =
-        Math.min(
-            100,
-            profile.xp / xpMax * 100
-        );
-
-    const winRate =
-        profile.games
-        ? Math.round(
-            profile.wins /
-            profile.games *
-            100
-        )
-        : 0;
-
-    $("app").innerHTML=`
-
-    <div class="royaleHome">
-
-        <div class="homeGlow glow1"></div>
-        <div class="homeGlow glow2"></div>
-        <div class="homeGrid"></div>
-
-
-        <header class="royaleHeader">
-
-            <div class="brandArea">
-
-                <div class="brandMark">
-                    <span>♠</span>
-                </div>
-
-                <div>
-                    <div class="brandTitle">
-                        BATAK ROYALE
-                    </div>
-
-                    <div class="brandSub">
-                        X EDITION
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="headerActions">
-
-                <button
-                    class="headerCoin"
-                    onclick="openShop()">
-
-                    <span>🪙</span>
-
-                    <span>
-                        ${profile.coins.toLocaleString("tr-TR")}
-                    </span>
-
-                    <b>+</b>
-
-                </button>
-
-
-                <button
-                    class="headerProfile"
-                    onclick="openProfile()">
-
-                    <div class="profileAvatar">
-                        👑
-                    </div>
-
-                    <div class="onlineDot"></div>
-
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <main class="royaleContent">
-
-
-            <section class="playerStrip">
-
-                <div class="playerIdentity">
-
-                    <div class="bigAvatar">
-                        👑
-                    </div>
-
-                    <div>
-
-                        <div class="playerName">
-                            Zafer
-                            <span class="verified">✓</span>
-                        </div>
-
-                        <div class="playerLevel">
-                            SEVİYE ${profile.level}
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="levelProgress">
-
-                    <div class="xpLabels">
-
-                        <span>
-                            ${profile.xp} XP
-                        </span>
-
-                        <span>
-                            ${xpMax} XP
-                        </span>
-
-                    </div>
-
-                    <div class="premiumXP">
-
-                        <div
-                            style="width:${xpPercent}%">
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <section class="royaleHero">
-
-                <div class="heroTexture"></div>
-
-
-                <div class="heroLeft">
-
-                    <div class="seasonBadge">
-
-                        <span class="seasonDot"></span>
-
-                        SEZON 01
-
-                        <span>ROYALE</span>
-
-                    </div>
-
-
-                    <h1>
-                        MASANIN
-                        <strong>KRALI</strong>
-                        OL.
-                    </h1>
-
-
-                    <p>
-                        İhaleyi al. Kozu seç.
-                        Rakiplerini oku.
-                        Masayı domine et.
-                    </p>
-
-
-                    <div class="heroButtons">
-
-                        <button
-                            class="royalePlay pulse"
-                            onclick="startGame('auction')">
-
-                            <span class="playTriangle">
-                                ▶
-                            </span>
-
-                            <span>
-                                HEMEN OYNA
-                                <small>
-                                    İHALELİ BATAK
-                                </small>
-                            </span>
-
-                            <b>›</b>
-
-                        </button>
-
-
-                        <button
-                            class="heroSecondary"
-                            onclick="showModes()">
-
-                            TÜM MODLAR
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="heroCards">
-
-                    <div class="floatingCard fc1">
-                        A
-                        <span>♠</span>
-                    </div>
-
-                    <div class="floatingCard fc2">
-                        K
-                        <span class="redSuit">♥</span>
-                    </div>
-
-                    <div class="floatingCard fc3">
-                        Q
-                        <span class="redSuit">♦</span>
-                    </div>
-
-                    <div class="heroChip">
-                        ROYALE
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <section class="quickStats">
-
-                <div class="quickStat">
-
-                    <span class="qsIcon">
-                        🏆
-                    </span>
-
-                    <div>
-                        <b>${profile.wins}</b>
-                        <small>GALİBİYET</small>
-                    </div>
-
-                </div>
-
-
-                <div class="quickStat">
-
-                    <span class="qsIcon">
-                        🎮
-                    </span>
-
-                    <div>
-                        <b>${profile.games}</b>
-                        <small>OYUN</small>
-                    </div>
-
-                </div>
-
-
-                <div class="quickStat">
-
-                    <span class="qsIcon">
-                        🔥
-                    </span>
-
-                    <div>
-                        <b>${winRate}%</b>
-                        <small>KAZANMA</small>
-                    </div>
-
-                </div>
-
-
-                <div class="quickStat">
-
-                    <span class="qsIcon">
-                        ♠
-                    </span>
-
-                    <div>
-                        <b>${profile.bestBid}</b>
-                        <small>EN YÜKSEK İHALE</small>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <div class="sectionHeader">
-
-                <div>
-                    <span>OYUN MERKEZİ</span>
-                    <h2>Bir masa seç</h2>
-                </div>
-
-                <button onclick="showModes()">
-                    TÜMÜ →
-                </button>
-
-            </div>
-
-
-            <section
-                class="royaleModes"
-                id="modes">
-
-                <article
-                    class="royaleMode featuredMode"
-                    onclick="startGame('auction')">
-
-                    <div class="modeRibbon">
-                        EN POPÜLER
-                    </div>
-
-                    <div class="modeVisual">
-
-                        <div class="miniTable"></div>
-
-                        <div class="miniCard mc1">
-                            A♠
-                        </div>
-
-                        <div class="miniCard mc2 redCard">
-                            K♥
-                        </div>
-
-                        <div class="miniCard mc3">
-                            Q♣
-                        </div>
-
-                    </div>
-
-                    <div class="modeInfo">
-
-                        <div class="modeTopLine">
-
-                            <span class="modeNumber">
-                                01
-                            </span>
-
-                            <span class="modePlayers">
-                                4 OYUNCU
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            İhaleli Batak
-                        </h3>
-
-                        <p>
-                            Teklif ver, kozu belirle,
-                            söylediğin eli tuttur.
-                        </p>
-
-                        <button>
-                            OYNA <b>›</b>
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <article
-                    class="royaleMode"
-                    onclick="startGame('pairs')">
-
-                    <div class="modeVisual pairVisual">
-
-                        <div class="pairAvatar">
-                            👥
-                        </div>
-
-                    </div>
-
-                    <div class="modeInfo">
-
-                        <div class="modeTopLine">
-
-                            <span class="modeNumber">
-                                02
-                            </span>
-
-                            <span class="modePlayers">
-                                2 VS 2
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Eşli Batak
-                        </h3>
-
-                        <p>
-                            Partnerinle takım ol,
-                            rakipleri alt et.
-                        </p>
-
-                        <button>
-                            OYNA <b>›</b>
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <article
-                    class="royaleMode"
-                    onclick="startGame('spades')">
-
-                    <div class="modeVisual spadeVisual">
-
-                        <div class="hugeSuit">
-                            ♠
-                        </div>
-
-                    </div>
-
-                    <div class="modeInfo">
-
-                        <div class="modeTopLine">
-
-                            <span class="modeNumber">
-                                03
-                            </span>
-
-                            <span class="modePlayers">
-                                KLASİK
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Koz Maça
-                        </h3>
-
-                        <p>
-                            Maça her zaman koz.
-                            Klasik mücadele.
-                        </p>
-
-                        <button>
-                            OYNA <b>›</b>
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <article
-                    class="royaleMode"
-                    onclick="startGame('buried')">
-
-                    <div class="modeVisual buriedVisual">
-
-                        <div class="buriedCards">
-
-                            <span>🂠</span>
-                            <span>🂠</span>
-                            <span>🂠</span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="modeInfo">
-
-                        <div class="modeTopLine">
-
-                            <span class="modeNumber">
-                                04
-                            </span>
-
-                            <span class="modePlayers">
-                                STRATEJİ
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Gömmeli Batak
-                        </h3>
-
-                        <p>
-                            Güçlü kartlarını koru,
-                            gereksizleri göm.
-                        </p>
-
-                        <button>
-                            OYNA <b>›</b>
-                        </button>
-
-                    </div>
-
-                </article>
-
-            </section>
-
-
-
-            <section class="dailyPanel">
-
-                <div class="dailyIcon">
-                    🎁
-                </div>
-
-                <div class="dailyText">
-
-                    <div class="dailyTitle">
-                        GÜNLÜK ÖDÜL
-                    </div>
-
-                    <h3>
-                        ${profile.daily
-                            ? "Ödül bugün alındı"
-                            : "Bugünün sandığı hazır"}
-                    </h3>
-
-                    <p>
-                        Her gün giriş yap,
-                        ödül serisini büyüt.
-                    </p>
-
-                </div>
-
-
-                <div class="dailyReward">
-
-                    <div>
-                        <span>🪙</span>
-                        +250
-                    </div>
-
-                    <button
-                        onclick="dailyReward()"
-                        ${profile.daily ? "disabled" : ""}>
-
-                        ${profile.daily ? "ALINDI" : "AL"}
-
-                    </button>
-
-                </div>
-
-            </section>
-
-
-
-            <div class="sectionHeader">
-
-                <div>
-                    <span>BUGÜN</span>
-                    <h2>Görevlerin</h2>
-                </div>
-
-                <span>
-                    2 / 3
-                </span>
-
-            </div>
-
-
-            <section class="missionGrid">
-
-                <div class="mission">
-
-                    <div class="missionIcon">
-                        ♠
-                    </div>
-
-                    <div class="missionBody">
-
-                        <b>
-                            3 oyun oyna
-                        </b>
-
-                        <div class="missionProgress">
-                            <span style="width:66%"></span>
-                        </div>
-
-                        <small>
-                            2 / 3
-                        </small>
-
-                    </div>
-
-                    <strong>
-                        +50
-                    </strong>
-
-                </div>
-
-
-                <div class="mission">
-
-                    <div class="missionIcon">
-                        🏆
-                    </div>
-
-                    <div class="missionBody">
-
-                        <b>
-                            1 el kazan
-                        </b>
-
-                        <div class="missionProgress">
-                            <span style="width:100%"></span>
-                        </div>
-
-                        <small>
-                            TAMAMLANDI
-                        </small>
-
-                    </div>
-
-                    <strong>
-                        ✓
-                    </strong>
-
-                </div>
-
-
-                <div class="mission">
-
-                    <div class="missionIcon">
-                        🪙
-                    </div>
-
-                    <div class="missionBody">
-
-                        <b>
-                            500 coin kazan
-                        </b>
-
-                        <div class="missionProgress">
-                            <span style="width:40%"></span>
-                        </div>
-
-                        <small>
-                            200 / 500
-                        </small>
-
-                    </div>
-
-                    <strong>
-                        +100
-                    </strong>
-
-                </div>
-
-            </section>
-
-
-
-            <section class="seasonPanel">
-
-                <div class="seasonArtwork">
-
-                    <div class="seasonNumber">
-                        01
-                    </div>
-
-                    <div class="seasonSuit">
-                        ♠
-                    </div>
-
-                </div>
-
-
-                <div class="seasonInfo">
-
-                    <span>
-                        AKTİF SEZON
-                    </span>
-
-                    <h2>
-                        ROYALE RISING
-                    </h2>
-
-                    <p>
-                        Seviye atla, XP kazan,
-                        sezon ödüllerini aç.
-                    </p>
-
-                    <div class="seasonProgress">
-
-                        <div class="seasonProgressTop">
-
-                            <span>
-                                SEVİYE ${profile.level}
-                            </span>
-
-                            <span>
-                                20
-                            </span>
-
-                        </div>
-
-                        <div class="seasonBar">
-
-                            <span
-                                style="
-                                width:${Math.min(
-                                    100,
-                                    profile.level / 20 * 100
-                                )}%;
-                                ">
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="seasonButton"
-                    onclick="toast('Sezon sistemi yakında')">
-
-                    →
-
-                </button>
-
-            </section>
-
-        </main>
-
-
-
-        <nav class="bottomNav">
-
-            <button class="navItem active">
-
-                <span>⌂</span>
-                <small>ANA SAYFA</small>
-
-            </button>
-
-
-            <button
-                class="navItem"
-                onclick="showModes()">
-
-                <span>♠</span>
-                <small>OYNA</small>
-
-            </button>
-
-
-            <button
-                class="navItem navPlay"
-                onclick="startGame('auction')">
-
-                <div>
-                    ▶
-                </div>
-
-            </button>
-
-
-            <button
-                class="navItem"
-                onclick="openStats()">
-
-                <span>◈</span>
-                <small>İSTATİSTİK</small>
-
-            </button>
-
-
-            <button
-                class="navItem"
-                onclick="openProfile()">
-
-                <span>♙</span>
-                <small>PROFİL</small>
-
-            </button>
-
-        </nav>
-
-    </div>
-    `;
-}
-
-
-/* =========================================================
-   DAILY
-========================================================= */
-
-function dailyReward(){
-
-    if(profile.daily){
-
-        toast("Bugünkü ödülü zaten aldın");
-
-        return;
-    }
-
-    profile.daily=true;
-    profile.coins+=250;
-    profile.xp+=25;
-
-    checkLevel();
-
-    saveProfile();
-
-    sound("coin");
-
-    renderHome();
-
-    toast("+250 coin ve +25 XP kazandın");
-}
-
-
-/* =========================================================
-   LEVEL
-========================================================= */
-
-function checkLevel(){
-
-    const required =
-        profile.level * 150;
-
-    if(profile.xp >= required){
-
-        profile.xp -= required;
-        profile.level++;
-
-        profile.coins+=500;
-
-        sound("win");
-
-        toast(
-            "🎉 Seviye atladın! +" +
-            "500 coin"
-        );
-    }
-}
-
-
-/* =========================================================
-   MODES
-========================================================= */
-
-function showModes(){
-
-    const target =
-        document.getElementById("modes");
-
-    if(!target) return;
-
-    target.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-    setTimeout(()=>{
-        toast("Bir oyun modu seç");
-    },400);
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-function openProfile(){
-
-    const winRate =
-        profile.games
-        ? Math.round(
-            profile.wins /
-            profile.games *
-            100
-        )
-        : 0;
-
-    const overlay =
-        document.createElement("div");
-
-    overlay.className="overlay";
-
-    overlay.innerHTML=`
-
-        <div class="modal">
-
-            <button
-                class="modalClose"
-                onclick="this.closest('.overlay').remove()">
-
-                ×
-
-            </button>
-
-            <h2>
-                👑 Zafer
-            </h2>
-
-            <p>
-                Batak Royale oyuncu profili
-            </p>
-
-
-            <div class="profileStats">
-
-                <div class="profileStat">
-                    <span>SEVİYE</span>
-                    <b>${profile.level}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>XP</span>
-                    <b>${profile.xp}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>OYUN</span>
-                    <b>${profile.games}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>KAZANMA</span>
-                    <b>${winRate}%</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>GALİBİYET</span>
-                    <b>${profile.wins}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>COIN</span>
-                    <b>${profile.coins.toLocaleString("tr-TR")}</b>
-                </div>
-
-            </div>
-
-
-            <div
-                style="
-                display:flex;
-                gap:8px;
-                margin-top:15px;
-                ">
-
-                <button
-                    class="modalButton"
-                    style="flex:1"
-                    onclick="
-                        profile.sound=!profile.sound;
-                        saveProfile();
-                        this.textContent=
-                        profile.sound
-                        ? '🔊 Ses Açık'
-                        : '🔇 Ses Kapalı';
-                    ">
-
-                    ${profile.sound
-                        ? "🔊 Ses Açık"
-                        : "🔇 Ses Kapalı"}
-
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(overlay);
-}
-
-
-/* =========================================================
-   SHOP
-========================================================= */
-
-function openShop(){
-
-    const overlay =
-        document.createElement("div");
-
-    overlay.className="overlay";
-
-    overlay.innerHTML=`
-
-        <div class="modal">
-
-            <button
-                class="modalClose"
-                onclick="this.closest('.overlay').remove()">
-
-                ×
-
-            </button>
-
-            <h2>
-                🪙 Coin Merkezi
-            </h2>
-
-            <p>
-                Bunlar yalnızca oyun içi sanal
-                coinlerdir.
-            </p>
-
-
-            <div class="modalGrid">
-
-                <button
-                    class="modalButton"
-                    onclick="buyCoins(500)">
-
-                    +500
-
-                </button>
-
-                <button
-                    class="modalButton"
-                    onclick="buyCoins(1000)">
-
-                    +1.000
-
-                </button>
-
-                <button
-                    class="modalButton"
-                    onclick="buyCoins(2500)">
-
-                    +2.500
-
-                </button>
-
-                <button
-                    class="modalButton"
-                    onclick="buyCoins(5000)">
-
-                    +5.000
-
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(overlay);
-}
-
-function buyCoins(amount){
-
-    profile.coins+=amount;
-
-    saveProfile();
-
-    document.querySelector(".overlay")?.remove();
-
-    sound("coin");
-
-    renderHome();
-
-    toast("🪙 +" + amount + " coin");
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-function openStats(){
-
-    const overlay =
-        document.createElement("div");
-
-    overlay.className="overlay";
-
-    const rate =
-        profile.games
-        ? Math.round(
-            profile.wins /
-            profile.games *
-            100
-        )
-        : 0;
-
-    overlay.innerHTML=`
-
-        <div class="modal">
-
-            <button
-                class="modalClose"
-                onclick="this.closest('.overlay').remove()">
-
-                ×
-
-            </button>
-
-            <h2>
-                ◈ İstatistikler
-            </h2>
-
-            <p>
-                Batak Royale kariyer özeti
-            </p>
-
-
-            <div class="profileStats">
-
-                <div class="profileStat">
-                    <span>TOPLAM OYUN</span>
-                    <b>${profile.games}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>KAZANMA ORANI</span>
-                    <b>${rate}%</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>GALİBİYET</span>
-                    <b>${profile.wins}</b>
-                </div>
-
-                <div class="profileStat">
-                    <span>EN YÜKSEK İHALE</span>
-                    <b>${profile.bestBid}</b>
-                </div>
-
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(overlay);
-}
-
-
-/* =========================================================
-   CARD ENGINE
-========================================================= */
-
-function createDeck(){
-
-    const deck=[];
-
-    suits.forEach(suit=>{
-
-        ranks.forEach((rank,index)=>{
-
-            deck.push({
-                suit:suit.key,
-                symbol:suit.symbol,
-                red:suit.red,
-                rank,
-                value:index+2
-            });
-
-        });
-
-    });
-
-    return deck;
-}
-
-function shuffle(deck){
-
-    for(let i=deck.length-1;i>0;i--){
-
-        const j=
-            Math.floor(
-                Math.random()*(i+1)
-            );
-
-        [
-            deck[i],
-            deck[j]
-        ]=[
-            deck[j],
-            deck[i]
-        ];
-    }
-
-    return deck;
-}
-
-function cardHTML(card){
-
-    if(!card) return "";
-
-    return `
-
-        <div
-            class="
-                card
-                ${card.red ? "red" : ""}
-            "
-            onclick="playCard(${card.index})">
-
-            <div class="cardCorner">
-
-                <span class="rank">
-                    ${card.rank}
-                </span>
-
-                <span class="suit">
-                    ${card.symbol}
-                </span>
-
-            </div>
-
-
-            <div class="cardCenter">
-                ${card.symbol}
-            </div>
-
-
-            <div class="cardBottomCorner">
-
-                <span class="rank">
-                    ${card.rank}
-                </span>
-
-                <span class="suit">
-                    ${card.symbol}
-                </span>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-/* =========================================================
-   GAME
-========================================================= */
-
-function startGame(mode){
-
-    sound("click");
-
-    const deck =
-        shuffle(createDeck());
-
-    const players=[
-        {
-            name:"Zafer",
-            avatar:"👑",
-            hand:[],
-            tricks:0
-        },
-        {
-            name:"Ahmet",
-            avatar:"🤵",
-            hand:[],
-            tricks:0
-        },
-        {
-            name:"Mehmet",
-            avatar:"😎",
-            hand:[],
-            tricks:0
-        },
-        {
-            name:"Ali",
-            avatar:"🧔",
-            hand:[],
-            tricks:0
-        }
-    ];
-
-
-    for(let i=0;i<52;i++){
-
-        players[i%4]
-            .hand
-            .push(deck[i]);
-
-    }
-
-
-    players.forEach(player=>{
-
-        player.hand.sort(
-            (a,b)=>{
-                if(a.suit===b.suit)
-                    return b.value-a.value;
-
-                return (
-                    suits.findIndex(
-                        x=>x.key===b.suit
-                    )
-                    -
-                    suits.findIndex(
-                        x=>x.key===a.suit
-                    )
-                );
-            }
-        );
-
-    });
-
-
-    game={
-        mode,
-        players,
-        trump:
-            mode==="spades"
-            ? "spades"
-            : null,
-
-        leadSuit:null,
-
-        turn:0,
-
-        trick:[],
-
-        trickNumber:1,
-
-        bidder:null,
-
-        bid:null,
-
-        started:Date.now(),
-
-        over:false
-    };
-
-
-    renderGame();
-}
-
-
-/* =========================================================
-   GAME UI
-========================================================= */
-
-function renderGame(){
-
-    if(!game) return;
-
-    const p=
-        game.players;
-
-    const playerHand=
-        p[0].hand;
-
-
-    playerHand.forEach(
-        (card,index)=>{
-            card.index=index;
-        }
-    );
-
-
-    const modeName =
-        game.mode==="auction"
-        ? "İHALELİ BATAK"
-        : game.mode==="pairs"
-        ? "EŞLİ BATAK"
-        : game.mode==="spades"
-        ? "KOZ MAÇA"
-        : "GÖMMELİ BATAK";
-
-
-    $("app").innerHTML=`
-
-        <div class="gameScreen">
-
-
-            <header class="gameTop">
-
-                <button
-                    class="gameBack"
-                    onclick="confirmExit()">
-
-                    ‹
-
-                </button>
-
-
-                <div class="gameTitle">
-
-                    <b>
-                        ${modeName}
-                    </b>
-
-                    <small>
-                        EL ${game.trickNumber} / 13
-                    </small>
-
-                </div>
-
-
-                <div class="gameTopRight">
-
-                    <div class="gameBadge">
-                        ${game.trump
-                            ? "KOZ ♠"
-                            : "KOZ —"}
-                    </div>
-
-                </div>
-
-            </header>
-
-
-
-            <div class="tableArea">
-
-                <div class="table">
-
-                    <div class="tableLogo">
-                        ROYALE
-                    </div>
-
-                </div>
-
-
-                ${seatHTML(
-                    "top",
-                    p[2],
-                    game.turn===2
-                )}
-
-                ${seatHTML(
-                    "left",
-                    p[1],
-                    game.turn===1
-                )}
-
-                ${seatHTML(
-                    "right",
-                    p[3],
-                    game.turn===3
-                )}
-
-                ${seatHTML(
-                    "bottom",
-                    p[0],
-                    game.turn===0
-                )}
-
-
-                <div class="trick">
-
-                    ${renderPlayedCards()}
-
-                </div>
-
-            </div>
-
-
-
-            <div class="gameActions">
-
-                <button
-                    class="gameAction"
-                    onclick="toggleSound()">
-
-                    ${profile.sound
-                        ? "🔊"
-                        : "🔇"}
-
-                </button>
-
-                <button
-                    class="gameAction"
-                    onclick="toast('İstatistikler el sonunda')">
-
-                    ◈
-
-                </button>
-
-            </div>
-
-
-
-            <div class="handPanel">
-
-                <div class="handInfo">
-
-                    <span>
-                        ${game.trump
-                            ? "KOZ: " +
-                              suitByKey(
-                                  game.trump
-                              ).symbol
-                            : "KOZ BELİRLENMEDİ"}
-                    </span>
-
-                    <span>
-                        EL:
-                        ${p[0].tricks}
-                    </span>
-
-                </div>
-
-
-                <div class="handGrid">
-
-                    ${playerHand
-                        .map(
-                            (card,i)=>
-                                cardHTML({
-                                    ...card,
-                                    index:i
-                                })
-                        )
-                        .join("")}
-
-                </div>
-
-            </div>
-
-        </div>
-    `;
-
-
-    if(game.turn!==0){
-
-        setTimeout(
-            aiTurn,
-            650
-        );
-
-    }
-}
-
-
-/* =========================================================
-   SEAT
-========================================================= */
-
-function seatHTML(
-    position,
-    player,
-    active
-){
-
-    return `
-
-        <div
-            class="
-                seat
-                ${position}
-                ${active ? "turnSeat" : ""}
-            "
-        >
-
-            <div class="avatar">
-                ${player.avatar}
-            </div>
-
-            <div class="seatName">
-                ${player.name}
-            </div>
-
-            ${
-                active
-                ? `
-                    <div class="thinking">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </div>
-                `
-                : ""
-            }
-
-        </div>
-    `;
-}
-
-
-/* =========================================================
-   PLAYED
-========================================================= */
-
-function renderPlayedCards(){
-
-    return game.trick
-        .map((item,index)=>{
-
-            const c=item.card;
-
-            return `
-
-                <div
-                    class="
-                        played
-                        p${item.player}
-                        ${c.red ? "red" : ""}
-                    "
-                >
-
-                    <b>
-                        ${c.rank}
-                    </b>
-
-                    <span>
-                        ${c.symbol}
-                    </span>
-
-                </div>
-            `;
-
-        })
-        .join("");
-}
-
-
-/* =========================================================
-   SUIT
-========================================================= */
-
-function suitByKey(key){
-
-    return suits.find(
-        s=>s.key===key
-    );
-}
-
-
-/* =========================================================
-   LEGAL CARD
-========================================================= */
-
-function isLegal(
-    card,
-    player
-){
-
-    if(!game.leadSuit)
-        return true;
-
-    const hasLead =
-        player.hand.some(
-            c=>c.suit===game.leadSuit
-        );
-
-    if(hasLead)
-        return card.suit===game.leadSuit;
-
-    if(
-        game.trump &&
-        card.suit===game.trump
-    ){
-
-        return true;
-    }
-
-    return true;
-}
-
-
-/* =========================================================
-   PLAYER MOVE
-========================================================= */
-
-function playCard(index){
-
-    if(!game) return;
-
-    if(game.turn!==0){
-
-        toast("Sıra rakipte");
-
-        return;
-    }
-
-    const player=
-        game.players[0];
-
-    const card=
-        player.hand[index];
-
-    if(!card) return;
-
-    if(!isLegal(card,player)){
-
-        toast(
-            "Yere atılan renkten kartın varsa onu oynamalısın"
-        );
-
-        return;
-    }
-
-    makeMove(
-        0,
-        index
-    );
-}
-
-
-/* =========================================================
-   MAKE MOVE
-========================================================= */
-
-function makeMove(
-    playerIndex,
-    handIndex
-){
-
-    const player=
-        game.players[playerIndex];
-
-    const card=
-        player.hand.splice(
-            handIndex,
-            1
-        )[0];
-
-    if(!game.leadSuit){
-
-        game.leadSuit=
-            card.suit;
-    }
-
-    game.trick.push({
-        player:playerIndex,
-        card
-    });
-
-    sound("card");
-
-    if(game.trick.length===4){
-
-        setTimeout(
-            resolveTrick,
-            500
-        );
-
-        renderGame();
-
-        return;
-    }
-
-    game.turn=
-        (game.turn+1)%4;
-
-    renderGame();
-}
-
-
-/* =========================================================
-   AI
-========================================================= */
-
-function aiTurn(){
-
-    if(!game || game.over)
-        return;
-
-    if(game.turn===0)
-        return;
-
-    const player=
-        game.players[game.turn];
-
-    if(!player.hand.length)
-        return;
-
-    const legal =
-        player.hand.filter(
-            c=>isLegal(c,player)
-        );
-
-    let selected;
-
-
-    /* First player */
-    if(game.trick.length===0){
-
-        selected =
-            chooseLeadCard(
-                player,
-                legal
-            );
-
-    }else{
-
-        selected =
-            chooseAICard(
-                player,
-                legal
-            );
-
-    }
-
-
-    const index =
-        player.hand.indexOf(
-            selected
-        );
-
-    makeMove(
-        game.turn,
-        index
-    );
-}
-
-
-/* =========================================================
-   AI LEAD
-========================================================= */
-
-function chooseLeadCard(
-    player,
-    legal
-){
-
-    const nonTrump =
-        legal.filter(
-            c=>c.suit!==game.trump
-        );
-
-    const source =
-        nonTrump.length
-        ? nonTrump
-        : legal;
-
-    /*
-       Akıllı bot:
-       mümkün olduğunca küçük kart
-       oynayarak yüksek kartları korur.
-    */
-
-    return [...source]
-        .sort(
-            (a,b)=>
-                a.value-b.value
-        )[0];
-}
-
-
-/* =========================================================
-   AI RESPONSE
-========================================================= */
-
-function chooseAICard(
-    player,
-    legal
-){
-
-    const winners =
-        legal.filter(
-            cardCanWin
-        );
-
-
-    if(winners.length){
-
-        /*
-          Eğer eli kazanabilecek
-          düşük maliyetli kart varsa
-          onu kullan.
-        */
-
-        return [...winners]
-            .sort(
-                (a,b)=>
-                    a.value-b.value
-            )[0];
-    }
-
-
-    /*
-      Eli kazanamıyorsa en düşük
-      değeri bırak.
-    */
-
-    return [...legal]
-        .sort(
-            (a,b)=>
-                a.value-b.value
-        )[0];
-}
-
-
-/* =========================================================
-   CARD WIN
-========================================================= */
-
-function cardCanWin(card){
-
-    if(!game.trick.length)
-        return true;
-
-    const currentWinner =
-        winningCard(
-            game.trick
-        );
-
-    if(!currentWinner)
-        return true;
-
-    return beats(
-        card,
-        currentWinner.card
-    );
-}
-
-
-/* =========================================================
-   COMPARE
-========================================================= */
-
-function beats(
-    a,
-    b
-){
-
-    if(
-        a.suit===game.trump &&
-        b.suit!==game.trump
-    )
-        return true;
-
-    if(
-        a.suit!==game.trump &&
-        b.suit===game.trump
-    )
-        return false;
-
-    if(
-        a.suit!==b.suit
-    )
-        return false;
-
-    return a.value>b.value;
-}
-
-
-/* =========================================================
-   WINNING CARD
-========================================================= */
-
-function winningCard(
-    trick
-){
-
-    if(!trick.length)
-        return null;
-
-    let winner=
-        trick[0];
-
-    for(let i=1;i<trick.length;i++){
-
-        if(
-            beats(
-                trick[i].card,
-                winner.card
-            )
-        ){
-
-            winner=
-                trick[i];
-
-        }
-
-    }
-
-    return winner;
-}
-
-
-/* =========================================================
-   RESOLVE TRICK
-========================================================= */
-
-function resolveTrick(){
-
-    if(!game) return;
-
-    const winner=
-        winningCard(
-            game.trick
-        );
-
-    game.players[
-        winner.player
-    ].tricks++;
-
-    sound("win");
-
-    const winnerName=
-        game.players[
-            winner.player
-        ].name;
-
-
-    toast(
-        winnerName +
-        " eli aldı"
-    );
-
-
-    setTimeout(()=>{
-
-        game.trick=[];
-
-        game.leadSuit=null;
-
-        game.trickNumber++;
-
-
-        if(game.trickNumber>13){
-
-            finishGame();
-
-            return;
-        }
-
-
-        game.turn=
-            winner.player;
-
-        renderGame();
-
-    },850);
-}
-
-
-/* =========================================================
-   END GAME
-========================================================= */
-
-function finishGame(){
-
-    game.over=true;
-
-    const scores=
-        game.players.map(
-            p=>p.tricks
-        );
-
-    const winnerIndex=
-        scores.indexOf(
-            Math.max(...scores)
-        );
-
-    const playerScore=
-        scores[0];
-
-    const won=
-        winnerIndex===0;
-
-
-    profile.games++;
-
-    if(won)
-        profile.wins++;
-
-    profile.xp +=
-        won ? 45 : 15;
-
-    profile.coins +=
-        won ? 150 : 40;
-
-
-    if(
-        game.bid &&
-        game.bid>profile.bestBid
-    ){
-
-        profile.bestBid=
-            game.bid;
-    }
-
-
-    checkLevel();
-
-    saveProfile();
-
-    showGameResult(
-        winnerIndex,
-        scores
-    );
-}
-
-
-/* =========================================================
-   RESULT
-========================================================= */
-
-function showGameResult(
-    winnerIndex,
-    scores
-){
-
-    const names=
-        game.players.map(
-            p=>p.name
-        );
-
-    const overlay=
-        document.createElement(
-            "div"
-        );
-
-    overlay.className="overlay";
-
-    overlay.innerHTML=`
-
-        <div class="modal">
-
-            <h2>
-                ${
-                    winnerIndex===0
-                    ? "🏆 ZAFER!"
-                    : "🏁 EL TAMAMLANDI"
-                }
-            </h2>
-
-            <p>
-                ${names[winnerIndex]}
-                bu eli kazandı.
-            </p>
-
-
-            <div class="profileStats">
-
-                ${game.players
-                    .map(
-                        (p,i)=>`
-
-                        <div class="profileStat">
-
-                            <span>
-                                ${p.name}
-                            </span>
-
-                            <b>
-                                ${scores[i]} EL
-                            </b>
-
-                        </div>
-
-                        `
-                    )
-                    .join("")}
-
-            </div>
-
-
-            <button
-                class="modalButton"
-                style="
-                    width:100%;
-                    margin-top:15px;
-                "
-                onclick="
-                    this.closest('.overlay').remove();
-                    renderHome();
-                ">
-
-                ANA MENÜ
-
-            </button>
-
-
-            <button
-                class="modalButton"
-                style="
-                    width:100%;
-                    margin-top:8px;
-                "
-                onclick="
-                    this.closest('.overlay').remove();
-                    startGame('${game.mode}');
-                ">
-
-                TEKRAR OYNA
-
-            </button>
-
-        </div>
-    `;
-
-    document.body.appendChild(
-        overlay
-    );
-}
-
-
-/* =========================================================
-   EXIT
-========================================================= */
-
-function confirmExit(){
-
-    const overlay=
-        document.createElement(
-            "div"
-        );
-
-    overlay.className="overlay";
-
-    overlay.innerHTML=`
-
-        <div class="modal">
-
-            <h2>
-                Oyundan çık?
-            </h2>
-
-            <p>
-                Mevcut el kaydedilmeyecek.
-            </p>
-
-
-            <div
-                style="
-                display:grid;
-                grid-template-columns:1fr 1fr;
-                gap:8px;
-                margin-top:18px;
-                ">
-
-                <button
-                    class="modalButton"
-                    onclick="
-                        this.closest('.overlay').remove();
-                    ">
-
-                    DEVAM ET
-
-                </button>
-
-
-                <button
-                    class="modalButton"
-                    onclick="
-                        this.closest('.overlay').remove();
-                        game=null;
-                        renderHome();
-                    ">
-
-                    ÇIK
-
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(
-        overlay
-    );
-}
-
-
-/* =========================================================
-   SOUND TOGGLE
-========================================================= */
 
 function toggleSound(){
 
-    profile.sound=
-        !profile.sound;
+    soundEnabled=!soundEnabled;
 
-    saveProfile();
+    const btn=$("soundToggle");
 
-    renderGame();
+    if(btn){
+
+        btn.classList.toggle(
+            "on",
+            soundEnabled
+        );
+
+    }
 
     toast(
-        profile.sound
-        ? "🔊 Ses açıldı"
-        : "🔇 Ses kapatıldı"
+        soundEnabled?
+        "Ses açıldı.":
+        "Ses kapatıldı."
     );
+
 }
 
+/* ---------------- VIBRATION ---------------- */
 
-/* =========================================================
-   INIT
-========================================================= */
+function toggleVibration(){
 
-renderHome();
+    vibrationEnabled=!vibrationEnabled;
+
+    $("vibrationToggle")
+        .classList.toggle(
+            "on",
+            vibrationEnabled
+        );
+
+}
+
+/* ---------------- INIT ---------------- */
+
+updateProfile();
+
+/* ---------------- KEYBOARD ---------------- */
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="Escape"){
+
+        if(
+            $("gameScreen")
+                .classList.contains("active")
+        ){
+
+            exitGame();
+
+        }
+
+    }
+
+});
+
+/* ---------------- PREVENT SCROLL ---------------- */
+
+document.addEventListener(
+    "touchmove",
+    e=>{
+
+        if(
+            e.target.closest(".hand") ||
+            e.target.closest(".gameScreen")
+        ){
+
+            e.preventDefault();
+
+        }
+
+    },
+    {passive:false}
+);
 
 </script>
 
