@@ -3,1044 +3,980 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#07130e">
-<title>Batak Royale Pro</title>
+<meta name="theme-color" content="#06130c">
+<title>Batak Royale</title>
 
 <style>
 *{
- box-sizing:border-box;
- margin:0;
- padding:0;
- user-select:none;
- -webkit-user-select:none;
- -webkit-tap-highlight-color:transparent;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
 }
 
 html,body{
- width:100%;
- height:100%;
- overflow:hidden;
- background:#030604;
- font-family:Arial,Helvetica,sans-serif;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#020403;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
- display:flex;
- justify-content:center;
- align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 button{
- font-family:inherit;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-#app{
- width:100vw;
- height:100vh;
- position:relative;
- overflow:hidden;
- background:
- radial-gradient(circle at 50% 50%,#17241d 0%,#070b08 65%,#020302 100%);
+#game{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
 }
 
-/* =========================================================
-   MASA
-========================================================= */
+/* MASA */
 
 .table{
- position:absolute;
- inset:2.2%;
- overflow:hidden;
- border-radius:42px;
- background:
-   radial-gradient(ellipse at 50% 48%,
-      rgba(40,133,76,.30) 0%,
-      rgba(17,89,49,.12) 42%,
-      transparent 68%),
-   linear-gradient(145deg,#126039,#07351f 60%,#052818);
- border:12px solid #21120b;
- box-shadow:
-   0 20px 55px rgba(0,0,0,.8),
-   inset 0 0 0 3px #70401f,
-   inset 0 0 0 7px #321b0e,
-   inset 0 0 80px rgba(0,0,0,.65);
+    position:absolute;
+    inset:1.5%;
+    overflow:hidden;
+    border-radius:42px;
+    border:13px solid #24140b;
+
+    background:
+    radial-gradient(circle at 50% 50%,rgba(45,143,82,.22),transparent 42%),
+    radial-gradient(circle at 50% 45%,#126039 0%,#0b4b2b 42%,#06331d 100%);
+
+    box-shadow:
+    0 25px 70px #000,
+    inset 0 0 0 3px #75451f,
+    inset 0 0 0 7px #321b0d,
+    inset 0 0 90px rgba(0,0,0,.65);
 }
 
-/* keçe dokusu */
 .table:before{
- content:"";
- position:absolute;
- inset:0;
- opacity:.20;
- pointer-events:none;
- background-image:
-   repeating-linear-gradient(0deg,
-      rgba(255,255,255,.025) 0px,
-      rgba(255,255,255,.025) 1px,
-      transparent 1px,
-      transparent 4px),
-   repeating-linear-gradient(90deg,
-      rgba(0,0,0,.035) 0px,
-      rgba(0,0,0,.035) 1px,
-      transparent 1px,
-      transparent 5px);
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.17;
+    background:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.035) 0px,
+        rgba(255,255,255,.035) 1px,
+        transparent 1px,
+        transparent 4px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(0,0,0,.035) 0px,
+        rgba(0,0,0,.035) 1px,
+        transparent 1px,
+        transparent 5px
+    );
 }
 
-/* iç altın çizgi */
 .table:after{
- content:"";
- position:absolute;
- inset:15px;
- border:1px solid rgba(239,194,87,.18);
- border-radius:31px;
- pointer-events:none;
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid rgba(240,202,100,.17);
+    border-radius:30px;
+    pointer-events:none;
 }
 
-/* =========================================================
-   ÜST BİLGİ
-========================================================= */
+/* ÜST BAR */
 
 .header{
- position:absolute;
- left:27px;
- right:27px;
- top:18px;
- height:48px;
- z-index:100;
- display:flex;
- align-items:center;
- justify-content:space-between;
+    position:absolute;
+    top:15px;
+    left:25px;
+    right:25px;
+    height:45px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.brand{
- display:flex;
- align-items:center;
- gap:9px;
- color:#f3d477;
- font-weight:900;
- letter-spacing:.5px;
- text-shadow:0 2px 5px #000;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#f2d273;
+    font-size:16px;
+    font-weight:900;
+    text-shadow:0 2px 5px #000;
 }
 
-.brandIcon{
- width:34px;
- height:34px;
- border-radius:10px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:linear-gradient(145deg,#d7ae48,#80601c);
- color:#fff4b0;
- box-shadow:0 4px 10px rgba(0,0,0,.45);
- font-size:19px;
-}
-
-.brandText{
- font-size:16px;
+.logoIcon{
+    width:33px;
+    height:33px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:linear-gradient(#e0bd5d,#88631d);
+    color:#fff2ae;
+    box-shadow:0 4px 9px #000;
 }
 
 .stats{
- display:flex;
- gap:7px;
+    display:flex;
+    gap:6px;
 }
 
 .stat{
- min-width:67px;
- padding:6px 9px;
- border-radius:10px;
- text-align:center;
- color:#d8e4da;
- background:rgba(0,0,0,.38);
- border:1px solid rgba(255,255,255,.10);
- box-shadow:inset 0 1px rgba(255,255,255,.04);
- font-size:9px;
- text-transform:uppercase;
- letter-spacing:.5px;
+    min-width:62px;
+    padding:5px 8px;
+    border-radius:10px;
+    background:rgba(0,0,0,.38);
+    border:1px solid rgba(255,255,255,.1);
+    color:#aebdb3;
+    text-align:center;
+    font-size:8px;
 }
 
 .stat b{
- display:block;
- margin-top:2px;
- color:#fff;
- font-size:13px;
+    display:block;
+    margin-top:2px;
+    color:#fff;
+    font-size:12px;
 }
 
-/* =========================================================
-   OYUNCULAR
-========================================================= */
+/* OYUNCULAR */
 
 .player{
- position:absolute;
- z-index:60;
- min-width:125px;
- padding:7px 10px;
- border-radius:15px;
- display:flex;
- align-items:center;
- gap:8px;
- color:white;
- background:
-   linear-gradient(145deg,rgba(28,42,34,.94),rgba(4,14,9,.92));
- border:1px solid rgba(255,255,255,.13);
- box-shadow:
-   0 7px 16px rgba(0,0,0,.4),
-   inset 0 1px rgba(255,255,255,.08);
+    position:absolute;
+    z-index:60;
+    min-width:116px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 9px;
+    color:#fff;
+    border-radius:14px;
+    background:linear-gradient(145deg,rgba(30,48,37,.96),rgba(4,13,8,.94));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 7px 17px rgba(0,0,0,.45);
+}
+
+.player.active{
+    border-color:#f0cb65;
+    box-shadow:
+    0 0 0 1px rgba(240,203,101,.2),
+    0 7px 17px #000,
+    0 0 15px rgba(240,203,101,.16);
 }
 
 .avatar{
- width:35px;
- height:35px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- flex-shrink:0;
- font-size:17px;
- background:linear-gradient(145deg,#d5ad50,#70531a);
- border:2px solid rgba(255,255,255,.35);
- box-shadow:0 2px 7px #000;
-}
-
-.playerInfo{
- min-width:0;
+    width:32px;
+    height:32px;
+    flex-shrink:0;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#d8b456,#73531a);
+    border:2px solid rgba(255,255,255,.3);
+    box-shadow:0 2px 7px #000;
+    font-size:16px;
 }
 
 .playerName{
- font-size:12px;
- font-weight:900;
- white-space:nowrap;
+    font-size:11px;
+    font-weight:900;
 }
 
-.playerSub{
- font-size:9px;
- color:#9eaea3;
- margin-top:2px;
- white-space:nowrap;
+.playerInfo small{
+    display:block;
+    margin-top:2px;
+    color:#9baaa0;
+    font-size:8px;
 }
 
 .player.top{
- top:78px;
- left:50%;
- transform:translateX(-50%);
+    top:70px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
 .player.left{
- left:20px;
- top:44%;
- transform:translateY(-50%);
+    left:18px;
+    top:43%;
+    transform:translateY(-50%);
 }
 
 .player.right{
- right:20px;
- top:44%;
- transform:translateY(-50%);
+    right:18px;
+    top:43%;
+    transform:translateY(-50%);
 }
 
 .player.bottom{
- left:50%;
- bottom:153px;
- transform:translateX(-50%);
- border-color:rgba(235,199,91,.58);
+    left:50%;
+    bottom:143px;
+    transform:translateX(-50%);
 }
 
-.turn{
- position:absolute;
- width:8px;
- height:8px;
- border-radius:50%;
- background:#55e78d;
- box-shadow:0 0 10px #55e78d;
- right:5px;
- top:5px;
+.dot{
+    position:absolute;
+    width:8px;
+    height:8px;
+    right:5px;
+    top:5px;
+    border-radius:50%;
+    background:#4be784;
+    box-shadow:0 0 12px #4be784;
+    display:none;
 }
 
-/* =========================================================
-   KOZ
-========================================================= */
-
-.trumpBox{
- position:absolute;
- z-index:65;
- top:113px;
- left:50%;
- transform:translateX(-50%);
- display:flex;
- align-items:center;
- gap:8px;
- padding:7px 14px;
- border-radius:20px;
- color:#dfe9e1;
- background:rgba(0,0,0,.40);
- border:1px solid rgba(255,255,255,.10);
- box-shadow:0 4px 12px rgba(0,0,0,.3);
- font-size:10px;
- text-transform:uppercase;
- letter-spacing:.7px;
+.player.active .dot{
+    display:block;
 }
 
-.trumpSymbol{
- width:23px;
- height:23px;
- border-radius:7px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#f4f4f1;
- color:#111;
- font-size:15px;
+/* KOZ */
+
+.trump{
+    position:absolute;
+    z-index:70;
+    left:50%;
+    top:104px;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 13px;
+    border-radius:20px;
+    background:rgba(0,0,0,.42);
+    border:1px solid rgba(255,255,255,.1);
+    color:#b9c5bc;
+    font-size:9px;
 }
 
-.trumpSymbol.red{
- color:#d51d2a;
+.trump b{
+    color:#f4d46f;
 }
 
-#trumpValue{
- color:#f4d46e;
- font-weight:900;
+/* ORTA */
+
+.center{
+    position:absolute;
+    width:300px;
+    height:245px;
+    left:50%;
+    top:46%;
+    transform:translate(-50%,-50%);
+    z-index:15;
 }
 
-/* =========================================================
-   ORTA OYUN ALANI
-========================================================= */
-
-.centerArea{
- position:absolute;
- left:50%;
- top:47%;
- width:310px;
- height:270px;
- transform:translate(-50%,-50%);
- z-index:20;
-}
-
-.centerGlow{
- position:absolute;
- left:50%;
- top:50%;
- width:210px;
- height:210px;
- transform:translate(-50%,-50%);
- border-radius:50%;
- border:1px solid rgba(239,199,91,.10);
- box-shadow:
-   0 0 45px rgba(0,0,0,.2),
-   inset 0 0 35px rgba(0,0,0,.18);
+.centerRing{
+    position:absolute;
+    width:190px;
+    height:190px;
+    left:55px;
+    top:25px;
+    border-radius:50%;
+    border:1px solid rgba(240,201,95,.12);
+    box-shadow:inset 0 0 40px rgba(0,0,0,.15);
 }
 
 .centerLogo{
- position:absolute;
- left:50%;
- top:50%;
- transform:translate(-50%,-50%);
- font-size:36px;
- color:rgba(235,196,89,.13);
- font-weight:900;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:38px;
+    color:rgba(242,204,101,.10);
 }
 
-/* =========================================================
-   ORTADAKİ KARTLAR
-========================================================= */
-
-.playCard{
- position:absolute;
- width:65px;
- height:92px;
- border-radius:9px;
- background:linear-gradient(145deg,#fff,#e9e9e5);
- border:1px solid #c8c8c3;
- color:#111;
- box-shadow:
-   0 7px 15px rgba(0,0,0,.5),
-   inset 0 0 0 1px rgba(255,255,255,.8);
- padding:5px;
- display:flex;
- flex-direction:column;
- justify-content:space-between;
- font-weight:900;
+.played{
+    position:absolute;
+    width:61px;
+    height:86px;
+    padding:5px;
+    border-radius:8px;
+    background:linear-gradient(145deg,#fff,#e8e8e4);
+    border:1px solid #c8c8c5;
+    box-shadow:0 7px 15px rgba(0,0,0,.55);
+    color:#111;
+    font-weight:900;
 }
 
-.playCard .small{
- font-size:15px;
- line-height:14px;
+.played.red{
+    color:#d21e2b;
 }
 
-.playCard .big{
- text-align:center;
- font-size:29px;
- margin-top:-2px;
+.played .small{
+    font-size:13px;
+    line-height:13px;
 }
 
-.playCard.red{
- color:#d51f2b;
+.played .big{
+    text-align:center;
+    font-size:28px;
+    margin-top:4px;
 }
 
-.pc1{left:122px;top:0}
-.pc2{left:190px;top:70px}
-.pc3{left:122px;top:140px}
-.pc4{left:54px;top:70px}
+.pcTop{
+    left:120px;
+    top:0;
+}
 
-/* =========================================================
-   DURUM MESAJI
-========================================================= */
+.pcRight{
+    left:188px;
+    top:70px;
+}
+
+.pcBottom{
+    left:120px;
+    top:140px;
+}
+
+.pcLeft{
+    left:52px;
+    top:70px;
+}
+
+/* MESAJ */
 
 .message{
- position:absolute;
- left:50%;
- top:calc(47% + 150px);
- transform:translateX(-50%);
- width:min(82%,390px);
- min-height:34px;
- padding:8px 13px;
- border-radius:18px;
- display:flex;
- justify-content:center;
- align-items:center;
- text-align:center;
- color:#dfe9e2;
- font-size:11px;
- background:rgba(3,12,7,.66);
- border:1px solid rgba(255,255,255,.08);
- box-shadow:0 5px 15px rgba(0,0,0,.28);
- z-index:80;
+    position:absolute;
+    z-index:90;
+    left:50%;
+    top:calc(46% + 132px);
+    transform:translateX(-50%);
+    width:min(84%,390px);
+    min-height:34px;
+    padding:8px 12px;
+    border-radius:18px;
+    background:rgba(2,11,6,.68);
+    border:1px solid rgba(255,255,255,.08);
+    color:#dce6df;
+    text-align:center;
+    font-size:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .message b{
- color:#f3d477;
+    color:#f4d46f;
 }
 
-/* =========================================================
-   EL
-========================================================= */
+/* EL */
 
-.handArea{
- position:absolute;
- left:50%;
- bottom:84px;
- transform:translateX(-50%);
- width:95%;
- max-width:680px;
- z-index:90;
+.hand{
+    position:absolute;
+    left:50%;
+    bottom:75px;
+    transform:translateX(-50%);
+    width:96%;
+    max-width:680px;
+    z-index:110;
 }
 
 .handRow{
- display:flex;
- justify-content:center;
- align-items:flex-end;
- position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    position:relative;
 }
 
-.rowTop{
- z-index:1;
- margin-bottom:-23px;
+.topRow{
+    z-index:1;
+    margin-bottom:-22px;
 }
 
-.rowBottom{
- z-index:5;
+.bottomRow{
+    z-index:5;
 }
 
-/* KARTLAR */
+/* KART */
+
 .card{
- position:relative;
- flex:0 0 auto;
- width:70px;
- height:99px;
- margin-left:-13px;
- border-radius:10px;
- cursor:pointer;
- color:#151515;
- background:
-   linear-gradient(135deg,#ffffff 0%,#f6f6f2 52%,#e4e4df 100%);
- border:1px solid #c9c9c5;
- box-shadow:
-   0 6px 13px rgba(0,0,0,.50),
-   inset 0 0 0 1px rgba(255,255,255,.85);
- transition:transform .15s ease,box-shadow .15s ease;
- overflow:hidden;
+    position:relative;
+    flex:0 0 auto;
+    width:67px;
+    height:95px;
+    margin-left:-12px;
+    border-radius:9px;
+    cursor:pointer;
+
+    background:
+    linear-gradient(145deg,#fff 0%,#f7f7f4 55%,#deded9 100%);
+
+    border:1px solid #c6c6c1;
+
+    box-shadow:
+    0 6px 12px rgba(0,0,0,.5),
+    inset 0 0 0 1px rgba(255,255,255,.9);
+
+    color:#111;
+
+    transition:
+    transform .14s ease,
+    box-shadow .14s ease;
 }
 
 .card:first-child{
- margin-left:0;
+    margin-left:0;
 }
 
 .card.red{
- color:#d51d2b;
+    color:#d41f2b;
 }
 
 .card:before{
- content:"";
- position:absolute;
- inset:3px;
- border:1px solid rgba(0,0,0,.055);
- border-radius:7px;
- pointer-events:none;
+    content:"";
+    position:absolute;
+    inset:3px;
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,.05);
 }
 
 .cardTop{
- position:absolute;
- left:6px;
- top:5px;
- font-size:16px;
- line-height:15px;
- font-weight:900;
+    position:absolute;
+    top:5px;
+    left:5px;
+    font-size:15px;
+    line-height:14px;
+    font-weight:900;
 }
 
 .cardSuit{
- position:absolute;
- left:50%;
- top:50%;
- transform:translate(-50%,-50%);
- font-size:32px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:30px;
 }
 
 .cardBottom{
- position:absolute;
- right:6px;
- bottom:5px;
- transform:rotate(180deg);
- font-size:16px;
- line-height:15px;
- font-weight:900;
-}
-
-.card:hover{
- transform:translateY(-5px);
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    transform:rotate(180deg);
+    font-size:15px;
+    line-height:14px;
+    font-weight:900;
 }
 
 .card.selected{
- transform:translateY(-21px);
- z-index:50;
- box-shadow:
-   0 15px 22px rgba(0,0,0,.65),
-   0 0 0 2px #f3d477,
-   0 0 17px rgba(243,212,119,.35);
+    transform:translateY(-19px);
+    z-index:100;
+    box-shadow:
+    0 16px 22px rgba(0,0,0,.65),
+    0 0 0 2px #f2d16c,
+    0 0 18px rgba(242,209,108,.35);
 }
 
-/* =========================================================
-   ALT KONTROLLER
-========================================================= */
+.card.illegal{
+    animation:shake .25s;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-4px)}
+    75%{transform:translateX(4px)}
+}
+
+/* KONTROLLER */
 
 .controls{
- position:absolute;
- left:50%;
- bottom:18px;
- transform:translateX(-50%);
- z-index:120;
- display:flex;
- gap:7px;
- padding:5px;
- border-radius:17px;
- background:rgba(0,0,0,.34);
- border:1px solid rgba(255,255,255,.08);
- box-shadow:0 7px 20px rgba(0,0,0,.35);
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    z-index:150;
+    display:flex;
+    gap:6px;
+    padding:5px;
+    border-radius:16px;
+    background:rgba(0,0,0,.38);
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.action{
- min-width:82px;
- height:39px;
- padding:0 13px;
- border-radius:11px;
- border:1px solid rgba(255,255,255,.12);
- color:#e9eee9;
- background:linear-gradient(145deg,#315c45,#153322);
- font-size:10px;
- font-weight:900;
- cursor:pointer;
- box-shadow:
-   inset 0 1px rgba(255,255,255,.08),
-   0 3px 7px rgba(0,0,0,.35);
+.btn{
+    height:38px;
+    min-width:76px;
+    padding:0 10px;
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.12);
+    color:white;
+    background:linear-gradient(145deg,#315e46,#153322);
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
 }
 
-.action.primary{
- color:#1a1305;
- background:linear-gradient(145deg,#ffe486,#b98722);
- border-color:#f0cd67;
+.btn.gold{
+    color:#1c1405;
+    background:linear-gradient(145deg,#ffe68a,#b98823);
 }
 
-.action:active{
- transform:translateY(2px);
+.btn:active{
+    transform:translateY(2px);
 }
 
-/* =========================================================
-   MODALLAR
-========================================================= */
+/* SES */
+
+.sound{
+    position:absolute;
+    top:18px;
+    right:105px;
+    z-index:200;
+    width:33px;
+    height:33px;
+    border:0;
+    border-radius:10px;
+    color:#fff;
+    background:rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.1);
+    cursor:pointer;
+}
+
+/* MODAL */
 
 .modal{
- position:absolute;
- inset:0;
- z-index:500;
- display:none;
- align-items:center;
- justify-content:center;
- padding:20px;
- background:rgba(0,0,0,.72);
- backdrop-filter:blur(4px);
+    position:absolute;
+    inset:0;
+    z-index:500;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.74);
+    backdrop-filter:blur(4px);
+    padding:20px;
 }
 
 .modal.show{
- display:flex;
+    display:flex;
 }
 
 .modalBox{
- width:100%;
- max-width:380px;
- padding:24px;
- border-radius:23px;
- color:white;
- background:
-   linear-gradient(145deg,#193e2c,#071810);
- border:1px solid rgba(235,201,105,.25);
- box-shadow:
-   0 25px 70px rgba(0,0,0,.8),
-   inset 0 1px rgba(255,255,255,.08);
- text-align:center;
+    width:100%;
+    max-width:380px;
+    padding:24px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#1b432f,#071710);
+    border:1px solid rgba(240,204,105,.25);
+    box-shadow:0 25px 70px #000;
+    color:white;
+    text-align:center;
 }
 
 .modalIcon{
- width:52px;
- height:52px;
- margin:0 auto 10px;
- border-radius:16px;
- display:flex;
- align-items:center;
- justify-content:center;
- color:#f4d36e;
- background:rgba(236,193,72,.10);
- border:1px solid rgba(236,193,72,.18);
- font-size:26px;
+    width:50px;
+    height:50px;
+    margin:0 auto 9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    background:rgba(240,201,88,.1);
+    color:#f2d06b;
+    font-size:25px;
 }
 
 .modalBox h2{
- color:#f3d477;
- font-size:20px;
- margin-bottom:7px;
+    color:#f2d06b;
+    font-size:20px;
+    margin-bottom:7px;
 }
 
 .modalBox p{
- color:#9faea4;
- font-size:12px;
- margin-bottom:19px;
+    color:#a5b1a9;
+    font-size:11px;
+    margin-bottom:18px;
 }
 
 .bidGrid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:8px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
 }
 
-.bidBtn{
- height:46px;
- border:1px solid rgba(255,255,255,.08);
- border-radius:11px;
- color:#fff;
- background:linear-gradient(145deg,#2b6044,#153623);
- font-size:14px;
- font-weight:900;
- cursor:pointer;
-}
-
-.bidBtn:hover{
- border-color:#d6b557;
+.bid{
+    height:46px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    color:#fff;
+    background:linear-gradient(145deg,#2d6347,#163623);
+    font-weight:900;
+    font-size:14px;
+    cursor:pointer;
 }
 
 .suitGrid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
-.suitBtn{
- height:63px;
- border-radius:14px;
- border:1px solid #ddd;
- background:linear-gradient(145deg,#fff,#e7e7e4);
- color:#111;
- font-size:30px;
- font-weight:900;
- cursor:pointer;
- box-shadow:0 4px 10px rgba(0,0,0,.25);
+.suit{
+    height:62px;
+    border-radius:13px;
+    border:1px solid #ddd;
+    background:linear-gradient(145deg,#fff,#e6e6e2);
+    font-size:30px;
+    font-weight:900;
+    cursor:pointer;
 }
 
-.suitBtn.red{
- color:#d51d2b;
+.suit.red{
+    color:#d51f2b;
 }
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* SONUÇ */
 
-.toast{
- position:absolute;
- left:50%;
- top:20px;
- transform:translate(-50%,-100px);
- z-index:700;
- padding:10px 16px;
- border-radius:20px;
- color:white;
- background:rgba(0,0,0,.75);
- border:1px solid rgba(255,255,255,.12);
- font-size:11px;
- transition:transform .25s ease;
- pointer-events:none;
+.result{
+    position:absolute;
+    inset:0;
+    z-index:600;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.78);
+    padding:20px;
 }
 
-.toast.show{
- transform:translate(-50%,0);
+.result.show{
+    display:flex;
 }
 
-/* =========================================================
-   TELEFON
-========================================================= */
+.resultBox{
+    width:100%;
+    max-width:390px;
+    padding:27px;
+    border-radius:23px;
+    background:linear-gradient(145deg,#173e2b,#06140c);
+    border:1px solid rgba(242,207,104,.28);
+    text-align:center;
+    color:#fff;
+    box-shadow:0 25px 70px #000;
+}
+
+.resultBox h1{
+    color:#f3d274;
+    margin-bottom:10px;
+}
+
+.resultScore{
+    font-size:44px;
+    font-weight:900;
+    color:#fff;
+    margin:15px 0;
+}
+
+.resultText{
+    color:#b5c0b8;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.resultButton{
+    width:100%;
+    height:45px;
+    border:0;
+    border-radius:12px;
+    color:#171005;
+    background:linear-gradient(145deg,#ffe486,#b98a27);
+    font-weight:900;
+}
+
+/* MOBİL */
 
 @media(max-width:600px){
 
- .table{
-   inset:1%;
-   border-width:9px;
-   border-radius:29px;
- }
+    .table{
+        inset:1%;
+        border-width:9px;
+        border-radius:29px;
+    }
 
- .table:after{
-   inset:10px;
-   border-radius:22px;
- }
+    .table:after{
+        inset:10px;
+        border-radius:21px;
+    }
 
- .header{
-   left:14px;
-   right:14px;
-   top:10px;
- }
+    .header{
+        left:13px;
+        right:13px;
+        top:9px;
+    }
 
- .brandIcon{
-   width:29px;
-   height:29px;
-   font-size:16px;
- }
+    .logo{
+        font-size:12px;
+    }
 
- .brandText{
-   font-size:13px;
- }
+    .logoIcon{
+        width:28px;
+        height:28px;
+        font-size:15px;
+    }
 
- .stat{
-   min-width:55px;
-   padding:5px 6px;
-   font-size:8px;
- }
+    .stat{
+        min-width:52px;
+        padding:4px 5px;
+    }
 
- .stat b{
-   font-size:11px;
- }
+    .sound{
+        right:86px;
+        top:10px;
+        width:29px;
+        height:29px;
+    }
 
- .player{
-   min-width:91px;
-   padding:6px 7px;
-   gap:6px;
-   border-radius:12px;
- }
+    .player{
+        min-width:88px;
+        padding:5px 7px;
+    }
 
- .avatar{
-   width:29px;
-   height:29px;
-   font-size:14px;
- }
+    .avatar{
+        width:27px;
+        height:27px;
+        font-size:13px;
+    }
 
- .playerName{
-   font-size:10px;
- }
+    .playerName{
+        font-size:9px;
+    }
 
- .playerSub{
-   font-size:8px;
- }
+    .playerInfo small{
+        font-size:7px;
+    }
 
- .player.top{
-   top:58px;
- }
+    .player.top{
+        top:56px;
+    }
 
- .player.left{
-   left:7px;
-   top:42%;
- }
+    .player.left{
+        left:6px;
+        top:42%;
+    }
 
- .player.right{
-   right:7px;
-   top:42%;
- }
+    .player.right{
+        right:6px;
+        top:42%;
+    }
 
- .player.bottom{
-   bottom:137px;
- }
+    .player.bottom{
+        bottom:130px;
+    }
 
- .trumpBox{
-   top:91px;
-   padding:6px 11px;
-   font-size:9px;
- }
+    .trump{
+        top:88px;
+        font-size:8px;
+        padding:5px 10px;
+    }
 
- .centerArea{
-   top:45%;
-   transform:translate(-50%,-50%) scale(.82);
- }
+    .center{
+        top:45%;
+        transform:translate(-50%,-50%) scale(.78);
+    }
 
- .message{
-   top:calc(45% + 126px);
-   width:84%;
-   font-size:10px;
- }
+    .message{
+        top:calc(45% + 125px);
+        font-size:9px;
+    }
 
- .handArea{
-   bottom:73px;
-   width:97%;
- }
+    .hand{
+        bottom:68px;
+        width:97%;
+    }
 
- .card{
-   width:53px;
-   height:76px;
-   margin-left:-10px;
-   border-radius:7px;
- }
+    .card{
+        width:51px;
+        height:73px;
+        margin-left:-9px;
+        border-radius:7px;
+    }
 
- .rowTop{
-   margin-bottom:-18px;
- }
+    .topRow{
+        margin-bottom:-17px;
+    }
 
- .cardTop{
-   left:4px;
-   top:4px;
-   font-size:12px;
-   line-height:12px;
- }
+    .cardTop{
+        left:4px;
+        top:4px;
+        font-size:11px;
+        line-height:11px;
+    }
 
- .cardSuit{
-   font-size:24px;
- }
+    .cardSuit{
+        font-size:23px;
+    }
 
- .cardBottom{
-   right:4px;
-   bottom:4px;
-   font-size:12px;
-   line-height:12px;
- }
+    .cardBottom{
+        right:4px;
+        bottom:4px;
+        font-size:11px;
+        line-height:11px;
+    }
 
- .card.selected{
-   transform:translateY(-15px);
- }
+    .card.selected{
+        transform:translateY(-14px);
+    }
 
- .controls{
-   bottom:9px;
-   gap:4px;
-   padding:4px;
- }
+    .controls{
+        bottom:7px;
+    }
 
- .action{
-   min-width:68px;
-   height:35px;
-   padding:0 7px;
-   font-size:8px;
- }
-
+    .btn{
+        min-width:63px;
+        height:34px;
+        padding:0 7px;
+        font-size:8px;
+    }
 }
-
-/* =========================================================
-   ÇOK DAR TELEFON
-========================================================= */
 
 @media(max-width:380px){
 
- .brandText{
-   display:none;
- }
+    .card{
+        width:45px;
+        height:65px;
+        margin-left:-8px;
+    }
 
- .stat{
-   min-width:49px;
- }
+    .topRow{
+        margin-bottom:-14px;
+    }
 
- .player{
-   min-width:78px;
- }
+    .cardSuit{
+        font-size:20px;
+    }
 
- .player .avatar{
-   width:25px;
-   height:25px;
- }
+    .cardTop,
+    .cardBottom{
+        font-size:9px;
+        line-height:9px;
+    }
 
- .playerSub{
-   display:none;
- }
+    .player{
+        min-width:76px;
+    }
 
- .card{
-   width:46px;
-   height:67px;
-   margin-left:-9px;
- }
+    .playerInfo small{
+        display:none;
+    }
 
- .rowTop{
-   margin-bottom:-15px;
- }
+    .center{
+        transform:translate(-50%,-50%) scale(.67);
+    }
 
- .cardTop{
-   font-size:10px;
-   line-height:10px;
- }
-
- .cardBottom{
-   font-size:10px;
-   line-height:10px;
- }
-
- .cardSuit{
-   font-size:21px;
- }
-
- .centerArea{
-   transform:translate(-50%,-50%) scale(.72);
- }
-
- .action{
-   min-width:62px;
-   font-size:7px;
- }
-}
-
-/* YATAY EKRANDA DA ÇALIŞIR */
-@media(max-height:600px){
-
- .player.top{
-   top:55px;
- }
-
- .player.bottom{
-   bottom:108px;
- }
-
- .handArea{
-   bottom:53px;
- }
-
- .card{
-   height:65px;
- }
-
- .rowTop{
-   margin-bottom:-14px;
- }
-
- .controls{
-   bottom:6px;
- }
-
- .message{
-   display:none;
- }
-
- .centerArea{
-   top:49%;
-   transform:translate(-50%,-50%) scale(.65);
- }
-
+    .btn{
+        min-width:58px;
+        font-size:7px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="app">
+<div id="game">
 
 <div class="table">
 
-<!-- ÜST BİLGİ -->
+<!-- HEADER -->
+
 <div class="header">
 
- <div class="brand">
-   <div class="brandIcon">♠</div>
-   <div class="brandText">BATAK ROYALE</div>
- </div>
+    <div class="logo">
+        <div class="logoIcon">♠</div>
+        <span>BATAK ROYALE</span>
+    </div>
 
- <div class="stats">
-   <div class="stat">
-     EL
-     <b id="round">1</b>
-   </div>
+    <div class="stats">
 
-   <div class="stat">
-     PUAN
-     <b id="score">0</b>
-   </div>
- </div>
+        <div class="stat">
+            EL
+            <b id="round">1</b>
+        </div>
+
+        <div class="stat">
+            ELDE
+            <b id="trickNo">0/13</b>
+        </div>
+
+        <div class="stat">
+            PUAN
+            <b id="score">0</b>
+        </div>
+
+    </div>
 
 </div>
+
+<button class="sound" id="soundButton">🔊</button>
 
 
 <!-- OYUNCULAR -->
 
-<div class="player top">
- <div class="avatar">👨</div>
- <div class="playerInfo">
-   <div class="playerName">Mehmet</div>
-   <div class="playerSub">Rakip • 13 kart</div>
- </div>
+<div class="player top" id="player1">
+    <div class="avatar">👨</div>
+    <div class="playerInfo">
+        <div class="playerName">Mehmet</div>
+        <small id="count1">13 kart</small>
+    </div>
+    <span class="dot"></span>
 </div>
 
-<div class="player left">
- <div class="avatar">👨</div>
- <div class="playerInfo">
-   <div class="playerName">Ali</div>
-   <div class="playerSub">Rakip • 13 kart</div>
- </div>
+<div class="player left" id="player2">
+    <div class="avatar">👨</div>
+    <div class="playerInfo">
+        <div class="playerName">Ali</div>
+        <small id="count2">13 kart</small>
+    </div>
+    <span class="dot"></span>
 </div>
 
-<div class="player right">
- <div class="avatar">👨</div>
- <div class="playerInfo">
-   <div class="playerName">Ahmet</div>
-   <div class="playerSub">Rakip • 13 kart</div>
- </div>
+<div class="player right" id="player3">
+    <div class="avatar">👨</div>
+    <div class="playerInfo">
+        <div class="playerName">Ahmet</div>
+        <small id="count3">13 kart</small>
+    </div>
+    <span class="dot"></span>
 </div>
 
-<div class="player bottom">
- <div class="avatar">👑</div>
- <div class="playerInfo">
-   <div class="playerName">Zafer</div>
-   <div class="playerSub">Sen • 13 kart</div>
- </div>
- <span class="turn"></span>
+<div class="player bottom active" id="player0">
+    <div class="avatar">👑</div>
+    <div class="playerInfo">
+        <div class="playerName">Zafer</div>
+        <small id="count0">13 kart</small>
+    </div>
+    <span class="dot"></span>
 </div>
 
 
 <!-- KOZ -->
 
-<div class="trumpBox">
- <div id="trumpIcon" class="trumpSymbol">?</div>
- <span>KOZ</span>
- <b id="trumpValue">BELİRLENMEDİ</b>
+<div class="trump">
+    KOZ:
+    <b id="trumpText">BEKLENİYOR</b>
 </div>
 
 
 <!-- ORTA -->
 
-<div class="centerArea">
+<div class="center">
 
- <div class="centerGlow"></div>
- <div class="centerLogo">♠</div>
+    <div class="centerRing"></div>
+    <div class="centerLogo">♠</div>
 
- <div class="playCard pc1">
-   <div class="small">A<br>♠</div>
-   <div class="big">♠</div>
- </div>
-
- <div class="playCard pc2 red">
-   <div class="small">10<br>♥</div>
-   <div class="big">♥</div>
- </div>
-
- <div class="playCard pc3">
-   <div class="small">K<br>♣</div>
-   <div class="big">♣</div>
- </div>
-
- <div class="playCard pc4 red">
-   <div class="small">Q<br>♦</div>
-   <div class="big">♦</div>
- </div>
+    <div class="played pcTop" id="played1"></div>
+    <div class="played pcRight" id="played2"></div>
+    <div class="played pcBottom" id="played3"></div>
+    <div class="played pcLeft" id="played0"></div>
 
 </div>
 
@@ -1048,101 +984,121 @@ button{
 <!-- MESAJ -->
 
 <div class="message" id="message">
- İhale yapmak için <b>İHALE</b> butonuna bas.
+    Oyuna başlamak için <b>İHALE</b> yap.
 </div>
 
 
 <!-- EL -->
 
-<div class="handArea">
+<div class="hand" id="hand">
 
- <div class="handRow rowTop" id="rowTop"></div>
- <div class="handRow rowBottom" id="rowBottom"></div>
+    <div class="handRow topRow" id="rowTop"></div>
+
+    <div class="handRow bottomRow" id="rowBottom"></div>
 
 </div>
 
 
-<!-- BUTONLAR -->
+<!-- KONTROLLER -->
 
 <div class="controls">
 
- <button class="action primary" id="bidButton">
-   İHALE
- </button>
+    <button class="btn gold" id="bidButton">
+        İHALE
+    </button>
 
- <button class="action" id="trumpButton">
-   KOZ
- </button>
+    <button class="btn" id="trumpButton">
+        KOZ
+    </button>
 
- <button class="action" id="newButton">
-   YENİ OYUN
- </button>
-
-</div>
+    <button class="btn" id="newButton">
+        YENİ OYUN
+    </button>
 
 </div>
 
-
-<!-- TOAST -->
-
-<div class="toast" id="toast"></div>
+</div>
 
 
-<!-- İHALE MODAL -->
+<!-- İHALE MODALI -->
 
 <div class="modal" id="bidModal">
 
- <div class="modalBox">
+<div class="modalBox">
 
-   <div class="modalIcon">♠</div>
+    <div class="modalIcon">♠</div>
 
-   <h2>İhale Yap</h2>
+    <h2>İhale</h2>
 
-   <p>Bu elde kaç el alacağını seç.</p>
+    <p>Bu elde kaç el alacağını seç.</p>
 
-   <div class="bidGrid">
+    <div class="bidGrid">
 
-     <button class="bidBtn" data-bid="3">3</button>
-     <button class="bidBtn" data-bid="4">4</button>
-     <button class="bidBtn" data-bid="5">5</button>
-     <button class="bidBtn" data-bid="6">6</button>
-     <button class="bidBtn" data-bid="7">7</button>
-     <button class="bidBtn" data-bid="8">8</button>
-     <button class="bidBtn" data-bid="9">9</button>
-     <button class="bidBtn" data-bid="10">10</button>
+        <button class="bid" data-bid="3">3</button>
+        <button class="bid" data-bid="4">4</button>
+        <button class="bid" data-bid="5">5</button>
+        <button class="bid" data-bid="6">6</button>
+        <button class="bid" data-bid="7">7</button>
+        <button class="bid" data-bid="8">8</button>
+        <button class="bid" data-bid="9">9</button>
+        <button class="bid" data-bid="10">10</button>
 
-   </div>
+    </div>
 
- </div>
+</div>
 
 </div>
 
 
-<!-- KOZ MODAL -->
+<!-- KOZ MODALI -->
 
 <div class="modal" id="trumpModal">
 
- <div class="modalBox">
+<div class="modalBox">
 
-   <div class="modalIcon">♦</div>
+    <div class="modalIcon">♦</div>
 
-   <h2>Koz Seç</h2>
+    <h2>Koz Seç</h2>
 
-   <p>Bu el için koz rengini belirle.</p>
+    <p>Oyunda kullanılacak koz rengini seç.</p>
 
-   <div class="suitGrid">
+    <div class="suitGrid">
 
-     <button class="suitBtn red" data-suit="♥">♥</button>
-     <button class="suitBtn" data-suit="♠">♠</button>
-     <button class="suitBtn red" data-suit="♦">♦</button>
-     <button class="suitBtn" data-suit="♣">♣</button>
+        <button class="suit red" data-suit="♥">♥</button>
+        <button class="suit" data-suit="♠">♠</button>
+        <button class="suit red" data-suit="♦">♦</button>
+        <button class="suit" data-suit="♣">♣</button>
 
-   </div>
-
- </div>
+    </div>
 
 </div>
 
+</div>
+
+
+<!-- SONUÇ -->
+
+<div class="result" id="result">
+
+<div class="resultBox">
+
+    <h1>EL BİTTİ</h1>
+
+    <div class="resultScore" id="resultScore">
+        0
+    </div>
+
+    <div class="resultText" id="resultText">
+        Sonuç
+    </div>
+
+    <button class="resultButton" id="resultButton">
+        YENİ EL
+    </button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1151,129 +1107,409 @@ button{
 "use strict";
 
 /* =========================================================
-   OYUN VERİLERİ
+   SES SİSTEMİ
 ========================================================= */
 
-var originalHand = [
- {rank:"A",suit:"♠",red:false},
- {rank:"10",suit:"♠",red:false},
- {rank:"8",suit:"♠",red:false},
- {rank:"K",suit:"♥",red:true},
- {rank:"J",suit:"♥",red:true},
- {rank:"7",suit:"♥",red:true},
- {rank:"A",suit:"♦",red:true},
- {rank:"9",suit:"♦",red:true},
- {rank:"6",suit:"♦",red:true},
- {rank:"K",suit:"♣",red:false},
- {rank:"Q",suit:"♣",red:false},
- {rank:"9",suit:"♣",red:false},
- {rank:"7",suit:"♣",red:false}
-];
+var audioContext = null;
+var soundEnabled = true;
 
-var hand = copyHand();
-var selectedIndex = -1;
-var score = 0;
-var round = 1;
-var bid = null;
-var trump = null;
+function initAudio(){
 
-function copyHand(){
+    if(!audioContext){
 
- return originalHand.map(function(card){
-   return {
-     rank:card.rank,
-     suit:card.suit,
-     red:card.red
-   };
- });
+        var AC =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(AC){
+            audioContext = new AC();
+        }
+
+    }
+
+    if(audioContext && audioContext.state === "suspended"){
+        audioContext.resume();
+    }
+
+}
+
+function tone(freq,duration,type,volume){
+
+    if(!soundEnabled){
+        return;
+    }
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    var osc = audioContext.createOscillator();
+    var gain = audioContext.createGain();
+
+    osc.type = type || "sine";
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(0.0001,audioContext.currentTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume || .08,
+        audioContext.currentTime + .01
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audioContext.currentTime + duration
+    );
+
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+
+    osc.start();
+
+    osc.stop(
+        audioContext.currentTime + duration + .02
+    );
+}
+
+function cardSound(){
+
+    tone(430,.06,"square",.045);
+
+    setTimeout(function(){
+        tone(260,.05,"square",.025);
+    },35);
+
+}
+
+function selectSound(){
+
+    tone(700,.07,"sine",.045);
+
+}
+
+function playSound(){
+
+    tone(330,.08,"triangle",.06);
+
+    setTimeout(function(){
+        tone(480,.08,"triangle",.05);
+    },60);
+
+}
+
+function winSound(){
+
+    tone(520,.12,"sine",.07);
+
+    setTimeout(function(){
+        tone(660,.14,"sine",.07);
+    },100);
+
+    setTimeout(function(){
+        tone(820,.18,"sine",.07);
+    },210);
+
+}
+
+function badSound(){
+
+    tone(170,.14,"sawtooth",.04);
+
+}
+
+function bidSound(){
+
+    tone(430,.08,"triangle",.06);
+
+    setTimeout(function(){
+        tone(610,.1,"triangle",.06);
+    },90);
 
 }
 
 
 /* =========================================================
-   ELEMENTLER
+   DESTE
 ========================================================= */
 
-var rowTop = document.getElementById("rowTop");
-var rowBottom = document.getElementById("rowBottom");
+var suits = [
+    {s:"♠",red:false},
+    {s:"♥",red:true},
+    {s:"♦",red:true},
+    {s:"♣",red:false}
+];
 
-var message = document.getElementById("message");
-var scoreEl = document.getElementById("score");
-var roundEl = document.getElementById("round");
+var ranks = [
+    {r:"2",v:2},
+    {r:"3",v:3},
+    {r:"4",v:4},
+    {r:"5",v:5},
+    {r:"6",v:6},
+    {r:"7",v:7},
+    {r:"8",v:8},
+    {r:"9",v:9},
+    {r:"10",v:10},
+    {r:"J",v:11},
+    {r:"Q",v:12},
+    {r:"K",v:13},
+    {r:"A",v:14}
+];
 
-var bidModal = document.getElementById("bidModal");
-var trumpModal = document.getElementById("trumpModal");
+function makeDeck(){
 
-var trumpValue = document.getElementById("trumpValue");
-var trumpIcon = document.getElementById("trumpIcon");
+    var deck = [];
 
-var toast = document.getElementById("toast");
+    for(var s=0;s<suits.length;s++){
+
+        for(var r=0;r<ranks.length;r++){
+
+            deck.push({
+                suit:suits[s].s,
+                red:suits[s].red,
+                rank:ranks[r].r,
+                value:ranks[r].v
+            });
+
+        }
+
+    }
+
+    return deck;
+
+}
+
+function shuffle(deck){
+
+    for(var i=deck.length-1;i>0;i--){
+
+        var j=Math.floor(Math.random()*(i+1));
+
+        var temp=deck[i];
+
+        deck[i]=deck[j];
+        deck[j]=temp;
+
+    }
+
+    return deck;
+
+}
 
 
 /* =========================================================
-   MESAJ
+   OYUNCULAR
+========================================================= */
+
+var players = [
+    {name:"Zafer",hand:[],tricks:0,bid:0},
+    {name:"Mehmet",hand:[],tricks:0,bid:0},
+    {name:"Ali",hand:[],tricks:0,bid:0},
+    {name:"Ahmet",hand:[],tricks:0,bid:0}
+];
+
+var currentPlayer = 0;
+var leader = 0;
+
+var trick = [];
+
+var trump = null;
+var leadSuit = null;
+
+var playerBid = null;
+
+var round = 1;
+var score = 0;
+var totalScore = 0;
+
+var gameStarted = false;
+var waitingForTrump = false;
+var dealing = false;
+
+var soundButton =
+    document.getElementById("soundButton");
+
+var message =
+    document.getElementById("message");
+
+var rowTop =
+    document.getElementById("rowTop");
+
+var rowBottom =
+    document.getElementById("rowBottom");
+
+
+/* =========================================================
+   YARDIMCI
 ========================================================= */
 
 function setMessage(text){
+    message.innerHTML=text;
+}
 
- message.innerHTML = text;
+function cardLabel(card){
+    return card.rank + card.suit;
+}
+
+function suitOf(card){
+    return card.suit;
+}
+
+function hasSuit(player,suit){
+
+    for(var i=0;i<player.hand.length;i++){
+
+        if(player.hand[i].suit===suit){
+            return true;
+        }
+
+    }
+
+    return false;
+}
+
+function getPlayerElement(index){
+
+    return document.getElementById(
+        "player"+index
+    );
+
+}
+
+function updatePlayers(){
+
+    for(var i=0;i<4;i++){
+
+        var el=getPlayerElement(i);
+
+        if(!el)continue;
+
+        el.classList.remove("active");
+
+        if(i===currentPlayer){
+            el.classList.add("active");
+        }
+
+        document.getElementById(
+            "count"+i
+        ).textContent =
+            players[i].hand.length+" kart";
+
+    }
 
 }
 
 
 /* =========================================================
-   TOAST
+   KART SIRALAMA
 ========================================================= */
 
-var toastTimer;
+var suitOrder={
+    "♠":0,
+    "♥":1,
+    "♦":2,
+    "♣":3
+};
 
-function showToast(text){
+function sortHand(hand){
 
- toast.textContent = text;
+    hand.sort(function(a,b){
 
- toast.classList.add("show");
+        if(suitOrder[a.suit] !== suitOrder[b.suit]){
+            return suitOrder[a.suit]-suitOrder[b.suit];
+        }
 
- clearTimeout(toastTimer);
+        return b.value-a.value;
 
- toastTimer = setTimeout(function(){
-
-   toast.classList.remove("show");
-
- },1800);
+    });
 
 }
 
 
 /* =========================================================
-   KART OLUŞTUR
+   OYUNCU ELİNİ GÖSTER
 ========================================================= */
 
-function createCard(card,index){
+function renderPlayerHand(){
 
- var element = document.createElement("div");
+    rowTop.innerHTML="";
+    rowBottom.innerHTML="";
 
- element.className = "card" + (card.red ? " red" : "");
+    var hand=players[0].hand;
 
- element.innerHTML =
-   '<div class="cardTop">' +
-      card.rank + '<br>' + card.suit +
-   '</div>' +
+    for(var i=0;i<hand.length;i++){
 
-   '<div class="cardSuit">' +
-      card.suit +
-   '</div>' +
+        var card=hand[i];
 
-   '<div class="cardBottom">' +
-      card.rank + '<br>' + card.suit +
-   '</div>';
+        var div=document.createElement("div");
 
- element.addEventListener("click",function(){
+        div.className=
+            "card"+
+            (card.red?" red":"");
 
-   selectCard(index,element);
+        div.dataset.index=i;
 
- });
+        div.innerHTML=
+            '<div class="cardTop">'+
+            card.rank+"<br>"+card.suit+
+            '</div>'+
+            '<div class="cardSuit">'+
+            card.suit+
+            '</div>'+
+            '<div class="cardBottom">'+
+            card.rank+"<br>"+card.suit+
+            '</div>';
 
- return element;
+        div.addEventListener(
+            "click",
+            function(){
+
+                var index=
+                    parseInt(
+                        this.dataset.index,
+                        10
+                    );
+
+                chooseCard(index,this);
+
+            }
+        );
+
+        if(i<7){
+            rowTop.appendChild(div);
+        }else{
+            rowBottom.appendChild(div);
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   OYNANABİLİR KART KONTROLÜ
+========================================================= */
+
+function canPlay(card,playerIndex){
+
+    if(playerIndex!==0){
+        return true;
+    }
+
+    if(trick.length===0){
+        return true;
+    }
+
+    if(card.suit===leadSuit){
+        return true;
+    }
+
+    if(hasSuit(players[0],leadSuit)){
+        return false;
+    }
+
+    return true;
 
 }
 
@@ -1282,38 +1518,62 @@ function createCard(card,index){
    KART SEÇ
 ========================================================= */
 
-function selectCard(index,element){
+var selectedIndex=-1;
 
- var cards = document.querySelectorAll(".card");
+function chooseCard(index,element){
 
- for(var i=0;i<cards.length;i++){
+    if(!gameStarted){
+        return;
+    }
 
-   cards[i].classList.remove("selected");
+    if(currentPlayer!==0){
+        setMessage("Şu anda sıra rakipte.");
+        badSound();
+        return;
+    }
 
- }
+    if(index<0 || index>=players[0].hand.length){
+        return;
+    }
 
- if(selectedIndex === index){
+    var card=players[0].hand[index];
 
-   selectedIndex = -1;
+    if(!canPlay(card,0)){
 
-   setMessage("Kart seçimi kaldırıldı.");
+        element.classList.add("illegal");
 
-   return;
+        setMessage(
+            "Bu elde <b>"+
+            leadSuit+
+            "</b> oynamak zorundasın."
+        );
 
- }
+        badSound();
 
- selectedIndex = index;
+        setTimeout(function(){
+            element.classList.remove("illegal");
+        },300);
 
- element.classList.add("selected");
+        return;
+    }
 
- var card = hand[index];
+    selectedIndex=index;
 
- setMessage(
-   "<b>" +
-   card.rank +
-   card.suit +
-   "</b> seçildi. Tekrar dokunarak oyna."
- );
+    var all=document.querySelectorAll(".card");
+
+    for(var i=0;i<all.length;i++){
+        all[i].classList.remove("selected");
+    }
+
+    element.classList.add("selected");
+
+    selectSound();
+
+    setTimeout(function(){
+
+        playCard(0,index);
+
+    },220);
 
 }
 
@@ -1322,97 +1582,319 @@ function selectCard(index,element){
    KART OYNA
 ========================================================= */
 
-function playSelected(){
+function playCard(playerIndex,index){
 
- if(selectedIndex < 0){
+    if(index<0 ||
+       index>=players[playerIndex].hand.length){
+        return;
+    }
 
-   showToast("Önce bir kart seç.");
+    var card=
+        players[playerIndex].hand.splice(index,1)[0];
 
-   return;
+    selectedIndex=-1;
 
- }
+    if(trick.length===0){
+        leadSuit=card.suit;
+    }
 
- if(hand.length === 0){
+    trick.push({
+        player:playerIndex,
+        card:card
+    });
 
-   return;
+    playSound();
 
- }
+    showPlayedCard(playerIndex,card);
 
- var card = hand[selectedIndex];
+    renderPlayerHand();
 
- setMessage(
-   "Sen <b>" +
-   card.rank +
-   card.suit +
-   "</b> oynadın."
- );
+    updatePlayers();
 
- score += 10;
+    setMessage(
+        "<b>"+
+        players[playerIndex].name+
+        "</b> oynadı: <b>"+
+        cardLabel(card)+
+        "</b>"
+    );
 
- scoreEl.textContent = score;
+    if(trick.length===4){
 
- hand.splice(selectedIndex,1);
+        setTimeout(resolveTrick,800);
 
- selectedIndex = -1;
+    }else{
 
- renderHand();
+        currentPlayer=(playerIndex+1)%4;
 
- if(hand.length === 0){
+        updatePlayers();
 
-   setTimeout(function(){
+        if(currentPlayer===0){
 
-     setMessage(
-       "<b>EL TAMAMLANDI!</b> Yeni oyun başlatabilirsin."
-     );
+            setMessage(
+                "Sıra sende. Bir kart seç."
+            );
 
-   },350);
+        }else{
 
- }
+            setTimeout(aiPlay,650);
 
-}
+        }
 
-
-/* =========================================================
-   ELİ ÇİZ
-========================================================= */
-
-function renderHand(){
-
- rowTop.innerHTML = "";
- rowBottom.innerHTML = "";
-
- for(var i=0;i<hand.length;i++){
-
-   var card = createCard(hand[i],i);
-
-   if(i < 7){
-
-     rowTop.appendChild(card);
-
-   }else{
-
-     rowBottom.appendChild(card);
-
-   }
-
- }
+    }
 
 }
 
 
 /* =========================================================
-   MODAL
+   ORTA KARTA
 ========================================================= */
 
-function openModal(element){
+function showPlayedCard(playerIndex,card){
 
- element.classList.add("show");
+    var el=
+        document.getElementById(
+            "played"+playerIndex
+        );
+
+    if(!el)return;
+
+    el.className=
+        "played"+
+        (card.red?" red":"");
+
+    el.innerHTML=
+        '<div class="small">'+
+        card.rank+"<br>"+card.suit+
+        '</div>'+
+        '<div class="big">'+
+        card.suit+
+        '</div>';
 
 }
 
-function closeModal(element){
 
- element.classList.remove("show");
+/* =========================================================
+   ORTA KARTLARI TEMİZLE
+========================================================= */
+
+function clearPlayed(){
+
+    for(var i=0;i<4;i++){
+
+        var el=
+            document.getElementById(
+                "played"+i
+            );
+
+        if(el){
+            el.innerHTML="";
+            el.className="played";
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   EL KAZANANI
+========================================================= */
+
+function cardBeats(a,b){
+
+    if(a.suit===b.suit){
+        return a.value>b.value;
+    }
+
+    if(trump && a.suit===trump && b.suit!==trump){
+        return true;
+    }
+
+    if(trump && b.suit===trump && a.suit!==trump){
+        return false;
+    }
+
+    if(a.suit===leadSuit && b.suit!==leadSuit){
+        return true;
+    }
+
+    return false;
+
+}
+
+function resolveTrick(){
+
+    var winner=trick[0];
+
+    for(var i=1;i<trick.length;i++){
+
+        if(cardBeats(
+            trick[i].card,
+            winner.card
+        )){
+            winner=trick[i];
+        }
+
+    }
+
+    players[winner.player].tricks++;
+
+    winSound();
+
+    setMessage(
+        "<b>"+
+        players[winner.player].name+
+        "</b> eli aldı! "+
+        cardLabel(winner.card)
+    );
+
+    updateTrickInfo();
+
+    setTimeout(function(){
+
+        clearPlayed();
+
+        trick=[];
+
+        leadSuit=null;
+
+        currentPlayer=winner.player;
+
+        updatePlayers();
+
+        if(players[0].hand.length===0){
+
+            finishRound();
+
+        }else{
+
+            if(currentPlayer===0){
+
+                setMessage(
+                    "Sıra sende. Bir kart seç."
+                );
+
+            }else{
+
+                setTimeout(aiPlay,700);
+
+            }
+
+        }
+
+    },900);
+
+}
+
+
+/* =========================================================
+   AI
+========================================================= */
+
+function legalCards(player){
+
+    if(trick.length===0){
+        return player.hand.slice();
+    }
+
+    var legal=[];
+
+    for(var i=0;i<player.hand.length;i++){
+
+        if(player.hand[i].suit===leadSuit){
+            legal.push(player.hand[i]);
+        }
+
+    }
+
+    if(legal.length>0){
+        return legal;
+    }
+
+    return player.hand.slice();
+
+}
+
+function chooseAI(player){
+
+    var legal=legalCards(player);
+
+    if(legal.length===1){
+        return legal[0];
+    }
+
+    /* Önce kazanabilecek bir kart ara */
+
+    var currentWinner=null;
+
+    for(var i=0;i<trick.length;i++){
+
+        if(!currentWinner ||
+           cardBeats(
+               trick[i].card,
+               currentWinner.card
+           )){
+            currentWinner=trick[i];
+        }
+
+    }
+
+    var winning=[];
+
+    for(var j=0;j<legal.length;j++){
+
+        if(!currentWinner ||
+           cardBeats(
+               legal[j],
+               currentWinner.card
+           )){
+            winning.push(legal[j]);
+        }
+
+    }
+
+    if(winning.length>0){
+
+        winning.sort(function(a,b){
+            return a.value-b.value;
+        });
+
+        return winning[0];
+
+    }
+
+    /* Kazanamıyorsa en düşük kart */
+
+    legal.sort(function(a,b){
+        return a.value-b.value;
+    });
+
+    return legal[0];
+
+}
+
+function aiPlay(){
+
+    if(!gameStarted){
+        return;
+    }
+
+    if(currentPlayer===0){
+        return;
+    }
+
+    var player=players[currentPlayer];
+
+    if(player.hand.length===0){
+        return;
+    }
+
+    var card=chooseAI(player);
+
+    var index=player.hand.indexOf(card);
+
+    playCard(currentPlayer,index);
 
 }
 
@@ -1421,37 +1903,59 @@ function closeModal(element){
    İHALE
 ========================================================= */
 
-document.getElementById("bidButton").addEventListener(
- "click",
- function(){
+document.getElementById(
+    "bidButton"
+).addEventListener("click",function(){
 
-   openModal(bidModal);
+    if(gameStarted){
+        setMessage(
+            "Oyun devam ediyor. İhale zaten yapıldı."
+        );
+        return;
+    }
 
- }
-);
+    initAudio();
+
+    document.getElementById(
+        "bidModal"
+    ).classList.add("show");
+
+});
 
 
-var bidButtons = document.querySelectorAll(".bidBtn");
+var bidButtons=
+    document.querySelectorAll(".bid");
 
 for(var i=0;i<bidButtons.length;i++){
 
- bidButtons[i].addEventListener("click",function(){
+    bidButtons[i].addEventListener(
+        "click",
+        function(){
 
-   bid = parseInt(this.getAttribute("data-bid"),10);
+            playerBid=
+                parseInt(
+                    this.dataset.bid,
+                    10
+                );
 
-   closeModal(bidModal);
+            bidSound();
 
-   setMessage(
-     "İhalen <b>" +
-     bid +
-     "</b>. Şimdi kozunu seç."
-   );
+            document.getElementById(
+                "bidModal"
+            ).classList.remove("show");
 
-   showToast("İhale: " + bid);
+            setMessage(
+                "İhalen: <b>"+
+                playerBid+
+                "</b>. Şimdi koz seç."
+            );
 
-   openModal(trumpModal);
+            document.getElementById(
+                "trumpModal"
+            ).classList.add("show");
 
- });
+        }
+    );
 
 }
 
@@ -1460,63 +1964,190 @@ for(var i=0;i<bidButtons.length;i++){
    KOZ
 ========================================================= */
 
-document.getElementById("trumpButton").addEventListener(
- "click",
- function(){
+document.getElementById(
+    "trumpButton"
+).addEventListener("click",function(){
 
-   openModal(trumpModal);
+    if(gameStarted){
+        setMessage(
+            "Oyun başladıktan sonra koz değiştirilemez."
+        );
+        return;
+    }
 
- }
-);
+    if(playerBid===null){
+
+        setMessage(
+            "Önce <b>İHALE</b> yap."
+        );
+
+        badSound();
+
+        return;
+    }
+
+    document.getElementById(
+        "trumpModal"
+    ).classList.add("show");
+
+});
 
 
-var suitButtons = document.querySelectorAll(".suitBtn");
+var suitButtons=
+    document.querySelectorAll(".suit");
 
 for(var j=0;j<suitButtons.length;j++){
 
- suitButtons[j].addEventListener("click",function(){
+    suitButtons[j].addEventListener(
+        "click",
+        function(){
 
-   trump = this.getAttribute("data-suit");
+            trump=this.dataset.suit;
 
-   trumpValue.textContent = trump;
+            document.getElementById(
+                "trumpText"
+            ).textContent=trump;
 
-   trumpIcon.textContent = trump;
+            document.getElementById(
+                "trumpModal"
+            ).classList.remove("show");
 
-   if(trump === "♥" || trump === "♦"){
+            bidSound();
 
-     trumpIcon.classList.add("red");
+            startActualGame();
 
-   }else{
+        }
+    );
 
-     trumpIcon.classList.remove("red");
+}
 
-   }
 
-   closeModal(trumpModal);
+/* =========================================================
+   OYUNU BAŞLAT
+========================================================= */
 
-   if(bid){
+function startActualGame(){
 
-     setMessage(
-       "Koz <b>" +
-       trump +
-       "</b>. İhalen: <b>" +
-       bid +
-       "</b>. Oyun başladı!"
-     );
+    gameStarted=true;
 
-   }else{
+    for(var i=0;i<4;i++){
+        players[i].tricks=0;
+    }
 
-     setMessage(
-       "Koz <b>" +
-       trump +
-       "</b> olarak seçildi."
-     );
+    setMessage(
+        "Koz <b>"+
+        trump+
+        "</b>. Oyun başladı!"
+    );
 
-   }
+    currentPlayer=leader;
 
-   showToast("Koz: " + trump);
+    updatePlayers();
 
- });
+    setTimeout(function(){
+
+        if(currentPlayer===0){
+
+            setMessage(
+                "Sıra sende. İlk kartı seç."
+            );
+
+        }else{
+
+            aiPlay();
+
+        }
+
+    },600);
+
+}
+
+
+/* =========================================================
+   DAĞIT
+========================================================= */
+
+function dealCards(){
+
+    dealing=true;
+
+    var deck=shuffle(makeDeck());
+
+    for(var i=0;i<4;i++){
+
+        players[i].hand=[];
+        players[i].tricks=0;
+
+    }
+
+    /*
+       Daha gerçekçi dağıtım:
+       52 kart sırayla oyunculara
+    */
+
+    for(var c=0;c<52;c++){
+
+        var p=c%4;
+
+        players[p].hand.push(deck[c]);
+
+    }
+
+    for(var p=0;p<4;p++){
+
+        sortHand(players[p].hand);
+
+    }
+
+    renderPlayerHand();
+
+    updatePlayers();
+
+    updateTrickInfo();
+
+    dealing=false;
+
+}
+
+
+/* =========================================================
+   ELİ BAŞLAT
+========================================================= */
+
+function newRound(){
+
+    gameStarted=false;
+
+    playerBid=null;
+
+    trump=null;
+
+    leadSuit=null;
+
+    trick=[];
+
+    selectedIndex=-1;
+
+    clearPlayed();
+
+    document.getElementById(
+        "trumpText"
+    ).textContent="BEKLENİYOR";
+
+    dealCards();
+
+    /*
+       Her el oyuncu başlıyor.
+    */
+
+    leader=0;
+    currentPlayer=0;
+
+    updatePlayers();
+
+    setMessage(
+        "Kartlar dağıtıldı. <b>İHALE</b> yap."
+    );
 
 }
 
@@ -1525,123 +2156,233 @@ for(var j=0;j<suitButtons.length;j++){
    YENİ OYUN
 ========================================================= */
 
-document.getElementById("newButton").addEventListener(
- "click",
- function(){
+document.getElementById(
+    "newButton"
+).addEventListener("click",function(){
 
-   hand = copyHand();
+    initAudio();
 
-   selectedIndex = -1;
+    round++;
 
-   score = 0;
+    document.getElementById(
+        "round"
+    ).textContent=round;
 
-   round++;
+    score=0;
 
-   bid = null;
+    document.getElementById(
+        "score"
+    ).textContent=score;
 
-   trump = null;
+    document.getElementById(
+        "result"
+    ).classList.remove("show");
 
-   scoreEl.textContent = score;
+    newRound();
 
-   roundEl.textContent = round;
+});
 
-   trumpValue.textContent = "BELİRLENMEDİ";
 
-   trumpIcon.textContent = "?";
+/* =========================================================
+   PUAN
+========================================================= */
 
-   trumpIcon.classList.remove("red");
+function finishRound(){
 
-   closeModal(bidModal);
-   closeModal(trumpModal);
+    gameStarted=false;
 
-   setMessage(
-     "Yeni el başladı. <b>İHALE</b> yapabilirsin."
-   );
+    var won=players[0].tricks;
 
-   showToast("Yeni el başladı");
+    var required=playerBid || 0;
 
-   renderHand();
+    var roundPoints=0;
 
- }
+    if(required>0){
+
+        if(won>=required){
+
+            roundPoints=required*10;
+
+            if(won>required){
+                roundPoints+=(won-required);
+            }
+
+            score+=roundPoints;
+
+            winSound();
+
+            document.getElementById(
+                "resultScore"
+            ).textContent=
+                "+"+roundPoints;
+
+            document.getElementById(
+                "resultText"
+            ).innerHTML=
+                "Tebrikler! "+
+                "<b>"+
+                won+
+                "</b> el aldın. "+
+                "İhalen "+
+                required+
+                ".";
+
+        }else{
+
+            roundPoints=-(required*10);
+
+            score+=roundPoints;
+
+            badSound();
+
+            document.getElementById(
+                "resultScore"
+            ).textContent=
+                roundPoints;
+
+            document.getElementById(
+                "resultText"
+            ).innerHTML=
+                "İhaleyi tutturamadın. "+
+                "<b>"+
+                won+
+                "</b> el aldın, "+
+                "ihalen "+
+                required+
+                ".";
+
+        }
+
+    }
+
+    totalScore+=roundPoints;
+
+    document.getElementById(
+        "score"
+    ).textContent=score;
+
+    document.getElementById(
+        "result"
+    ).classList.add("show");
+
+}
+
+
+/* =========================================================
+   SONUÇ YENİ EL
+========================================================= */
+
+document.getElementById(
+    "resultButton"
+).addEventListener("click",function(){
+
+    document.getElementById(
+        "result"
+    ).classList.remove("show");
+
+    round++;
+
+    document.getElementById(
+        "round"
+    ).textContent=round;
+
+    newRound();
+
+});
+
+
+/* =========================================================
+   TRİK SAYISI
+========================================================= */
+
+function updateTrickInfo(){
+
+    var trickCount=0;
+
+    for(var i=0;i<4;i++){
+        trickCount+=players[i].tricks;
+    }
+
+    document.getElementById(
+        "trickNo"
+    ).textContent=
+        trickCount+"/13";
+
+}
+
+
+/* =========================================================
+   SES BUTONU
+========================================================= */
+
+soundButton.addEventListener("click",function(){
+
+    soundEnabled=!soundEnabled;
+
+    if(soundEnabled){
+
+        soundButton.textContent="🔊";
+
+        initAudio();
+
+        tone(700,.08,"sine",.05);
+
+    }else{
+
+        soundButton.textContent="🔇";
+
+    }
+
+});
+
+
+/* =========================================================
+   MODAL DIŞINA TIKLAMA
+========================================================= */
+
+document.getElementById(
+    "bidModal"
+).addEventListener("click",function(e){
+
+    if(e.target===this){
+        this.classList.remove("show");
+    }
+
+});
+
+document.getElementById(
+    "trumpModal"
+).addEventListener("click",function(e){
+
+    if(e.target===this){
+        this.classList.remove("show");
+    }
+
+});
+
+
+/* =========================================================
+   TELEFON İLK DOKUNUŞTA SES
+========================================================= */
+
+document.addEventListener(
+    "pointerdown",
+    function(){
+
+        if(soundEnabled){
+            initAudio();
+        }
+
+    },
+    {once:true}
 );
 
 
 /* =========================================================
-   MODAL DIŞINA TIKLA
+   BAŞLANGIÇ
 ========================================================= */
 
-bidModal.addEventListener("click",function(e){
-
- if(e.target === bidModal){
-
-   closeModal(bidModal);
-
- }
-
-});
-
-
-trumpModal.addEventListener("click",function(e){
-
- if(e.target === trumpModal){
-
-   closeModal(trumpModal);
-
- }
-
-});
-
-
-/* =========================================================
-   KLAVYE
-========================================================= */
-
-document.addEventListener("keydown",function(e){
-
- if(e.key === "Escape"){
-
-   closeModal(bidModal);
-   closeModal(trumpModal);
-
- }
-
- if(e.key === "Enter"){
-
-   playSelected();
-
- }
-
-});
-
-
-/* =========================================================
-   KARTA ÇİFT TIKLAMA = OYNA
-========================================================= */
-
-document.addEventListener("dblclick",function(e){
-
- var target = e.target;
-
- while(target && !target.classList.contains("card")){
-
-   target = target.parentElement;
-
- }
-
- if(target && target.classList.contains("card")){
-
-   playSelected();
-
- }
-
-});
-
-
-/* =========================================================
-   BAŞLAT
-========================================================= */
-
-renderHand();
+newRound();
 
 </script>
 
