@@ -31,8 +31,7 @@ radial-gradient(circle at 50% 45%,#145b3d 0,#082e20 42%,#031009 100%);
 
 button{
 font-family:inherit;
-cursor:pointer;
--webkit-touch-callout:none
+cursor:pointer
 }
 
 #app{
@@ -42,7 +41,7 @@ position:relative;
 overflow:hidden
 }
 
-/* MENU */
+/* ================= MENU ================= */
 
 #menu{
 position:absolute;
@@ -173,7 +172,7 @@ font-weight:900;
 color:#172015
 }
 
-/* GAME */
+/* ================= GAME ================= */
 
 #game{
 display:none;
@@ -219,7 +218,7 @@ align-items:center;
 font-size:11px
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 
 .table{
 position:absolute;
@@ -248,7 +247,7 @@ border:1px solid #ffffff14;
 pointer-events:none
 }
 
-/* PLAYERS */
+/* ================= PLAYERS ================= */
 
 .player{
 position:absolute;
@@ -291,31 +290,35 @@ color:#879990;
 margin-top:3px
 }
 
+/* MERT = EŞİN */
 .p0{
 top:18px;
 left:50%;
 transform:translateX(-50%)
 }
 
+/* EMRE = RAKİP */
 .p1{
 right:14px;
 top:50%;
 transform:translateY(-50%)
 }
 
+/* SEN */
 .p2{
 bottom:18px;
 left:50%;
 transform:translateX(-50%)
 }
 
+/* AHMET = RAKİP */
 .p3{
 left:14px;
 top:50%;
 transform:translateY(-50%)
 }
 
-/* CENTER */
+/* ================= CENTER ================= */
 
 .center{
 position:absolute;
@@ -343,7 +346,8 @@ flex-direction:column;
 font-size:22px;
 font-weight:bold;
 box-shadow:0 10px 25px #0008;
-animation:drop .2s ease
+animation:drop .2s ease;
+will-change:left,top,transform,opacity
 }
 
 .played small{
@@ -390,7 +394,21 @@ opacity:1
 }
 }
 
-/* INFO */
+/* ================= WINNING CARD ANIMATION ================= */
+
+.trick-winning{
+transition:
+left .72s cubic-bezier(.2,.8,.2,1),
+top .72s cubic-bezier(.2,.8,.2,1),
+transform .72s cubic-bezier(.2,.8,.2,1),
+opacity .72s ease;
+
+box-shadow:
+0 15px 30px #000b,
+0 0 12px #f1cb65aa
+}
+
+/* ================= INFO ================= */
 
 .info{
 position:absolute;
@@ -422,30 +440,28 @@ color:#ffdb77;
 display:none
 }
 
-/* =========================
-   PARTNER HAND
-========================= */
+/* ================= PARTNER HAND ================= */
 
 .partnerHand{
 position:absolute;
 z-index:180;
 left:50%;
-top:112px;
+top:105px;
 transform:translateX(-50%);
-width:min(560px,72vw);
-height:92px;
+width:min(570px,78vw);
+height:95px;
 display:none;
 pointer-events:none
 }
 
 .partnerTitle{
 position:absolute;
-top:-16px;
+top:-14px;
 left:50%;
 transform:translateX(-50%);
 padding:4px 10px;
 border-radius:10px;
-background:#020b08dd;
+background:#020b08ee;
 border:1px solid #d2ad5055;
 color:#ffd96c;
 font-size:8px;
@@ -454,8 +470,8 @@ white-space:nowrap
 
 .partnerCard{
 position:absolute;
-width:42px;
-height:61px;
+width:43px;
+height:62px;
 border-radius:6px;
 background:linear-gradient(145deg,#fff,#e8e6df);
 border:1px solid #bbb9b0;
@@ -538,7 +554,7 @@ color:#34250b
 font-size:8px
 }
 
-/* HAND */
+/* ================= USER HAND ================= */
 
 .hand{
 position:absolute;
@@ -565,10 +581,7 @@ box-shadow:
 inset 0 0 0 2px #ffffff99;
 overflow:hidden;
 cursor:pointer;
-transition:
-transform .15s,
-filter .15s,
-box-shadow .15s;
+transition:.15s;
 pointer-events:auto
 }
 
@@ -586,15 +599,6 @@ z-index:30
 box-shadow:
 0 0 0 2px #f3cf68,
 0 10px 24px #0009
-}
-
-.card:hover{
-filter:brightness(1.04)
-}
-
-.card.selected{
-transform:translateY(-14px)!important;
-z-index:100!important
 }
 
 .card.red{
@@ -636,8 +640,7 @@ position:absolute;
 inset:21px 8px;
 border:1px solid #b89240;
 border-radius:7px;
-background:
-linear-gradient(135deg,#f7e6a9,#c69d4c,#f5e3a4);
+background:linear-gradient(135deg,#f7e6a9,#c69d4c,#f5e3a4);
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -659,7 +662,7 @@ font-size:17px;
 margin-top:2px
 }
 
-/* CONTROLS */
+/* ================= CONTROLS ================= */
 
 .controls{
 position:absolute;
@@ -687,7 +690,7 @@ background:linear-gradient(135deg,#efd074,#9d7428);
 color:#172015
 }
 
-/* MODAL */
+/* ================= MODALS ================= */
 
 .modal{
 position:absolute;
@@ -790,7 +793,7 @@ font-weight:900;
 color:#172015
 }
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
 position:absolute;
@@ -813,7 +816,7 @@ opacity:1;
 transform:translate(-50%,0)
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
@@ -1006,14 +1009,6 @@ top:118px
 }
 
 }
-
-/* SOUND */
-
-@keyframes soundPulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.12)}
-100%{transform:scale(1)}
-}
 </style>
 </head>
 
@@ -1021,7 +1016,7 @@ top:118px
 
 <div id="app">
 
-<!-- MENU -->
+<!-- ================= MENU ================= -->
 
 <div id="menu">
 
@@ -1063,9 +1058,7 @@ Seviye <span id="level">1</span>
 
 <b>♠ İhaleli Batak</b>
 
-<span>
-Klasik 4 kişilik Batak
-</span>
+<span>Klasik 4 kişilik Batak</span>
 
 </button>
 
@@ -1073,9 +1066,7 @@ Klasik 4 kişilik Batak
 
 <b>👥 Eşli Batak</b>
 
-<span>
-Takım oyunu
-</span>
+<span>MERT eşin • Karşında</span>
 
 </button>
 
@@ -1090,7 +1081,7 @@ OYUNA BAŞLA
 </div>
 
 
-<!-- GAME -->
+<!-- ================= GAME ================= -->
 
 <div id="game">
 
@@ -1098,9 +1089,7 @@ OYUNA BAŞLA
 
 <div class="topGroup">
 
-<button class="topBtn" id="menuBtn">
-‹
-</button>
+<button class="topBtn" id="menuBtn">‹</button>
 
 <div class="pill">
 ⭐ <span id="levelGame">1</span>
@@ -1118,9 +1107,7 @@ OYUNA BAŞLA
 El <span id="round">1</span>
 </div>
 
-<button class="topBtn" id="sound">
-🔊
-</button>
+<button class="topBtn" id="sound">🔊</button>
 
 </div>
 
@@ -1138,84 +1125,68 @@ Koz: ♠
 
 <div class="table">
 
+<!-- MERT = EŞ -->
+
 <div class="player p0" id="p0">
 
-<div class="pavatar">
-M
-</div>
+<div class="pavatar">M</div>
 
 <div>
 
-<div class="pname">
-MERT
-</div>
+<div class="pname">MERT</div>
 
-<div class="pscore">
-0 el
-</div>
+<div class="pscore">0 el</div>
 
 </div>
 
 </div>
 
+
+<!-- EMRE -->
 
 <div class="player p1" id="p1">
 
-<div class="pavatar">
-E
-</div>
+<div class="pavatar">E</div>
 
 <div>
 
-<div class="pname">
-EMRE
-</div>
+<div class="pname">EMRE</div>
 
-<div class="pscore">
-0 el
-</div>
+<div class="pscore">0 el</div>
 
 </div>
 
 </div>
 
+
+<!-- SEN -->
 
 <div class="player p2" id="p2">
 
-<div class="pavatar">
-Z
-</div>
+<div class="pavatar">Z</div>
 
 <div>
 
-<div class="pname">
-SEN
-</div>
+<div class="pname">SEN</div>
 
-<div class="pscore">
-0 el
-</div>
+<div class="pscore">0 el</div>
 
 </div>
 
 </div>
 
+
+<!-- AHMET -->
 
 <div class="player p3" id="p3">
 
-<div class="pavatar">
-A
-</div>
+<div class="pavatar">A</div>
 
 <div>
 
-<div class="pname">
-AHMET
-</div>
+<div class="pname">AHMET</div>
 
-<div class="pscore">
-0 el
-</div>
+<div class="pscore">0 el</div>
 
 </div>
 
@@ -1227,12 +1198,12 @@ AHMET
 </div>
 
 
-<!-- PARTNER HAND -->
+<!-- ================= MERT ELİ ================= -->
 
 <div class="partnerHand" id="partnerHand">
 
 <div class="partnerTitle">
-EŞİNİN ELİ — KARTI SEN SEÇ
+MERT • EŞİN • KARTINI SEN SEÇ
 </div>
 
 <div id="partnerCards"></div>
@@ -1240,7 +1211,7 @@ EŞİNİN ELİ — KARTI SEN SEÇ
 </div>
 
 
-<!-- CONTROLS -->
+<!-- ================= CONTROLS ================= -->
 
 <div class="controls" id="controls">
 
@@ -1255,24 +1226,20 @@ KOZ SEÇ
 </div>
 
 
-<!-- USER HAND -->
+<!-- ================= USER HAND ================= -->
 
 <div class="hand" id="hand"></div>
 
 
-<!-- BID -->
+<!-- ================= BID ================= -->
 
 <div class="modal" id="bidModal">
 
 <div class="box">
 
-<h2>
-Teklifini Ver
-</h2>
+<h2>Teklifini Ver</h2>
 
-<p>
-Alabileceğin el sayısını seç
-</p>
+<p>Alabileceğin el sayısını seç</p>
 
 <div class="bidgrid" id="bidGrid"></div>
 
@@ -1285,40 +1252,32 @@ PAS
 </div>
 
 
-<!-- TRUMP -->
+<!-- ================= TRUMP ================= -->
 
 <div class="modal" id="trumpModal">
 
 <div class="box">
 
-<h2>
-Kozunu Seç
-</h2>
+<h2>Kozunu Seç</h2>
 
-<p>
-Oyunda kullanacağın kozu belirle
-</p>
+<p>Oyunda kullanacağın kozu belirle</p>
 
 <div class="suits">
 
 <button class="suit" data-suit="♠">
-♠<br>
-<small>Maça</small>
+♠<br><small>Maça</small>
 </button>
 
 <button class="suit reds" data-suit="♥">
-♥<br>
-<small>Kupa</small>
+♥<br><small>Kupa</small>
 </button>
 
 <button class="suit reds" data-suit="♦">
-♦<br>
-<small>Karo</small>
+♦<br><small>Karo</small>
 </button>
 
 <button class="suit" data-suit="♣">
-♣<br>
-<small>Sinek</small>
+♣<br><small>Sinek</small>
 </button>
 
 </div>
@@ -1328,15 +1287,13 @@ Oyunda kullanacağın kozu belirle
 </div>
 
 
-<!-- RESULT -->
+<!-- ================= RESULT ================= -->
 
 <div class="modal" id="resultModal">
 
 <div class="box">
 
-<h2>
-El Sonucu
-</h2>
+<h2>El Sonucu</h2>
 
 <div id="results"></div>
 
@@ -1359,12 +1316,35 @@ SONRAKİ EL
 <script>
 "use strict";
 
+
+/* =====================================================
+   OYUNCULAR
+
+   0 = MERT = EŞİN
+   1 = EMRE = RAKİP
+   2 = SEN
+   3 = AHMET = RAKİP
+===================================================== */
+
+const USER=2;
+const PARTNER=0;
+
 const SUITS=["♠","♥","♦","♣"];
 
 const RANKS=[
-["2",2],["3",3],["4",4],["5",5],["6",6],
-["7",7],["8",8],["9",9],["10",10],
-["J",11],["Q",12],["K",13],["A",14]
+["2",2],
+["3",3],
+["4",4],
+["5",5],
+["6",6],
+["7",7],
+["8",8],
+["9",9],
+["10",10],
+["J",11],
+["Q",12],
+["K",13],
+["A",14]
 ];
 
 const NAMES=[
@@ -1373,16 +1353,6 @@ const NAMES=[
 "SEN",
 "AHMET"
 ];
-
-/*
-0 MERT
-1 EMRE
-2 SEN
-3 AHMET = EŞİN
-*/
-
-const USER=2;
-const PARTNER=3;
 
 let selectedMode="ihale";
 
@@ -1411,15 +1381,20 @@ let level=
 Number(localStorage.getItem("batakLevel")||1);
 
 let sound=true;
+
 let busy=false;
 
 
-/* DOM */
+/* =====================================================
+   DOM
+===================================================== */
 
 const $=id=>document.getElementById(id);
 
 
-/* MODE */
+/* =====================================================
+   MODE
+===================================================== */
 
 document.querySelectorAll(".mode").forEach(btn=>{
 
@@ -1439,7 +1414,9 @@ clickSound();
 });
 
 
-/* START */
+/* =====================================================
+   START
+===================================================== */
 
 $("start").onclick=()=>{
 
@@ -1451,14 +1428,14 @@ $("menu").style.display="none";
 
 $("game").style.display="block";
 
-setTimeout(()=>{
-newGame();
-},150);
+setTimeout(newGame,150);
 
 };
 
 
-/* MENU */
+/* =====================================================
+   MENU
+===================================================== */
 
 $("menuBtn").onclick=()=>{
 
@@ -1471,7 +1448,9 @@ $("menu").style.display="flex";
 };
 
 
-/* SOUND BUTTON */
+/* =====================================================
+   SOUND
+===================================================== */
 
 $("sound").onclick=()=>{
 
@@ -1483,7 +1462,7 @@ $("sound").textContent="🔊";
 
 unlockAudio();
 
-playTone(520,.10,.18,"sine");
+playTone(520,.1,.18,"sine");
 
 }else{
 
@@ -1496,7 +1475,9 @@ $("sound").textContent="🔇";
 };
 
 
-/* NEW GAME */
+/* =====================================================
+   NEW GAME
+===================================================== */
 
 function newGame(){
 
@@ -1507,21 +1488,23 @@ newRound();
 }
 
 
-/* DECK */
+/* =====================================================
+   DECK
+===================================================== */
 
 function createDeck(){
 
 let d=[];
 
-for(const s of SUITS){
+for(const suit of SUITS){
 
-for(const r of RANKS){
+for(const rank of RANKS){
 
 d.push({
-suit:s,
-rank:r[0],
-value:r[1],
-id:s+r[0]
+suit,
+rank:rank[0],
+value:rank[1],
+id:suit+rank[0]
 });
 
 }
@@ -1533,15 +1516,15 @@ return shuffle(d);
 }
 
 
-/* SHUFFLE */
-
 function shuffle(a){
 
 for(let i=a.length-1;i>0;i--){
 
-let j=Math.floor(Math.random()*(i+1));
+let j=
+Math.floor(Math.random()*(i+1));
 
-[a[i],a[j]]=[a[j],a[i]];
+[a[i],a[j]]=
+[a[j],a[i]];
 
 }
 
@@ -1550,7 +1533,9 @@ return a;
 }
 
 
-/* NEW ROUND */
+/* =====================================================
+   NEW ROUND
+===================================================== */
 
 function newRound(){
 
@@ -1559,12 +1544,10 @@ busy=false;
 deck=createDeck();
 
 players=[
-
 {name:"MERT",hand:[]},
 {name:"EMRE",hand:[]},
 {name:"SEN",hand:[]},
 {name:"AHMET",hand:[]}
-
 ];
 
 
@@ -1572,7 +1555,9 @@ for(let i=0;i<13;i++){
 
 for(let p=0;p<4;p++){
 
-players[p].hand.push(deck.pop());
+players[p].hand.push(
+deck.pop()
+);
 
 }
 
@@ -1596,7 +1581,8 @@ bidder=-1;
 
 highestBid=0;
 
-current=Math.floor(Math.random()*4);
+current=
+Math.floor(Math.random()*4);
 
 leader=current;
 
@@ -1619,12 +1605,13 @@ startAuction();
 }
 
 
-/* SORT */
-
 function sortCards(a,b){
 
-let sa=SUITS.indexOf(a.suit);
-let sb=SUITS.indexOf(b.suit);
+let sa=
+SUITS.indexOf(a.suit);
+
+let sb=
+SUITS.indexOf(b.suit);
 
 if(sa!==sb)
 return sa-sb;
@@ -1634,9 +1621,9 @@ return a.value-b.value;
 }
 
 
-/* =========================
+/* =====================================================
    AUCTION
-========================= */
+===================================================== */
 
 function startAuction(){
 
@@ -1717,7 +1704,9 @@ auctionTurn();
 }
 
 
-/* AI BID */
+/* =====================================================
+   AI BID
+===================================================== */
 
 function aiBid(hand){
 
@@ -1750,7 +1739,8 @@ counts[c.suit]=
 });
 
 
-let values=Object.values(counts);
+let values=
+Object.values(counts);
 
 let max=
 values.length?
@@ -1770,7 +1760,9 @@ Math.floor(score)
 }
 
 
-/* USER BID */
+/* =====================================================
+   USER BID
+===================================================== */
 
 function showBidButton(){
 
@@ -1799,10 +1791,7 @@ let grid=$("bidGrid");
 grid.innerHTML="";
 
 let min=
-Math.max(
-1,
-highestBid+1
-);
+Math.max(1,highestBid+1);
 
 
 for(let n=min;n<=13;n++){
@@ -1824,11 +1813,11 @@ bidder=USER;
 
 bidSound();
 
-close($("bidModal"));
-
 showToast(
 "Sen "+n+" dedin"
 );
+
+close($("bidModal"));
 
 current=(current+1)%4;
 
@@ -1854,7 +1843,9 @@ $("bidModal").style.display="flex";
 };
 
 
-/* PASS */
+/* =====================================================
+   PASS
+===================================================== */
 
 $("pass").onclick=()=>{
 
@@ -1881,9 +1872,9 @@ auctionTurn();
 };
 
 
-/* =========================
+/* =====================================================
    FINISH AUCTION
-========================= */
+===================================================== */
 
 function finishAuction(){
 
@@ -1907,8 +1898,8 @@ highestBid+
 
 
 /*
-SADECE SEN İHALEYİ ALDIYSAN
-EŞİNİN ELİNİ AÇ
+EŞLİ OYUNDA SEN İHALEYİ ALDIYSAN
+MERT'İN ELİ AÇILIR.
 */
 
 if(
@@ -1919,8 +1910,12 @@ bidder===USER
 showPartnerHand();
 
 showToast(
-"Eşinin eli açıldı"
+"MERT'in eli açıldı"
 );
+
+}else{
+
+hidePartnerHand();
 
 }
 
@@ -1957,7 +1952,9 @@ startTrick();
 }
 
 
-/* BEST TRUMP */
+/* =====================================================
+   BEST TRUMP
+===================================================== */
 
 function bestTrump(hand){
 
@@ -1965,7 +1962,8 @@ let totals={};
 
 SUITS.forEach(s=>{
 
-totals[s]=hand
+totals[s]=
+hand
 .filter(c=>c.suit===s)
 .reduce(
 (a,c)=>a+c.value,
@@ -1983,9 +1981,9 @@ return [...SUITS]
 }
 
 
-/* =========================
+/* =====================================================
    TRUMP
-========================= */
+===================================================== */
 
 function openTrump(){
 
@@ -2033,9 +2031,9 @@ $("trump").style.display="block";
 }
 
 
-/* =========================
+/* =====================================================
    START TRICK
-========================= */
+===================================================== */
 
 function startTrick(){
 
@@ -2053,9 +2051,8 @@ renderPartnerHand();
 
 
 /*
-EŞİN İHALEYİ ALAN BİZİZ
-VE EŞLİ OYUNSA
-EŞİNİN KARTINI BİZ SEÇİYORUZ
+MERT'İN SIRASI GELİRSE
+KARTI SEN SEÇERSİN.
 */
 
 if(
@@ -2065,7 +2062,9 @@ bidder===USER
 ){
 
 $("info").textContent=
-"Eşinin kartını seç";
+"MERT'in kartını seç";
+
+renderPartnerHand();
 
 return;
 
@@ -2073,7 +2072,7 @@ return;
 
 
 /*
-NORMAL KULLANICI
+SEN
 */
 
 if(current===USER){
@@ -2081,7 +2080,16 @@ if(current===USER){
 $("info").textContent=
 "Kartını seç";
 
-}else{
+renderHand();
+
+return;
+
+}
+
+
+/*
+RAKİP
+*/
 
 $("info").textContent=
 NAMES[current]+" oynuyor";
@@ -2093,12 +2101,10 @@ aiTurn,
 
 }
 
-}
 
-
-/* =========================
-   LEGAL CARDS
-========================= */
+/* =====================================================
+   LEGAL
+===================================================== */
 
 function legalCards(index){
 
@@ -2120,9 +2126,9 @@ hand;
 }
 
 
-/* =========================
+/* =====================================================
    PLAY CARD
-========================= */
+===================================================== */
 
 function playCard(player,card){
 
@@ -2143,7 +2149,8 @@ return;
 
 
 /*
-İnsan veya kontrol edilen eş
+SEN VE KONTROL ETTİĞİN MERT
+RENK TAKİP ETMEK ZORUNDA
 */
 
 if(
@@ -2217,13 +2224,23 @@ return;
 }
 
 
+/*
+ÇOK ÖNEMLİ:
+
+SEN ATTIKTAN SONRA
+SIRA NORMAL DEVAM EDER.
+
+SEN -> EMRE -> MERT -> AHMET
+*/
+
 current=(current+1)%4;
 
 updatePlayers();
 
 
 /*
-EŞİNİN KARTINI BİZ SEÇECEĞİZ
+MERT'İN SIRASI GELDİĞİNDE
+KARTI SEN SEÇERSİN.
 */
 
 if(
@@ -2233,7 +2250,7 @@ bidder===USER
 ){
 
 $("info").textContent=
-"Eşinin kartını seç";
+"MERT'in kartını seç";
 
 renderPartnerHand();
 
@@ -2243,7 +2260,7 @@ return;
 
 
 /*
-SENİN KARTIN
+SENİN SIRAN
 */
 
 if(current===USER){
@@ -2268,9 +2285,9 @@ aiTurn,
 }
 
 
-/* =========================
-   PARTNER CARD CLICK
-========================= */
+/* =====================================================
+   PARTNER PLAY
+===================================================== */
 
 function playPartnerCard(card){
 
@@ -2292,9 +2309,9 @@ card
 }
 
 
-/* =========================
-   AI TURN
-========================= */
+/* =====================================================
+   AI
+===================================================== */
 
 function aiTurn(){
 
@@ -2303,8 +2320,8 @@ return;
 
 
 /*
-Eşin bizim kontrolümüzdeyse
-AI KART ATAMAZ
+MERT BİZİM EŞİMİZ VE ELİ AÇIKSA
+AI KART ATAMAZ.
 */
 
 if(
@@ -2368,9 +2385,9 @@ card
 }
 
 
-/* =========================
+/* =====================================================
    WOULD WIN
-========================= */
+===================================================== */
 
 function wouldWin(card){
 
@@ -2407,9 +2424,9 @@ best
 }
 
 
-/* =========================
+/* =====================================================
    BEATS
-========================= */
+===================================================== */
 
 function beats(a,b){
 
@@ -2443,9 +2460,9 @@ return false;
 }
 
 
-/* =========================
-   PLAYED CARD
-========================= */
+/* =====================================================
+   RENDER PLAYED
+===================================================== */
 
 function renderPlayed(player,card){
 
@@ -2485,9 +2502,117 @@ $("center").appendChild(el);
 }
 
 
-/* =========================
-   RESOLVE
-========================= */
+/* =====================================================
+   KAZANAN TARAFA KARTLARI KAYDIR
+===================================================== */
+
+function animateTrickToWinner(winnerPlayer){
+
+const cards=
+document.querySelectorAll(
+"#center .played"
+);
+
+if(!cards.length)
+return;
+
+
+/*
+0 = MERT / ÜST
+1 = EMRE / SAĞ
+2 = SEN / ALT
+3 = AHMET / SOL
+*/
+
+let targetX=0;
+let targetY=0;
+
+
+if(winnerPlayer===0){
+
+/* MERT */
+targetX=0;
+targetY=-175;
+
+}else if(winnerPlayer===1){
+
+/* EMRE */
+targetX=210;
+targetY=0;
+
+}else if(winnerPlayer===2){
+
+/* SEN */
+targetX=0;
+targetY=175;
+
+}else if(winnerPlayer===3){
+
+/* AHMET */
+targetX=-210;
+targetY=0;
+
+}
+
+
+/*
+Kartları biraz farklı noktalara
+dağıtarak kazananın tarafına kaydır.
+*/
+
+cards.forEach((card,index)=>{
+
+card.classList.add("trick-winning");
+
+let spread=
+(index-1.5)*12;
+
+let finalX=
+targetX+
+(
+winnerPlayer===0 ||
+winnerPlayer===2
+?
+spread
+:
+0
+);
+
+let finalY=
+targetY+
+(
+winnerPlayer===1 ||
+winnerPlayer===3
+?
+spread
+:
+0
+);
+
+
+card.style.left=
+`calc(50% + ${finalX}px)`;
+
+card.style.top=
+`calc(50% + ${finalY}px)`;
+
+
+card.style.transform=
+`translate(-50%,-50%)
+scale(.72)
+rotate(${(index-1.5)*5}deg)`;
+
+
+card.style.opacity="0.12";
+
+});
+
+}
+
+
+/* =====================================================
+   RESOLVE TRICK
+===================================================== */
 
 function resolveTrick(){
 
@@ -2512,16 +2637,38 @@ trick[i];
 }
 
 
-tricks[winner.player]++;
+const winnerPlayer=
+winner.player;
+
+
+tricks[winnerPlayer]++;
 
 leader=
-winner.player;
+winnerPlayer;
 
 current=
-winner.player;
+winnerPlayer;
+
+updatePlayers();
 
 
-if(winner.player===USER){
+/*
+ÖNCE KARTLARI KAZANAN TARAFA KAYDIR.
+*/
+
+animateTrickToWinner(
+winnerPlayer
+);
+
+
+if(
+winnerPlayer===USER ||
+(
+selectedMode==="esli" &&
+bidder===USER &&
+winnerPlayer===PARTNER
+)
+){
 
 winSound();
 
@@ -2533,10 +2680,15 @@ cardSound();
 
 
 showToast(
-NAMES[winner.player]+
+NAMES[winnerPlayer]+
 " eli aldı"
 );
 
+
+/*
+Animasyon bittikten sonra
+yeni ele geç.
+*/
 
 setTimeout(()=>{
 
@@ -2559,14 +2711,14 @@ startTrick();
 
 }
 
-},700);
+},1050);
 
 }
 
 
-/* =========================
+/* =====================================================
    USER HAND
-========================= */
+===================================================== */
 
 function renderHand(){
 
@@ -2574,6 +2726,10 @@ let container=
 $("hand");
 
 container.innerHTML="";
+
+if(!players[USER])
+return;
+
 
 let hand=
 players[USER].hand;
@@ -2588,16 +2744,17 @@ hand.forEach(
 let el=
 document.createElement("div");
 
-
 el.className=
 "card "+
-(index<7?
+(
+index<7?
 "upper":
 "lower"
 );
 
 
 if(
+current===USER &&
 legal.some(
 c=>c.id===card.id
 )
@@ -2669,9 +2826,9 @@ container.appendChild(el);
 }
 
 
-/* =========================
+/* =====================================================
    CARD HTML
-========================= */
+===================================================== */
 
 function cardHTML(card){
 
@@ -2721,34 +2878,28 @@ ${card.suit}
 
 return `
 <div class="corner">
-
 ${card.rank}
-
 <div class="suitmini">
 ${card.suit}
 </div>
-
 </div>
 
 ${face}
 
 <div class="corner bottom">
-
 ${card.rank}
-
 <div class="suitmini">
 ${card.suit}
 </div>
-
 </div>
 `;
 
 }
 
 
-/* =================================================
+/* =====================================================
    PARTNER HAND
-================================================= */
+===================================================== */
 
 function showPartnerHand(){
 
@@ -2770,10 +2921,6 @@ renderPartnerHand();
 }
 
 
-/* =========================
-   HIDE PARTNER
-========================= */
-
 function hidePartnerHand(){
 
 $("partnerHand").style.display="none";
@@ -2783,9 +2930,9 @@ $("partnerCards").innerHTML="";
 }
 
 
-/* =========================
-   RENDER PARTNER
-========================= */
+/*
+MERT'İN 13 KARTI AÇIK.
+*/
 
 function renderPartnerHand(){
 
@@ -2814,23 +2961,23 @@ let legal=
 legalCards(PARTNER);
 
 
-/*
-13 kartı partner alanına
-7 + 6 şeklinde dağıt.
-*/
-
 hand.forEach(
 (card,index)=>{
 
 let el=
 document.createElement("div");
 
-
 el.className=
 "partnerCard";
 
 
+/*
+SADECE MERT'İN SIRASINDA
+GEÇERLİ KARTLARI PARLAT.
+*/
+
 if(
+current===PARTNER &&
 legal.some(
 c=>c.id===card.id
 )
@@ -2851,17 +2998,12 @@ el.classList.add("red");
 }
 
 
-/*
-7 üst sıra
-*/
-
 if(index<7){
 
 let x=
 14+(index/6)*72;
 
-el.style.left=
-x+"%";
+el.style.left=x+"%";
 
 el.style.top="0";
 
@@ -2870,8 +3012,7 @@ el.style.top="0";
 let x=
 20+((index-7)/5)*60;
 
-el.style.left=
-x+"%";
+el.style.left=x+"%";
 
 el.style.top="29px";
 
@@ -2881,11 +3022,6 @@ el.style.top="29px";
 el.innerHTML=
 partnerCardHTML(card);
 
-
-/*
-SADECE EŞİNİN SIRASINDA
-KARTA BASILABİLİR
-*/
 
 el.onclick=()=>{
 
@@ -2909,9 +3045,9 @@ container.appendChild(el);
 }
 
 
-/* =========================
+/* =====================================================
    PARTNER CARD HTML
-========================= */
+===================================================== */
 
 function partnerCardHTML(card){
 
@@ -2988,9 +3124,9 @@ ${card.suit}
 }
 
 
-/* =========================
-   PLAYER UI
-========================= */
+/* =====================================================
+   PLAYERS
+===================================================== */
 
 function updatePlayers(){
 
@@ -3012,9 +3148,9 @@ tricks[i]+" el";
 }
 
 
-/* =========================
+/* =====================================================
    CONTROLS
-========================= */
+===================================================== */
 
 function hideControls(){
 
@@ -3027,9 +3163,9 @@ $("trumpButton").style.display="none";
 }
 
 
-/* =========================
+/* =====================================================
    RESULT
-========================= */
+===================================================== */
 
 function finishRound(){
 
@@ -3038,11 +3174,77 @@ hideControls();
 let html="";
 
 
+if(selectedMode==="esli"){
+
+let myTeam=
+tricks[USER]+tricks[PARTNER];
+
+let enemyTeam=
+tricks[1]+tricks[3];
+
+
+html+=`
+
+<div class="resultRow">
+<span>SEN + MERT</span>
+<b>${myTeam} el</b>
+</div>
+
+<div class="resultRow">
+<span>EMRE + AHMET</span>
+<b>${enemyTeam} el</b>
+</div>
+`;
+
+
+if(
+bidder===USER &&
+myTeam>=highestBid
+){
+
+html+=`
+
+<div class="resultRow">
+<span>SONUÇ</span>
+<b>KAZANDIN</b>
+</div>
+
+`;
+
+}else if(bidder===USER){
+
+html+=`
+
+<div class="resultRow">
+<span>SONUÇ</span>
+<b>KAYBETTİN</b>
+</div>
+
+`;
+
+}else{
+
+html+=`
+
+<div class="resultRow">
+<span>SONUÇ</span>
+<b>
+${myTeam>enemyTeam?
+"KAZANDIN":
+"KAYBETTİN"}
+</b>
+</div>
+
+`;
+
+}
+
+}else{
+
 for(let i=0;i<4;i++){
 
 let score=
 tricks[i];
-
 
 if(i===bidder){
 
@@ -3080,18 +3282,33 @@ ${score>0?"+":""}${score}
 
 }
 
-
-$("results").innerHTML=
-html;
-
-$("resultModal").style.display=
-"flex";
+}
 
 
-if(
+$("results").innerHTML=html;
+
+$("resultModal").style.display="flex";
+
+
+let success=false;
+
+
+if(selectedMode==="esli"){
+
+success=
 bidder===USER &&
-tricks[USER]>=highestBid
-){
+tricks[USER]+tricks[PARTNER]>=highestBid;
+
+}else{
+
+success=
+bidder===USER &&
+tricks[USER]>=highestBid;
+
+}
+
+
+if(success){
 
 coins+=100;
 
@@ -3130,7 +3347,9 @@ updateProfile();
 }
 
 
-/* NEXT */
+/* =====================================================
+   NEXT
+===================================================== */
 
 $("next").onclick=()=>{
 
@@ -3149,25 +3368,21 @@ newRound();
 };
 
 
-/* =========================
+/* =====================================================
    TOAST
-========================= */
+===================================================== */
 
 let toastTimer;
 
-
 function showToast(text){
 
-let t=
-$("toast");
+let t=$("toast");
 
 t.textContent=text;
 
 t.classList.add("show");
 
-clearTimeout(
-toastTimer
-);
+clearTimeout(toastTimer);
 
 toastTimer=
 setTimeout(()=>{
@@ -3180,7 +3395,7 @@ t.classList.remove("show");
 
 
 /* =====================================================
-   PROFESSIONAL AUDIO ENGINE
+   AUDIO
 ===================================================== */
 
 let audio=null;
@@ -3192,21 +3407,14 @@ let compressor=null;
 const MASTER_VOLUME=.95;
 
 
-/* INIT */
-
 function initAudio(){
 
 try{
 
 if(audio){
 
-if(
-audio.state==="suspended"
-){
-
+if(audio.state==="suspended")
 audio.resume();
-
-}
 
 return;
 
@@ -3262,8 +3470,6 @@ e
 }
 
 
-/* UNLOCK */
-
 function unlockAudio(){
 
 try{
@@ -3284,8 +3490,6 @@ audio.resume();
 }
 
 
-/* TONE */
-
 function playTone(
 freq,
 duration,
@@ -3301,26 +3505,15 @@ try{
 
 initAudio();
 
-
-if(
-!audio ||
-!masterGain
-)
+if(!audio || !masterGain)
 return;
 
-
-if(
-audio.state==="suspended"
-){
-
+if(audio.state==="suspended")
 audio.resume();
-
-}
 
 
 const now=
 audio.currentTime;
-
 
 const osc=
 audio.createOscillator();
@@ -3329,14 +3522,12 @@ const gain=
 audio.createGain();
 
 
-osc.type=
-type;
+osc.type=type;
 
 osc.frequency.setValueAtTime(
 freq,
 now
 );
-
 
 gain.gain.setValueAtTime(
 .0001,
@@ -3353,11 +3544,9 @@ gain.gain.exponentialRampToValueAtTime(
 now+duration
 );
 
-
 osc.connect(gain);
 
 gain.connect(masterGain);
-
 
 osc.start(now);
 
@@ -3365,13 +3554,10 @@ osc.stop(
 now+duration+.02
 );
 
-
 }catch(e){}
 
 }
 
-
-/* CARD */
 
 function cardSound(){
 
@@ -3412,38 +3598,6 @@ playTone(
 }
 
 
-/* DEAL */
-
-function dealSound(){
-
-if(!sound)
-return;
-
-initAudio();
-
-playTone(
-240,
-.045,
-.14,
-"triangle"
-);
-
-setTimeout(()=>{
-
-playTone(
-330,
-.055,
-.10,
-"triangle"
-);
-
-},35);
-
-}
-
-
-/* BID */
-
 function bidSound(){
 
 if(!sound)
@@ -3472,8 +3626,6 @@ playTone(
 }
 
 
-/* PASS */
-
 function passSound(){
 
 if(!sound)
@@ -3488,8 +3640,6 @@ playTone(
 
 }
 
-
-/* TRUMP */
 
 function trumpSound(){
 
@@ -3530,8 +3680,6 @@ playTone(
 }
 
 
-/* WIN */
-
 function winSound(){
 
 if(!sound)
@@ -3570,8 +3718,6 @@ playTone(
 
 }
 
-
-/* START */
 
 function startSound(){
 
@@ -3612,8 +3758,6 @@ playTone(
 }
 
 
-/* CLICK */
-
 function clickSound(){
 
 if(!sound)
@@ -3628,8 +3772,6 @@ playTone(
 
 }
 
-
-/* ERROR */
 
 function errorSound(){
 
@@ -3657,8 +3799,6 @@ playTone(
 }
 
 
-/* OLD BEEP */
-
 function beep(){
 
 cardSound();
@@ -3666,26 +3806,26 @@ cardSound();
 }
 
 
-/* PROFILE */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 function updateProfile(){
 
-$("coins").textContent=
-coins;
+$("coins").textContent=coins;
 
-$("coinGame").textContent=
-coins;
+$("coinGame").textContent=coins;
 
-$("level").textContent=
-level;
+$("level").textContent=level;
 
-$("levelGame").textContent=
-level;
+$("levelGame").textContent=level;
 
 }
 
 
-/* CLOSE */
+/* =====================================================
+   CLOSE
+===================================================== */
 
 function close(el){
 
@@ -3694,7 +3834,9 @@ el.style.display="none";
 }
 
 
-/* START */
+/* =====================================================
+   INIT
+===================================================== */
 
 updateProfile();
 
