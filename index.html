@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#07130e">
+<title>Batak Royale Pro</title>
+
+<style>
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+ user-select:none;
+ -webkit-user-select:none;
+ -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+ width:100%;
+ height:100%;
+ overflow:hidden;
+ background:#030604;
+ font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
+button{
+ font-family:inherit;
+}
+
+#app{
+ width:100vw;
+ height:100vh;
+ position:relative;
+ overflow:hidden;
+ background:
+ radial-gradient(circle at 50% 50%,#17241d 0%,#070b08 65%,#020302 100%);
+}
+
+/* =========================================================
+   MASA
+========================================================= */
+
+.table{
+ position:absolute;
+ inset:2.2%;
+ overflow:hidden;
+ border-radius:42px;
+ background:
+   radial-gradient(ellipse at 50% 48%,
+      rgba(40,133,76,.30) 0%,
+      rgba(17,89,49,.12) 42%,
+      transparent 68%),
+   linear-gradient(145deg,#126039,#07351f 60%,#052818);
+ border:12px solid #21120b;
+ box-shadow:
+   0 20px 55px rgba(0,0,0,.8),
+   inset 0 0 0 3px #70401f,
+   inset 0 0 0 7px #321b0e,
+   inset 0 0 80px rgba(0,0,0,.65);
+}
+
+/* keçe dokusu */
+.table:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ opacity:.20;
+ pointer-events:none;
+ background-image:
+   repeating-linear-gradient(0deg,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 4px),
+   repeating-linear-gradient(90deg,
+      rgba(0,0,0,.035) 0px,
+      rgba(0,0,0,.035) 1px,
+      transparent 1px,
+      transparent 5px);
+}
+
+/* iç altın çizgi */
+.table:after{
+ content:"";
+ position:absolute;
+ inset:15px;
+ border:1px solid rgba(239,194,87,.18);
+ border-radius:31px;
+ pointer-events:none;
+}
+
+/* =========================================================
+   ÜST BİLGİ
+========================================================= */
+
+.header{
+ position:absolute;
+ left:27px;
+ right:27px;
+ top:18px;
+ height:48px;
+ z-index:100;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:9px;
+ color:#f3d477;
+ font-weight:900;
+ letter-spacing:.5px;
+ text-shadow:0 2px 5px #000;
+}
+
+.brandIcon{
+ width:34px;
+ height:34px;
+ border-radius:10px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(145deg,#d7ae48,#80601c);
+ color:#fff4b0;
+ box-shadow:0 4px 10px rgba(0,0,0,.45);
+ font-size:19px;
+}
+
+.brandText{
+ font-size:16px;
+}
+
+.stats{
+ display:flex;
+ gap:7px;
+}
+
+.stat{
+ min-width:67px;
+ padding:6px 9px;
+ border-radius:10px;
+ text-align:center;
+ color:#d8e4da;
+ background:rgba(0,0,0,.38);
+ border:1px solid rgba(255,255,255,.10);
+ box-shadow:inset 0 1px rgba(255,255,255,.04);
+ font-size:9px;
+ text-transform:uppercase;
+ letter-spacing:.5px;
+}
+
+.stat b{
+ display:block;
+ margin-top:2px;
+ color:#fff;
+ font-size:13px;
+}
+
+/* =========================================================
+   OYUNCULAR
+========================================================= */
+
+.player{
+ position:absolute;
+ z-index:60;
+ min-width:125px;
+ padding:7px 10px;
+ border-radius:15px;
+ display:flex;
+ align-items:center;
+ gap:8px;
+ color:white;
+ background:
+   linear-gradient(145deg,rgba(28,42,34,.94),rgba(4,14,9,.92));
+ border:1px solid rgba(255,255,255,.13);
+ box-shadow:
+   0 7px 16px rgba(0,0,0,.4),
+   inset 0 1px rgba(255,255,255,.08);
+}
+
+.avatar{
+ width:35px;
+ height:35px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-shrink:0;
+ font-size:17px;
+ background:linear-gradient(145deg,#d5ad50,#70531a);
+ border:2px solid rgba(255,255,255,.35);
+ box-shadow:0 2px 7px #000;
+}
+
+.playerInfo{
+ min-width:0;
+}
+
+.playerName{
+ font-size:12px;
+ font-weight:900;
+ white-space:nowrap;
+}
+
+.playerSub{
+ font-size:9px;
+ color:#9eaea3;
+ margin-top:2px;
+ white-space:nowrap;
+}
+
+.player.top{
+ top:78px;
+ left:50%;
+ transform:translateX(-50%);
+}
+
+.player.left{
+ left:20px;
+ top:44%;
+ transform:translateY(-50%);
+}
+
+.player.right{
+ right:20px;
+ top:44%;
+ transform:translateY(-50%);
+}
+
+.player.bottom{
+ left:50%;
+ bottom:153px;
+ transform:translateX(-50%);
+ border-color:rgba(235,199,91,.58);
+}
+
+.turn{
+ position:absolute;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:#55e78d;
+ box-shadow:0 0 10px #55e78d;
+ right:5px;
+ top:5px;
+}
+
+/* =========================================================
+   KOZ
+========================================================= */
+
+.trumpBox{
+ position:absolute;
+ z-index:65;
+ top:113px;
+ left:50%;
+ transform:translateX(-50%);
+ display:flex;
+ align-items:center;
+ gap:8px;
+ padding:7px 14px;
+ border-radius:20px;
+ color:#dfe9e1;
+ background:rgba(0,0,0,.40);
+ border:1px solid rgba(255,255,255,.10);
+ box-shadow:0 4px 12px rgba(0,0,0,.3);
+ font-size:10px;
+ text-transform:uppercase;
+ letter-spacing:.7px;
+}
+
+.trumpSymbol{
+ width:23px;
+ height:23px;
+ border-radius:7px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#f4f4f1;
+ color:#111;
+ font-size:15px;
+}
+
+.trumpSymbol.red{
+ color:#d51d2a;
+}
+
+#trumpValue{
+ color:#f4d46e;
+ font-weight:900;
+}
+
+/* =========================================================
+   ORTA OYUN ALANI
+========================================================= */
+
+.centerArea{
+ position:absolute;
+ left:50%;
+ top:47%;
+ width:310px;
+ height:270px;
+ transform:translate(-50%,-50%);
+ z-index:20;
+}
+
+.centerGlow{
+ position:absolute;
+ left:50%;
+ top:50%;
+ width:210px;
+ height:210px;
+ transform:translate(-50%,-50%);
+ border-radius:50%;
+ border:1px solid rgba(239,199,91,.10);
+ box-shadow:
+   0 0 45px rgba(0,0,0,.2),
+   inset 0 0 35px rgba(0,0,0,.18);
+}
+
+.centerLogo{
+ position:absolute;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-50%);
+ font-size:36px;
+ color:rgba(235,196,89,.13);
+ font-weight:900;
+}
+
+/* =========================================================
+   ORTADAKİ KARTLAR
+========================================================= */
+
+.playCard{
+ position:absolute;
+ width:65px;
+ height:92px;
+ border-radius:9px;
+ background:linear-gradient(145deg,#fff,#e9e9e5);
+ border:1px solid #c8c8c3;
+ color:#111;
+ box-shadow:
+   0 7px 15px rgba(0,0,0,.5),
+   inset 0 0 0 1px rgba(255,255,255,.8);
+ padding:5px;
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ font-weight:900;
+}
+
+.playCard .small{
+ font-size:15px;
+ line-height:14px;
+}
+
+.playCard .big{
+ text-align:center;
+ font-size:29px;
+ margin-top:-2px;
+}
+
+.playCard.red{
+ color:#d51f2b;
+}
+
+.pc1{left:122px;top:0}
+.pc2{left:190px;top:70px}
+.pc3{left:122px;top:140px}
+.pc4{left:54px;top:70px}
+
+/* =========================================================
+   DURUM MESAJI
+========================================================= */
+
+.message{
+ position:absolute;
+ left:50%;
+ top:calc(47% + 150px);
+ transform:translateX(-50%);
+ width:min(82%,390px);
+ min-height:34px;
+ padding:8px 13px;
+ border-radius:18px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ color:#dfe9e2;
+ font-size:11px;
+ background:rgba(3,12,7,.66);
+ border:1px solid rgba(255,255,255,.08);
+ box-shadow:0 5px 15px rgba(0,0,0,.28);
+ z-index:80;
+}
+
+.message b{
+ color:#f3d477;
+}
+
+/* =========================================================
+   EL
+========================================================= */
+
+.handArea{
+ position:absolute;
+ left:50%;
+ bottom:84px;
+ transform:translateX(-50%);
+ width:95%;
+ max-width:680px;
+ z-index:90;
+}
+
+.handRow{
+ display:flex;
+ justify-content:center;
+ align-items:flex-end;
+ position:relative;
+}
+
+.rowTop{
+ z-index:1;
+ margin-bottom:-23px;
+}
+
+.rowBottom{
+ z-index:5;
+}
+
+/* KARTLAR */
+.card{
+ position:relative;
+ flex:0 0 auto;
+ width:70px;
+ height:99px;
+ margin-left:-13px;
+ border-radius:10px;
+ cursor:pointer;
+ color:#151515;
+ background:
+   linear-gradient(135deg,#ffffff 0%,#f6f6f2 52%,#e4e4df 100%);
+ border:1px solid #c9c9c5;
+ box-shadow:
+   0 6px 13px rgba(0,0,0,.50),
+   inset 0 0 0 1px rgba(255,255,255,.85);
+ transition:transform .15s ease,box-shadow .15s ease;
+ overflow:hidden;
+}
+
+.card:first-child{
+ margin-left:0;
+}
+
+.card.red{
+ color:#d51d2b;
+}
+
+.card:before{
+ content:"";
+ position:absolute;
+ inset:3px;
+ border:1px solid rgba(0,0,0,.055);
+ border-radius:7px;
+ pointer-events:none;
+}
+
+.cardTop{
+ position:absolute;
+ left:6px;
+ top:5px;
+ font-size:16px;
+ line-height:15px;
+ font-weight:900;
+}
+
+.cardSuit{
+ position:absolute;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-50%);
+ font-size:32px;
+}
+
+.cardBottom{
+ position:absolute;
+ right:6px;
+ bottom:5px;
+ transform:rotate(180deg);
+ font-size:16px;
+ line-height:15px;
+ font-weight:900;
+}
+
+.card:hover{
+ transform:translateY(-5px);
+}
+
+.card.selected{
+ transform:translateY(-21px);
+ z-index:50;
+ box-shadow:
+   0 15px 22px rgba(0,0,0,.65),
+   0 0 0 2px #f3d477,
+   0 0 17px rgba(243,212,119,.35);
+}
+
+/* =========================================================
+   ALT KONTROLLER
+========================================================= */
+
+.controls{
+ position:absolute;
+ left:50%;
+ bottom:18px;
+ transform:translateX(-50%);
+ z-index:120;
+ display:flex;
+ gap:7px;
+ padding:5px;
+ border-radius:17px;
+ background:rgba(0,0,0,.34);
+ border:1px solid rgba(255,255,255,.08);
+ box-shadow:0 7px 20px rgba(0,0,0,.35);
+}
+
+.action{
+ min-width:82px;
+ height:39px;
+ padding:0 13px;
+ border-radius:11px;
+ border:1px solid rgba(255,255,255,.12);
+ color:#e9eee9;
+ background:linear-gradient(145deg,#315c45,#153322);
+ font-size:10px;
+ font-weight:900;
+ cursor:pointer;
+ box-shadow:
+   inset 0 1px rgba(255,255,255,.08),
+   0 3px 7px rgba(0,0,0,.35);
+}
+
+.action.primary{
+ color:#1a1305;
+ background:linear-gradient(145deg,#ffe486,#b98722);
+ border-color:#f0cd67;
+}
+
+.action:active{
+ transform:translateY(2px);
+}
+
+/* =========================================================
+   MODALLAR
+========================================================= */
+
+.modal{
+ position:absolute;
+ inset:0;
+ z-index:500;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:rgba(0,0,0,.72);
+ backdrop-filter:blur(4px);
+}
+
+.modal.show{
+ display:flex;
+}
+
+.modalBox{
+ width:100%;
+ max-width:380px;
+ padding:24px;
+ border-radius:23px;
+ color:white;
+ background:
+   linear-gradient(145deg,#193e2c,#071810);
+ border:1px solid rgba(235,201,105,.25);
+ box-shadow:
+   0 25px 70px rgba(0,0,0,.8),
+   inset 0 1px rgba(255,255,255,.08);
+ text-align:center;
+}
+
+.modalIcon{
+ width:52px;
+ height:52px;
+ margin:0 auto 10px;
+ border-radius:16px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#f4d36e;
+ background:rgba(236,193,72,.10);
+ border:1px solid rgba(236,193,72,.18);
+ font-size:26px;
+}
+
+.modalBox h2{
+ color:#f3d477;
+ font-size:20px;
+ margin-bottom:7px;
+}
+
+.modalBox p{
+ color:#9faea4;
+ font-size:12px;
+ margin-bottom:19px;
+}
+
+.bidGrid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:8px;
+}
+
+.bidBtn{
+ height:46px;
+ border:1px solid rgba(255,255,255,.08);
+ border-radius:11px;
+ color:#fff;
+ background:linear-gradient(145deg,#2b6044,#153623);
+ font-size:14px;
+ font-weight:900;
+ cursor:pointer;
+}
+
+.bidBtn:hover{
+ border-color:#d6b557;
+}
+
+.suitGrid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.suitBtn{
+ height:63px;
+ border-radius:14px;
+ border:1px solid #ddd;
+ background:linear-gradient(145deg,#fff,#e7e7e4);
+ color:#111;
+ font-size:30px;
+ font-weight:900;
+ cursor:pointer;
+ box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+.suitBtn.red{
+ color:#d51d2b;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+ position:absolute;
+ left:50%;
+ top:20px;
+ transform:translate(-50%,-100px);
+ z-index:700;
+ padding:10px 16px;
+ border-radius:20px;
+ color:white;
+ background:rgba(0,0,0,.75);
+ border:1px solid rgba(255,255,255,.12);
+ font-size:11px;
+ transition:transform .25s ease;
+ pointer-events:none;
+}
+
+.toast.show{
+ transform:translate(-50%,0);
+}
+
+/* =========================================================
+   TELEFON
+========================================================= */
+
+@media(max-width:600px){
+
+ .table{
+   inset:1%;
+   border-width:9px;
+   border-radius:29px;
+ }
+
+ .table:after{
+   inset:10px;
+   border-radius:22px;
+ }
+
+ .header{
+   left:14px;
+   right:14px;
+   top:10px;
+ }
+
+ .brandIcon{
+   width:29px;
+   height:29px;
+   font-size:16px;
+ }
+
+ .brandText{
+   font-size:13px;
+ }
+
+ .stat{
+   min-width:55px;
+   padding:5px 6px;
+   font-size:8px;
+ }
+
+ .stat b{
+   font-size:11px;
+ }
+
+ .player{
+   min-width:91px;
+   padding:6px 7px;
+   gap:6px;
+   border-radius:12px;
+ }
+
+ .avatar{
+   width:29px;
+   height:29px;
+   font-size:14px;
+ }
+
+ .playerName{
+   font-size:10px;
+ }
+
+ .playerSub{
+   font-size:8px;
+ }
+
+ .player.top{
+   top:58px;
+ }
+
+ .player.left{
+   left:7px;
+   top:42%;
+ }
+
+ .player.right{
+   right:7px;
+   top:42%;
+ }
+
+ .player.bottom{
+   bottom:137px;
+ }
+
+ .trumpBox{
+   top:91px;
+   padding:6px 11px;
+   font-size:9px;
+ }
+
+ .centerArea{
+   top:45%;
+   transform:translate(-50%,-50%) scale(.82);
+ }
+
+ .message{
+   top:calc(45% + 126px);
+   width:84%;
+   font-size:10px;
+ }
+
+ .handArea{
+   bottom:73px;
+   width:97%;
+ }
+
+ .card{
+   width:53px;
+   height:76px;
+   margin-left:-10px;
+   border-radius:7px;
+ }
+
+ .rowTop{
+   margin-bottom:-18px;
+ }
+
+ .cardTop{
+   left:4px;
+   top:4px;
+   font-size:12px;
+   line-height:12px;
+ }
+
+ .cardSuit{
+   font-size:24px;
+ }
+
+ .cardBottom{
+   right:4px;
+   bottom:4px;
+   font-size:12px;
+   line-height:12px;
+ }
+
+ .card.selected{
+   transform:translateY(-15px);
+ }
+
+ .controls{
+   bottom:9px;
+   gap:4px;
+   padding:4px;
+ }
+
+ .action{
+   min-width:68px;
+   height:35px;
+   padding:0 7px;
+   font-size:8px;
+ }
+
+}
+
+/* =========================================================
+   ÇOK DAR TELEFON
+========================================================= */
+
+@media(max-width:380px){
+
+ .brandText{
+   display:none;
+ }
+
+ .stat{
+   min-width:49px;
+ }
+
+ .player{
+   min-width:78px;
+ }
+
+ .player .avatar{
+   width:25px;
+   height:25px;
+ }
+
+ .playerSub{
+   display:none;
+ }
+
+ .card{
+   width:46px;
+   height:67px;
+   margin-left:-9px;
+ }
+
+ .rowTop{
+   margin-bottom:-15px;
+ }
+
+ .cardTop{
+   font-size:10px;
+   line-height:10px;
+ }
+
+ .cardBottom{
+   font-size:10px;
+   line-height:10px;
+ }
+
+ .cardSuit{
+   font-size:21px;
+ }
+
+ .centerArea{
+   transform:translate(-50%,-50%) scale(.72);
+ }
+
+ .action{
+   min-width:62px;
+   font-size:7px;
+ }
+}
+
+/* YATAY EKRANDA DA ÇALIŞIR */
+@media(max-height:600px){
+
+ .player.top{
+   top:55px;
+ }
+
+ .player.bottom{
+   bottom:108px;
+ }
+
+ .handArea{
+   bottom:53px;
+ }
+
+ .card{
+   height:65px;
+ }
+
+ .rowTop{
+   margin-bottom:-14px;
+ }
+
+ .controls{
+   bottom:6px;
+ }
+
+ .message{
+   display:none;
+ }
+
+ .centerArea{
+   top:49%;
+   transform:translate(-50%,-50%) scale(.65);
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<div class="table">
+
+<!-- ÜST BİLGİ -->
+<div class="header">
+
+ <div class="brand">
+   <div class="brandIcon">♠</div>
+   <div class="brandText">BATAK ROYALE</div>
+ </div>
+
+ <div class="stats">
+   <div class="stat">
+     EL
+     <b id="round">1</b>
+   </div>
+
+   <div class="stat">
+     PUAN
+     <b id="score">0</b>
+   </div>
+ </div>
+
+</div>
+
+
+<!-- OYUNCULAR -->
+
+<div class="player top">
+ <div class="avatar">👨</div>
+ <div class="playerInfo">
+   <div class="playerName">Mehmet</div>
+   <div class="playerSub">Rakip • 13 kart</div>
+ </div>
+</div>
+
+<div class="player left">
+ <div class="avatar">👨</div>
+ <div class="playerInfo">
+   <div class="playerName">Ali</div>
+   <div class="playerSub">Rakip • 13 kart</div>
+ </div>
+</div>
+
+<div class="player right">
+ <div class="avatar">👨</div>
+ <div class="playerInfo">
+   <div class="playerName">Ahmet</div>
+   <div class="playerSub">Rakip • 13 kart</div>
+ </div>
+</div>
+
+<div class="player bottom">
+ <div class="avatar">👑</div>
+ <div class="playerInfo">
+   <div class="playerName">Zafer</div>
+   <div class="playerSub">Sen • 13 kart</div>
+ </div>
+ <span class="turn"></span>
+</div>
+
+
+<!-- KOZ -->
+
+<div class="trumpBox">
+ <div id="trumpIcon" class="trumpSymbol">?</div>
+ <span>KOZ</span>
+ <b id="trumpValue">BELİRLENMEDİ</b>
+</div>
+
+
+<!-- ORTA -->
+
+<div class="centerArea">
+
+ <div class="centerGlow"></div>
+ <div class="centerLogo">♠</div>
+
+ <div class="playCard pc1">
+   <div class="small">A<br>♠</div>
+   <div class="big">♠</div>
+ </div>
+
+ <div class="playCard pc2 red">
+   <div class="small">10<br>♥</div>
+   <div class="big">♥</div>
+ </div>
+
+ <div class="playCard pc3">
+   <div class="small">K<br>♣</div>
+   <div class="big">♣</div>
+ </div>
+
+ <div class="playCard pc4 red">
+   <div class="small">Q<br>♦</div>
+   <div class="big">♦</div>
+ </div>
+
+</div>
+
+
+<!-- MESAJ -->
+
+<div class="message" id="message">
+ İhale yapmak için <b>İHALE</b> butonuna bas.
+</div>
+
+
+<!-- EL -->
+
+<div class="handArea">
+
+ <div class="handRow rowTop" id="rowTop"></div>
+ <div class="handRow rowBottom" id="rowBottom"></div>
+
+</div>
+
+
+<!-- BUTONLAR -->
+
+<div class="controls">
+
+ <button class="action primary" id="bidButton">
+   İHALE
+ </button>
+
+ <button class="action" id="trumpButton">
+   KOZ
+ </button>
+
+ <button class="action" id="newButton">
+   YENİ OYUN
+ </button>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<!-- İHALE MODAL -->
+
+<div class="modal" id="bidModal">
+
+ <div class="modalBox">
+
+   <div class="modalIcon">♠</div>
+
+   <h2>İhale Yap</h2>
+
+   <p>Bu elde kaç el alacağını seç.</p>
+
+   <div class="bidGrid">
+
+     <button class="bidBtn" data-bid="3">3</button>
+     <button class="bidBtn" data-bid="4">4</button>
+     <button class="bidBtn" data-bid="5">5</button>
+     <button class="bidBtn" data-bid="6">6</button>
+     <button class="bidBtn" data-bid="7">7</button>
+     <button class="bidBtn" data-bid="8">8</button>
+     <button class="bidBtn" data-bid="9">9</button>
+     <button class="bidBtn" data-bid="10">10</button>
+
+   </div>
+
+ </div>
+
+</div>
+
+
+<!-- KOZ MODAL -->
+
+<div class="modal" id="trumpModal">
+
+ <div class="modalBox">
+
+   <div class="modalIcon">♦</div>
+
+   <h2>Koz Seç</h2>
+
+   <p>Bu el için koz rengini belirle.</p>
+
+   <div class="suitGrid">
+
+     <button class="suitBtn red" data-suit="♥">♥</button>
+     <button class="suitBtn" data-suit="♠">♠</button>
+     <button class="suitBtn red" data-suit="♦">♦</button>
+     <button class="suitBtn" data-suit="♣">♣</button>
+
+   </div>
+
+ </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   OYUN VERİLERİ
+========================================================= */
+
+var originalHand = [
+ {rank:"A",suit:"♠",red:false},
+ {rank:"10",suit:"♠",red:false},
+ {rank:"8",suit:"♠",red:false},
+ {rank:"K",suit:"♥",red:true},
+ {rank:"J",suit:"♥",red:true},
+ {rank:"7",suit:"♥",red:true},
+ {rank:"A",suit:"♦",red:true},
+ {rank:"9",suit:"♦",red:true},
+ {rank:"6",suit:"♦",red:true},
+ {rank:"K",suit:"♣",red:false},
+ {rank:"Q",suit:"♣",red:false},
+ {rank:"9",suit:"♣",red:false},
+ {rank:"7",suit:"♣",red:false}
+];
+
+var hand = copyHand();
+var selectedIndex = -1;
+var score = 0;
+var round = 1;
+var bid = null;
+var trump = null;
+
+function copyHand(){
+
+ return originalHand.map(function(card){
+   return {
+     rank:card.rank,
+     suit:card.suit,
+     red:card.red
+   };
+ });
+
+}
+
+
+/* =========================================================
+   ELEMENTLER
+========================================================= */
+
+var rowTop = document.getElementById("rowTop");
+var rowBottom = document.getElementById("rowBottom");
+
+var message = document.getElementById("message");
+var scoreEl = document.getElementById("score");
+var roundEl = document.getElementById("round");
+
+var bidModal = document.getElementById("bidModal");
+var trumpModal = document.getElementById("trumpModal");
+
+var trumpValue = document.getElementById("trumpValue");
+var trumpIcon = document.getElementById("trumpIcon");
+
+var toast = document.getElementById("toast");
+
+
+/* =========================================================
+   MESAJ
+========================================================= */
+
+function setMessage(text){
+
+ message.innerHTML = text;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+var toastTimer;
+
+function showToast(text){
+
+ toast.textContent = text;
+
+ toast.classList.add("show");
+
+ clearTimeout(toastTimer);
+
+ toastTimer = setTimeout(function(){
+
+   toast.classList.remove("show");
+
+ },1800);
+
+}
+
+
+/* =========================================================
+   KART OLUŞTUR
+========================================================= */
+
+function createCard(card,index){
+
+ var element = document.createElement("div");
+
+ element.className = "card" + (card.red ? " red" : "");
+
+ element.innerHTML =
+   '<div class="cardTop">' +
+      card.rank + '<br>' + card.suit +
+   '</div>' +
+
+   '<div class="cardSuit">' +
+      card.suit +
+   '</div>' +
+
+   '<div class="cardBottom">' +
+      card.rank + '<br>' + card.suit +
+   '</div>';
+
+ element.addEventListener("click",function(){
+
+   selectCard(index,element);
+
+ });
+
+ return element;
+
+}
+
+
+/* =========================================================
+   KART SEÇ
+========================================================= */
+
+function selectCard(index,element){
+
+ var cards = document.querySelectorAll(".card");
+
+ for(var i=0;i<cards.length;i++){
+
+   cards[i].classList.remove("selected");
+
+ }
+
+ if(selectedIndex === index){
+
+   selectedIndex = -1;
+
+   setMessage("Kart seçimi kaldırıldı.");
+
+   return;
+
+ }
+
+ selectedIndex = index;
+
+ element.classList.add("selected");
+
+ var card = hand[index];
+
+ setMessage(
+   "<b>" +
+   card.rank +
+   card.suit +
+   "</b> seçildi. Tekrar dokunarak oyna."
+ );
+
+}
+
+
+/* =========================================================
+   KART OYNA
+========================================================= */
+
+function playSelected(){
+
+ if(selectedIndex < 0){
+
+   showToast("Önce bir kart seç.");
+
+   return;
+
+ }
+
+ if(hand.length === 0){
+
+   return;
+
+ }
+
+ var card = hand[selectedIndex];
+
+ setMessage(
+   "Sen <b>" +
+   card.rank +
+   card.suit +
+   "</b> oynadın."
+ );
+
+ score += 10;
+
+ scoreEl.textContent = score;
+
+ hand.splice(selectedIndex,1);
+
+ selectedIndex = -1;
+
+ renderHand();
+
+ if(hand.length === 0){
+
+   setTimeout(function(){
+
+     setMessage(
+       "<b>EL TAMAMLANDI!</b> Yeni oyun başlatabilirsin."
+     );
+
+   },350);
+
+ }
+
+}
+
+
+/* =========================================================
+   ELİ ÇİZ
+========================================================= */
+
+function renderHand(){
+
+ rowTop.innerHTML = "";
+ rowBottom.innerHTML = "";
+
+ for(var i=0;i<hand.length;i++){
+
+   var card = createCard(hand[i],i);
+
+   if(i < 7){
+
+     rowTop.appendChild(card);
+
+   }else{
+
+     rowBottom.appendChild(card);
+
+   }
+
+ }
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(element){
+
+ element.classList.add("show");
+
+}
+
+function closeModal(element){
+
+ element.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   İHALE
+========================================================= */
+
+document.getElementById("bidButton").addEventListener(
+ "click",
+ function(){
+
+   openModal(bidModal);
+
+ }
+);
+
+
+var bidButtons = document.querySelectorAll(".bidBtn");
+
+for(var i=0;i<bidButtons.length;i++){
+
+ bidButtons[i].addEventListener("click",function(){
+
+   bid = parseInt(this.getAttribute("data-bid"),10);
+
+   closeModal(bidModal);
+
+   setMessage(
+     "İhalen <b>" +
+     bid +
+     "</b>. Şimdi kozunu seç."
+   );
+
+   showToast("İhale: " + bid);
+
+   openModal(trumpModal);
+
+ });
+
+}
+
+
+/* =========================================================
+   KOZ
+========================================================= */
+
+document.getElementById("trumpButton").addEventListener(
+ "click",
+ function(){
+
+   openModal(trumpModal);
+
+ }
+);
+
+
+var suitButtons = document.querySelectorAll(".suitBtn");
+
+for(var j=0;j<suitButtons.length;j++){
+
+ suitButtons[j].addEventListener("click",function(){
+
+   trump = this.getAttribute("data-suit");
+
+   trumpValue.textContent = trump;
+
+   trumpIcon.textContent = trump;
+
+   if(trump === "♥" || trump === "♦"){
+
+     trumpIcon.classList.add("red");
+
+   }else{
+
+     trumpIcon.classList.remove("red");
+
+   }
+
+   closeModal(trumpModal);
+
+   if(bid){
+
+     setMessage(
+       "Koz <b>" +
+       trump +
+       "</b>. İhalen: <b>" +
+       bid +
+       "</b>. Oyun başladı!"
+     );
+
+   }else{
+
+     setMessage(
+       "Koz <b>" +
+       trump +
+       "</b> olarak seçildi."
+     );
+
+   }
+
+   showToast("Koz: " + trump);
+
+ });
+
+}
+
+
+/* =========================================================
+   YENİ OYUN
+========================================================= */
+
+document.getElementById("newButton").addEventListener(
+ "click",
+ function(){
+
+   hand = copyHand();
+
+   selectedIndex = -1;
+
+   score = 0;
+
+   round++;
+
+   bid = null;
+
+   trump = null;
+
+   scoreEl.textContent = score;
+
+   roundEl.textContent = round;
+
+   trumpValue.textContent = "BELİRLENMEDİ";
+
+   trumpIcon.textContent = "?";
+
+   trumpIcon.classList.remove("red");
+
+   closeModal(bidModal);
+   closeModal(trumpModal);
+
+   setMessage(
+     "Yeni el başladı. <b>İHALE</b> yapabilirsin."
+   );
+
+   showToast("Yeni el başladı");
+
+   renderHand();
+
+ }
+);
+
+
+/* =========================================================
+   MODAL DIŞINA TIKLA
+========================================================= */
+
+bidModal.addEventListener("click",function(e){
+
+ if(e.target === bidModal){
+
+   closeModal(bidModal);
+
+ }
+
+});
+
+
+trumpModal.addEventListener("click",function(e){
+
+ if(e.target === trumpModal){
+
+   closeModal(trumpModal);
+
+ }
+
+});
+
+
+/* =========================================================
+   KLAVYE
+========================================================= */
+
+document.addEventListener("keydown",function(e){
+
+ if(e.key === "Escape"){
+
+   closeModal(bidModal);
+   closeModal(trumpModal);
+
+ }
+
+ if(e.key === "Enter"){
+
+   playSelected();
+
+ }
+
+});
+
+
+/* =========================================================
+   KARTA ÇİFT TIKLAMA = OYNA
+========================================================= */
+
+document.addEventListener("dblclick",function(e){
+
+ var target = e.target;
+
+ while(target && !target.classList.contains("card")){
+
+   target = target.parentElement;
+
+ }
+
+ if(target && target.classList.contains("card")){
+
+   playSelected();
+
+ }
+
+});
+
+
+/* =========================================================
+   BAŞLAT
+========================================================= */
+
+renderHand();
+
+</script>
+
+</body>
+</html>
