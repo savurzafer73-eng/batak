@@ -466,8 +466,8 @@ white-space:nowrap
 
 .partnerCard{
 position:absolute;
-width:43px;
-height:62px;
+width:50px;
+height:72px;
 border-radius:6px;
 background:linear-gradient(145deg,#fff,#e8e6df);
 border:1px solid #bbb9b0;
@@ -496,9 +496,9 @@ color:#c52323
 
 .partnerCorner{
 position:absolute;
-top:3px;
-left:4px;
-font-size:7px;
+top:4px;
+left:5px;
+font-size:8px;
 font-weight:900;
 line-height:8px;
 text-align:center
@@ -513,15 +513,15 @@ transform:rotate(180deg)
 }
 
 .partnerSuit{
-font-size:8px
+font-size:9px
 }
 
 .partnerCenter{
 position:absolute;
-inset:12px;
+inset:14px;
 display:grid;
 place-items:center;
-font-size:20px
+font-size:22px
 }
 
 .partnerFace{
@@ -1687,7 +1687,7 @@ NAMES[current]+" pas"
 }
 
 
-current=(current+1)%4;
+current=(current+3)%4;
 
 
 if(current===leader){
@@ -1820,7 +1820,7 @@ showToast(
 
 close($("bidModal"));
 
-current=(current+1)%4;
+current=(current+3)%4;
 
 if(current===leader){
 
@@ -1858,7 +1858,7 @@ passSound();
 
 showToast("Sen pas geçtin");
 
-current=(current+1)%4;
+current=(current+3)%4;
 
 if(current===leader){
 
@@ -2202,7 +2202,7 @@ return;
 }
 
 
-current=(current+1)%4;
+current=(current+3)%4;
 
 updatePlayers();
 
