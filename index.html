@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -444,8 +445,8 @@ z-index:180;
 left:50%;
 top:105px;
 transform:translateX(-50%);
-width:min(570px,78vw);
-height:95px;
+width:min(720px,96vw);
+height:184px;
 display:none;
 pointer-events:none
 }
@@ -464,15 +465,18 @@ font-size:8px;
 white-space:nowrap
 }
 
+/* MASAÜSTÜ EŞ KARTI */
 .partnerCard{
 position:absolute;
-width:50px;
-height:72px;
-border-radius:6px;
-background:linear-gradient(145deg,#fff,#e8e6df);
-border:1px solid #bbb9b0;
+width:88px;
+height:126px;
+border-radius:9px;
+background:linear-gradient(145deg,#fff,#e9e8e2);
+border:1px solid #c8c7c0;
 color:#111;
-box-shadow:0 5px 12px #0008;
+box-shadow:
+0 9px 22px #0008,
+inset 0 0 0 2px #ffffff99;
 overflow:hidden;
 cursor:pointer;
 pointer-events:auto;
@@ -487,7 +491,7 @@ z-index:100
 .partnerCard.legal{
 box-shadow:
 0 0 0 2px #f3cf68,
-0 6px 15px #0009
+0 10px 24px #0009
 }
 
 .partnerCard.red{
@@ -496,39 +500,39 @@ color:#c52323
 
 .partnerCorner{
 position:absolute;
-top:4px;
-left:5px;
-font-size:8px;
+top:5px;
+left:6px;
+font-size:13px;
 font-weight:900;
-line-height:8px;
+line-height:14px;
 text-align:center
 }
 
 .partnerCorner.bottom{
 left:auto;
-right:4px;
+right:6px;
 top:auto;
-bottom:3px;
+bottom:5px;
 transform:rotate(180deg)
 }
 
 .partnerSuit{
-font-size:9px
+font-size:14px
 }
 
 .partnerCenter{
 position:absolute;
-inset:14px;
+inset:20px;
 display:grid;
 place-items:center;
-font-size:22px
+font-size:38px
 }
 
 .partnerFace{
 position:absolute;
-inset:12px 5px;
+inset:21px 8px;
 border:1px solid #b89240;
-border-radius:4px;
+border-radius:7px;
 background:linear-gradient(135deg,#f7e6a9,#c69d4c,#f5e3a4);
 display:flex;
 flex-direction:column;
@@ -537,17 +541,18 @@ justify-content:center
 }
 
 .partnerFaceSymbol{
-font-size:17px
+font-size:36px
 }
 
 .partnerFaceName{
-font-size:4px;
-font-weight:bold;
+font-size:8px;
+font-weight:900;
 color:#34250b
 }
 
 .partnerFaceSuit{
-font-size:8px
+font-size:17px;
+margin-top:2px
 }
 
 /* ================= USER HAND ================= */
@@ -856,58 +861,69 @@ left:4px
 bottom:183px
 }
 
+/*
+=====================================================
+MOBİLDE EŞİNİN KARTLARI 2 KAT BÜYÜK
+NORMAL MOBİL KART: 62 x 91
+EŞİNİN MOBİL KARTI: 124 x 182
+=====================================================
+*/
+
 .partnerHand{
-top:116px;
-width:94vw;
-height:82px
+top:108px;
+width:100vw;
+height:300px;
 }
 
 .partnerCard{
-width:27px;
-height:39px;
-border-radius:4px
+width:124px;
+height:182px;
+border-radius:12px;
 }
 
+/* Eş kartının içindeki yazılar da 2 kat */
 .partnerCorner{
-font-size:5px;
-line-height:6px;
-left:2px;
-top:2px
+font-size:20px;
+line-height:22px;
+left:8px;
+top:8px
 }
 
 .partnerCorner.bottom{
-right:2px;
-bottom:2px
+right:8px;
+bottom:8px
 }
 
 .partnerSuit{
-font-size:5px
+font-size:22px
 }
 
 .partnerCenter{
-inset:8px;
-font-size:14px
+inset:34px;
+font-size:54px
 }
 
 .partnerFace{
-inset:7px 3px
+inset:32px 10px;
+border-radius:10px
 }
 
 .partnerFaceSymbol{
-font-size:11px
+font-size:50px
 }
 
 .partnerFaceName{
-font-size:3px
+font-size:12px
 }
 
 .partnerFaceSuit{
-font-size:5px
+font-size:24px;
+margin-top:4px
 }
 
 .partnerTitle{
-top:-13px;
-font-size:6px
+top:-14px;
+font-size:7px
 }
 
 .hand{
@@ -980,6 +996,8 @@ top:99px
 
 }
 
+/* ================= SMALL MOBILE ================= */
+
 @media(max-width:390px){
 
 .card{
@@ -995,13 +1013,58 @@ top:45px
 height:168px
 }
 
+/*
+390px ALTINDA:
+NORMAL KART = 57 x 86
+EŞİNİN KARTI = 114 x 172
+*/
+
 .partnerCard{
-width:24px;
-height:35px
+width:114px;
+height:172px;
+border-radius:12px
 }
 
 .partnerHand{
-top:118px
+top:108px;
+height:285px
+}
+
+.partnerCorner{
+font-size:18px;
+line-height:20px;
+left:7px;
+top:7px
+}
+
+.partnerCorner.bottom{
+right:7px;
+bottom:7px
+}
+
+.partnerSuit{
+font-size:20px
+}
+
+.partnerCenter{
+inset:31px;
+font-size:50px
+}
+
+.partnerFace{
+inset:30px 9px
+}
+
+.partnerFaceSymbol{
+font-size:46px
+}
+
+.partnerFaceName{
+font-size:11px
+}
+
+.partnerFaceSuit{
+font-size:22px
 }
 
 }
@@ -1011,8 +1074,6 @@ top:118px
 <body>
 
 <div id="app">
-
-<!-- ================= MENU ================= -->
 
 <div id="menu">
 
@@ -1076,9 +1137,6 @@ OYUNA BAŞLA
 
 </div>
 
-
-<!-- ================= GAME ================= -->
-
 <div id="game">
 
 <div class="top">
@@ -1109,7 +1167,6 @@ El <span id="round">1</span>
 
 </div>
 
-
 <div class="info" id="info">
 Oyun hazırlanıyor
 </div>
@@ -1118,10 +1175,7 @@ Oyun hazırlanıyor
 Koz: ♠
 </div>
 
-
 <div class="table">
-
-<!-- MERT = EŞ -->
 
 <div class="player p0" id="p0">
 
@@ -1137,9 +1191,6 @@ Koz: ♠
 
 </div>
 
-
-<!-- EMRE -->
-
 <div class="player p1" id="p1">
 
 <div class="pavatar">E</div>
@@ -1153,9 +1204,6 @@ Koz: ♠
 </div>
 
 </div>
-
-
-<!-- SEN -->
 
 <div class="player p2" id="p2">
 
@@ -1171,9 +1219,6 @@ Koz: ♠
 
 </div>
 
-
-<!-- AHMET -->
-
 <div class="player p3" id="p3">
 
 <div class="pavatar">A</div>
@@ -1188,13 +1233,9 @@ Koz: ♠
 
 </div>
 
-
 <div class="center" id="center"></div>
 
 </div>
-
-
-<!-- ================= MERT ELİ ================= -->
 
 <div class="partnerHand" id="partnerHand">
 
@@ -1205,9 +1246,6 @@ MERT • EŞİN • KARTINI SEN SEÇ
 <div id="partnerCards"></div>
 
 </div>
-
-
-<!-- ================= CONTROLS ================= -->
 
 <div class="controls" id="controls">
 
@@ -1221,13 +1259,7 @@ KOZ SEÇ
 
 </div>
 
-
-<!-- ================= USER HAND ================= -->
-
 <div class="hand" id="hand"></div>
-
-
-<!-- ================= BID ================= -->
 
 <div class="modal" id="bidModal">
 
@@ -1246,9 +1278,6 @@ PAS
 </div>
 
 </div>
-
-
-<!-- ================= TRUMP ================= -->
 
 <div class="modal" id="trumpModal">
 
@@ -1282,9 +1311,6 @@ PAS
 
 </div>
 
-
-<!-- ================= RESULT ================= -->
-
 <div class="modal" id="resultModal">
 
 <div class="box">
@@ -1301,26 +1327,14 @@ SONRAKİ EL
 
 </div>
 
-
 <div class="toast" id="toast"></div>
 
 </div>
 
 </div>
 
-
 <script>
 "use strict";
-
-
-/* =====================================================
-   OYUNCULAR
-
-   0 = MERT = EŞİN
-   1 = EMRE = RAKİP
-   2 = SEN
-   3 = AHMET = RAKİP
-===================================================== */
 
 const USER=2;
 const PARTNER=0;
@@ -1328,69 +1342,33 @@ const PARTNER=0;
 const SUITS=["♠","♥","♦","♣"];
 
 const RANKS=[
-["2",2],
-["3",3],
-["4",4],
-["5",5],
-["6",6],
-["7",7],
-["8",8],
-["9",9],
-["10",10],
-["J",11],
-["Q",12],
-["K",13],
-["A",14]
+["2",2],["3",3],["4",4],["5",5],["6",6],
+["7",7],["8",8],["9",9],["10",10],
+["J",11],["Q",12],["K",13],["A",14]
 ];
 
-const NAMES=[
-"MERT",
-"EMRE",
-"SEN",
-"AHMET"
-];
+const NAMES=["MERT","EMRE","SEN","AHMET"];
 
 let selectedMode="ihale";
-
 let players=[];
 let deck=[];
-
 let current=0;
 let leader=0;
-
 let bidder=-1;
 let highestBid=0;
-
 let trump=null;
 let leadSuit=null;
-
 let trick=[];
-
 let tricks=[0,0,0,0];
-
 let round=1;
 
-let coins=
-Number(localStorage.getItem("batakCoins")||1000);
-
-let level=
-Number(localStorage.getItem("batakLevel")||1);
+let coins=Number(localStorage.getItem("batakCoins")||1000);
+let level=Number(localStorage.getItem("batakLevel")||1);
 
 let sound=true;
-
 let busy=false;
 
-
-/* =====================================================
-   DOM
-===================================================== */
-
 const $=id=>document.getElementById(id);
-
-
-/* =====================================================
-   MODE
-===================================================== */
 
 document.querySelectorAll(".mode").forEach(btn=>{
 
@@ -1409,84 +1387,52 @@ clickSound();
 
 });
 
-
-/* =====================================================
-   START
-===================================================== */
-
 $("start").onclick=()=>{
 
 unlockAudio();
-
 startSound();
 
 $("menu").style.display="none";
-
 $("game").style.display="block";
 
 setTimeout(newGame,150);
 
 };
 
-
-/* =====================================================
-   MENU
-===================================================== */
-
 $("menuBtn").onclick=()=>{
 
 clickSound();
 
 $("game").style.display="none";
-
 $("menu").style.display="flex";
 
 };
-
-
-/* =====================================================
-   SOUND
-===================================================== */
 
 $("sound").onclick=()=>{
 
 if(!sound){
 
 sound=true;
-
 $("sound").textContent="🔊";
 
 unlockAudio();
-
 playTone(520,.1,.18,"sine");
 
 }else{
 
 sound=false;
-
 $("sound").textContent="🔇";
 
 }
 
 };
 
-
-/* =====================================================
-   NEW GAME
-===================================================== */
-
 function newGame(){
 
 round=1;
-
 newRound();
 
 }
-
-
-/* =====================================================
-   DECK
-===================================================== */
 
 function createDeck(){
 
@@ -1511,27 +1457,19 @@ return shuffle(d);
 
 }
 
-
 function shuffle(a){
 
 for(let i=a.length-1;i>0;i--){
 
-let j=
-Math.floor(Math.random()*(i+1));
+let j=Math.floor(Math.random()*(i+1));
 
-[a[i],a[j]]=
-[a[j],a[i]];
+[a[i],a[j]]=[a[j],a[i]];
 
 }
 
 return a;
 
 }
-
-
-/* =====================================================
-   NEW ROUND
-===================================================== */
 
 function newRound(){
 
@@ -1546,73 +1484,48 @@ players=[
 {name:"AHMET",hand:[]}
 ];
 
-
 for(let i=0;i<13;i++){
 
 for(let p=0;p<4;p++){
 
-players[p].hand.push(
-deck.pop()
-);
+players[p].hand.push(deck.pop());
 
 }
 
 }
-
 
 players.forEach(p=>{
 p.hand.sort(sortCards);
 });
 
-
 trick=[];
-
 tricks=[0,0,0,0];
 
 leadSuit=null;
-
 trump=null;
-
 bidder=-1;
-
 highestBid=0;
 
-current=
-Math.floor(Math.random()*4);
-
+current=Math.floor(Math.random()*4);
 leader=current;
 
 $("round").textContent=round;
-
 $("trump").style.display="none";
-
 $("center").innerHTML="";
 
 hidePartnerHand();
-
 hideControls();
 
 renderHand();
-
 updatePlayers();
-
 startAuction();
 
 }
 
-
-/* =====================================================
-   KART SIRALAMA
-   A → K → Q → J → 10 → 9 → 8 → 7 → 6 → 5 → 4 → 3 → 2
-===================================================== */
-
 function sortCards(a,b){
 
-let sa=
-SUITS.indexOf(a.suit);
-
-let sb=
-SUITS.indexOf(b.suit);
+let sa=SUITS.indexOf(a.suit);
+let sb=SUITS.indexOf(b.suit);
 
 if(sa!==sb)
 return sa-sb;
@@ -1621,74 +1534,51 @@ return b.value-a.value;
 
 }
 
-
-/* =====================================================
-   AUCTION
-===================================================== */
-
 function startAuction(){
 
 current=leader;
-
 highestBid=0;
-
 bidder=-1;
 
-$("info").textContent=
-"Oyuncular teklif veriyor";
+$("info").textContent="Oyuncular teklif veriyor";
 
 auctionTurn();
 
 }
 
-
 function auctionTurn(){
 
 hideControls();
-
 updatePlayers();
-
 
 if(current===USER){
 
 showBidButton();
-
 return;
 
 }
 
-
 setTimeout(()=>{
 
-let bid=
-aiBid(players[current].hand);
-
+let bid=aiBid(players[current].hand);
 
 if(bid>highestBid){
 
 highestBid=bid;
-
 bidder=current;
 
 bidSound();
 
-showToast(
-NAMES[current]+" "+bid+" dedi"
-);
+showToast(NAMES[current]+" "+bid+" dedi");
 
 }else{
 
 passSound();
-
-showToast(
-NAMES[current]+" pas"
-);
+showToast(NAMES[current]+" pas");
 
 }
 
-
 current=(current+3)%4;
-
 
 if(current===leader){
 
@@ -1704,104 +1594,61 @@ auctionTurn();
 
 }
 
-
-/* =====================================================
-   AI BID
-===================================================== */
-
 function aiBid(hand){
 
 let score=0;
 
 hand.forEach(c=>{
 
-if(c.rank==="A")
-score+=1;
-
-if(c.rank==="K")
-score+=.7;
-
-if(c.rank==="Q")
-score+=.35;
-
-if(c.rank==="J")
-score+=.15;
+if(c.rank==="A") score+=1;
+if(c.rank==="K") score+=.7;
+if(c.rank==="Q") score+=.35;
+if(c.rank==="J") score+=.15;
 
 });
-
 
 let counts={};
 
 hand.forEach(c=>{
-
-counts[c.suit]=
-(counts[c.suit]||0)+1;
-
+counts[c.suit]=(counts[c.suit]||0)+1;
 });
 
-
-let values=
-Object.values(counts);
-
-let max=
-values.length?
-Math.max(...values):
-0;
+let values=Object.values(counts);
+let max=values.length?Math.max(...values):0;
 
 score+=(max-3)*.35;
 
-return Math.max(
-0,
-Math.min(
-10,
-Math.floor(score)
-)
-);
+return Math.max(0,Math.min(10,Math.floor(score)));
 
 }
-
-
-/* =====================================================
-   USER BID
-===================================================== */
 
 function showBidButton(){
 
 $("controls").style.display="flex";
-
 $("bidButton").style.display="block";
-
 $("trumpButton").style.display="none";
 
 $("info").textContent=
 highestBid
-?
-"Teklifi yükselt veya pas geç"
-:
-"Teklifini ver";
+?"Teklifi yükselt veya pas geç"
+:"Teklifini ver";
 
 }
-
 
 $("bidButton").onclick=()=>{
 
 unlockAudio();
 
 let grid=$("bidGrid");
-
 grid.innerHTML="";
 
-let min=
-Math.max(1,highestBid+1);
-
+let min=Math.max(1,highestBid+1);
 
 for(let n=min;n<=13;n++){
 
-let b=
-document.createElement("button");
+let b=document.createElement("button");
 
 b.className="bid";
-
 b.textContent=n;
 
 b.onclick=()=>{
@@ -1809,14 +1656,11 @@ b.onclick=()=>{
 unlockAudio();
 
 highestBid=n;
-
 bidder=USER;
 
 bidSound();
 
-showToast(
-"Sen "+n+" dedin"
-);
+showToast("Sen "+n+" dedin");
 
 close($("bidModal"));
 
@@ -1838,15 +1682,9 @@ grid.appendChild(b);
 
 }
 
-
 $("bidModal").style.display="flex";
 
 };
-
-
-/* =====================================================
-   PASS
-===================================================== */
 
 $("pass").onclick=()=>{
 
@@ -1872,49 +1710,31 @@ auctionTurn();
 
 };
 
-
-/* =====================================================
-   FINISH AUCTION
-===================================================== */
-
 function finishAuction(){
 
 hideControls();
 
-
 if(bidder===-1){
 
 bidder=leader;
-
 highestBid=1;
 
 }
 
-
 $("info").textContent=
-NAMES[bidder]+
-" ihaleyi "+
-highestBid+
-" ile aldı";
+NAMES[bidder]+" ihaleyi "+highestBid+" ile aldı";
 
-
-if(
-selectedMode==="esli" &&
-bidder===USER
-){
+if(selectedMode==="esli" && bidder===USER){
 
 showPartnerHand();
 
-showToast(
-"MERT'in eli açıldı"
-);
+showToast("MERT'in eli açıldı");
 
 }else{
 
 hidePartnerHand();
 
 }
-
 
 setTimeout(()=>{
 
@@ -1924,19 +1744,14 @@ openTrump();
 
 }else{
 
-trump=
-bestTrump(
-players[bidder].hand
-);
+trump=bestTrump(players[bidder].hand);
 
 trumpSound();
-
 showTrump();
 
 setTimeout(()=>{
 
 current=bidder;
-
 startTrick();
 
 },600);
@@ -1947,39 +1762,21 @@ startTrick();
 
 }
 
-
-/* =====================================================
-   BEST TRUMP
-===================================================== */
-
 function bestTrump(hand){
 
 let totals={};
 
 SUITS.forEach(s=>{
 
-totals[s]=
-hand
+totals[s]=hand
 .filter(c=>c.suit===s)
-.reduce(
-(a,c)=>a+c.value,
-0
-);
+.reduce((a,c)=>a+c.value,0);
 
 });
 
-
-return [...SUITS]
-.sort(
-(a,b)=>totals[b]-totals[a]
-)[0];
+return [...SUITS].sort((a,b)=>totals[b]-totals[a])[0];
 
 }
-
-
-/* =====================================================
-   TRUMP
-===================================================== */
 
 function openTrump(){
 
@@ -1989,62 +1786,44 @@ $("trumpModal").style.display="flex";
 
 }
 
-
 document.querySelectorAll(".suit").forEach(btn=>{
 
 btn.onclick=()=>{
 
 unlockAudio();
 
-trump=
-btn.dataset.suit;
+trump=btn.dataset.suit;
 
 close($("trumpModal"));
 
 trumpSound();
-
 showTrump();
 
 current=bidder;
 
-setTimeout(
-startTrick,
-500
-);
+setTimeout(startTrick,500);
 
 };
 
 });
 
-
 function showTrump(){
 
-$("trump").textContent=
-"Koz: "+trump;
-
+$("trump").textContent="Koz: "+trump;
 $("trump").style.display="block";
 
 }
 
-
-/* =====================================================
-   START TRICK
-===================================================== */
-
 function startTrick(){
 
 trick=[];
-
 leadSuit=null;
 
 $("center").innerHTML="";
 
 updatePlayers();
-
 renderHand();
-
 renderPartnerHand();
-
 
 if(
 current===PARTNER &&
@@ -2052,84 +1831,50 @@ selectedMode==="esli" &&
 bidder===USER
 ){
 
-$("info").textContent=
-"MERT'in kartını seç";
-
+$("info").textContent="MERT'in kartını seç";
 renderPartnerHand();
-
 return;
 
 }
-
 
 if(current===USER){
 
-$("info").textContent=
-"Kartını seç";
-
+$("info").textContent="Kartını seç";
 renderHand();
-
 return;
 
 }
 
+$("info").textContent=NAMES[current]+" oynuyor";
 
-$("info").textContent=
-NAMES[current]+" oynuyor";
-
-setTimeout(
-aiTurn,
-550
-);
+setTimeout(aiTurn,550);
 
 }
 
-
-/* =====================================================
-   LEGAL
-===================================================== */
-
 function legalCards(index){
 
-let hand=
-players[index].hand;
+let hand=players[index].hand;
 
 if(!leadSuit)
 return hand;
 
-let same=
-hand.filter(
-c=>c.suit===leadSuit
-);
+let same=hand.filter(c=>c.suit===leadSuit);
 
-return same.length?
-same:
-hand;
+return same.length?same:hand;
 
 }
-
-
-/* =====================================================
-   PLAY CARD
-===================================================== */
 
 function playCard(player,card){
 
 if(busy)
 return;
 
+let hand=players[player].hand;
 
-let hand=
-players[player].hand;
-
-let index=
-hand.findIndex(
-c=>c.id===card.id
-);
+let index=hand.findIndex(c=>c.id===card.id);
 
 if(index<0)
 return;
-
 
 if(
 player===USER ||
@@ -2140,19 +1885,11 @@ bidder===USER
 )
 ){
 
-let legal=
-legalCards(player);
+let legal=legalCards(player);
 
-if(
-!legal.some(
-c=>c.id===card.id
-)
-){
+if(!legal.some(c=>c.id===card.id)){
 
-showToast(
-"Renk takip etmelisin"
-);
-
+showToast("Renk takip etmelisin");
 errorSound();
 
 return;
@@ -2161,51 +1898,34 @@ return;
 
 }
 
-
 hand.splice(index,1);
 
 if(!leadSuit)
 leadSuit=card.suit;
 
+trick.push({player,card});
 
-trick.push({
-player,
-card
-});
-
-
-renderPlayed(
-player,
-card
-);
+renderPlayed(player,card);
 
 renderHand();
-
 renderPartnerHand();
-
 updatePlayers();
 
 cardSound();
-
 
 if(trick.length===4){
 
 busy=true;
 
-setTimeout(
-resolveTrick,
-750
-);
+setTimeout(resolveTrick,750);
 
 return;
 
 }
 
-
 current=(current+3)%4;
 
 updatePlayers();
-
 
 if(
 current===PARTNER &&
@@ -2213,41 +1933,26 @@ selectedMode==="esli" &&
 bidder===USER
 ){
 
-$("info").textContent=
-"MERT'in kartını seç";
-
+$("info").textContent="MERT'in kartını seç";
 renderPartnerHand();
-
 return;
 
 }
 
-
 if(current===USER){
 
-$("info").textContent=
-"Kartını seç";
-
+$("info").textContent="Kartını seç";
 renderHand();
 
 }else{
 
-$("info").textContent=
-NAMES[current]+" oynuyor";
+$("info").textContent=NAMES[current]+" oynuyor";
 
-setTimeout(
-aiTurn,
-550
-);
+setTimeout(aiTurn,550);
 
 }
 
 }
-
-
-/* =====================================================
-   PARTNER PLAY
-===================================================== */
 
 function playPartnerCard(card){
 
@@ -2261,23 +1966,14 @@ return;
 
 unlockAudio();
 
-playCard(
-PARTNER,
-card
-);
+playCard(PARTNER,card);
 
 }
-
-
-/* =====================================================
-   AI
-===================================================== */
 
 function aiTurn(){
 
 if(busy)
 return;
-
 
 if(
 current===PARTNER &&
@@ -2289,160 +1985,80 @@ return;
 
 }
 
-
-let legal=
-legalCards(current);
-
+let legal=legalCards(current);
 let card;
-
 
 if(!leadSuit){
 
-card=
-[...legal]
-.sort(
-(a,b)=>a.value-b.value
-)[0];
+card=[...legal].sort((a,b)=>a.value-b.value)[0];
 
 }else{
 
-let winning=
-legal.filter(
-c=>wouldWin(c)
-);
+let winning=legal.filter(c=>wouldWin(c));
 
 if(winning.length){
 
-card=
-[...winning]
-.sort(
-(a,b)=>a.value-b.value
-)[0];
+card=[...winning].sort((a,b)=>a.value-b.value)[0];
 
 }else{
 
-card=
-[...legal]
-.sort(
-(a,b)=>a.value-b.value
-)[0];
+card=[...legal].sort((a,b)=>a.value-b.value)[0];
 
 }
 
 }
 
-
-playCard(
-current,
-card
-);
+playCard(current,card);
 
 }
-
-
-/* =====================================================
-   WOULD WIN
-===================================================== */
 
 function wouldWin(card){
 
 if(!trick.length)
 return true;
 
-
-let best=
-trick[0].card;
-
+let best=trick[0].card;
 
 for(let i=1;i<trick.length;i++){
 
-if(
-beats(
-trick[i].card,
-best
-)
-){
-
-best=
-trick[i].card;
-
+if(beats(trick[i].card,best)){
+best=trick[i].card;
 }
 
 }
 
-
-return beats(
-card,
-best
-);
+return beats(card,best);
 
 }
-
-
-/* =====================================================
-   BEATS
-===================================================== */
 
 function beats(a,b){
 
 if(a.suit===b.suit)
 return a.value>b.value;
 
-
-if(
-a.suit===trump &&
-b.suit!==trump
-)
+if(a.suit===trump && b.suit!==trump)
 return true;
 
-
-if(
-a.suit!==trump &&
-b.suit===trump
-)
+if(a.suit!==trump && b.suit===trump)
 return false;
 
-
-if(
-a.suit===leadSuit &&
-b.suit!==leadSuit
-)
+if(a.suit===leadSuit && b.suit!==leadSuit)
 return true;
-
 
 return false;
 
 }
-
-
-/* =====================================================
-   RENDER PLAYED
-===================================================== */
 
 function renderPlayed(player,card){
 
-let el=
-document.createElement("div");
+let el=document.createElement("div");
 
-let classes=[
-"a",
-"b",
-"c",
-"d"
-];
+let classes=["a","b","c","d"];
 
-el.className=
-"played "+
-classes[player];
+el.className="played "+classes[player];
 
-if(
-card.suit==="♥"||
-card.suit==="♦"
-){
-
+if(card.suit==="♥"||card.suit==="♦")
 el.classList.add("red");
-
-}
 
 el.innerHTML=
 card.rank+
@@ -2456,25 +2072,15 @@ $("center").appendChild(el);
 
 }
 
-
-/* =====================================================
-   KAZANAN TARAFA KARTLARI KAYDIR
-===================================================== */
-
 function animateTrickToWinner(winnerPlayer){
 
-const cards=
-document.querySelectorAll(
-"#center .played"
-);
+const cards=document.querySelectorAll("#center .played");
 
 if(!cards.length)
 return;
 
-
 let targetX=0;
 let targetY=0;
-
 
 if(winnerPlayer===0){
 
@@ -2498,36 +2104,25 @@ targetY=0;
 
 }
 
-
 cards.forEach((card,index)=>{
 
 card.classList.add("trick-winning");
 
-let spread=
-(index-1.5)*12;
+let spread=(index-1.5)*12;
 
 let finalX=
 targetX+
 (
-winnerPlayer===0 ||
-winnerPlayer===2
-?
-spread
-:
-0
+winnerPlayer===0||winnerPlayer===2
+?spread:0
 );
 
 let finalY=
 targetY+
 (
-winnerPlayer===1 ||
-winnerPlayer===3
-?
-spread
-:
-0
+winnerPlayer===1||winnerPlayer===3
+?spread:0
 );
-
 
 card.style.left=
 `calc(50% + ${finalX}px)`;
@@ -2535,12 +2130,9 @@ card.style.left=
 card.style.top=
 `calc(50% + ${finalY}px)`;
 
-
 card.style.transform=
-`translate(-50%,-50%)
-scale(.72)
+`translate(-50%,-50%) scale(.72)
 rotate(${(index-1.5)*5}deg)`;
-
 
 card.style.opacity="0.12";
 
@@ -2548,53 +2140,28 @@ card.style.opacity="0.12";
 
 }
 
-
-/* =====================================================
-   RESOLVE TRICK
-===================================================== */
-
 function resolveTrick(){
 
-let winner=
-trick[0];
-
+let winner=trick[0];
 
 for(let i=1;i<trick.length;i++){
 
-if(
-beats(
-trick[i].card,
-winner.card
-)
-){
-
-winner=
-trick[i];
-
+if(beats(trick[i].card,winner.card)){
+winner=trick[i];
 }
 
 }
 
-
-const winnerPlayer=
-winner.player;
-
+const winnerPlayer=winner.player;
 
 tricks[winnerPlayer]++;
 
-leader=
-winnerPlayer;
-
-current=
-winnerPlayer;
+leader=winnerPlayer;
+current=winnerPlayer;
 
 updatePlayers();
 
-
-animateTrickToWinner(
-winnerPlayer
-);
-
+animateTrickToWinner(winnerPlayer);
 
 if(
 winnerPlayer===USER ||
@@ -2613,30 +2180,19 @@ cardSound();
 
 }
 
-
-showToast(
-NAMES[winnerPlayer]+
-" eli aldı"
-);
-
+showToast(NAMES[winnerPlayer]+" eli aldı");
 
 setTimeout(()=>{
 
 $("center").innerHTML="";
 
-
-if(
-players.every(
-p=>p.hand.length===0
-)
-){
+if(players.every(p=>p.hand.length===0)){
 
 finishRound();
 
 }else{
 
 busy=false;
-
 startTrick();
 
 }
@@ -2645,94 +2201,55 @@ startTrick();
 
 }
 
-
-/* =====================================================
-   USER HAND
-===================================================== */
-
 function renderHand(){
 
-let container=
-$("hand");
+let container=$("hand");
 
 container.innerHTML="";
 
 if(!players[USER])
 return;
 
+let hand=players[USER].hand;
+let legal=legalCards(USER);
 
-let hand=
-players[USER].hand;
+hand.forEach((card,index)=>{
 
-let legal=
-legalCards(USER);
-
-
-hand.forEach(
-(card,index)=>{
-
-let el=
-document.createElement("div");
+let el=document.createElement("div");
 
 el.className=
 "card "+
-(
-index<7?
-"upper":
-"lower"
-);
-
+(index<7?"upper":"lower");
 
 if(
 current===USER &&
-legal.some(
-c=>c.id===card.id
-)
+legal.some(c=>c.id===card.id)
 ){
 
 el.classList.add("legal");
 
 }
 
-
-if(
-card.suit==="♥"||
-card.suit==="♦"
-){
-
+if(card.suit==="♥"||card.suit==="♦")
 el.classList.add("red");
-
-}
-
 
 if(index<7){
 
-let x=
-(index/6)*72+14;
+let x=(index/6)*72+14;
 
-el.style.left=
-x+"%";
-
-el.style.transform=
-"translateX(-50%)";
+el.style.left=x+"%";
+el.style.transform="translateX(-50%)";
 
 }else{
 
-let x=
-((index-7)/5)*60+20;
+let x=((index-7)/5)*60+20;
 
-el.style.left=
-x+"%";
-
-el.style.transform=
-"translateX(-50%)";
+el.style.left=x+"%";
+el.style.transform="translateX(-50%)";
 
 }
 
-
-el.innerHTML=
-cardHTML(card);
-
+el.innerHTML=cardHTML(card);
 
 el.onclick=()=>{
 
@@ -2741,13 +2258,9 @@ return;
 
 unlockAudio();
 
-playCard(
-USER,
-card
-);
+playCard(USER,card);
 
 };
-
 
 container.appendChild(el);
 
@@ -2755,15 +2268,9 @@ container.appendChild(el);
 
 }
 
-
-/* =====================================================
-   CARD HTML
-===================================================== */
-
 function cardHTML(card){
 
 let face="";
-
 
 if(card.rank==="J"){
 
@@ -2805,7 +2312,6 @@ ${card.suit}
 
 }
 
-
 return `
 <div class="corner">
 ${card.rank}
@@ -2826,11 +2332,6 @@ ${card.suit}
 
 }
 
-
-/* =====================================================
-   PARTNER HAND
-===================================================== */
-
 function showPartnerHand(){
 
 if(
@@ -2839,7 +2340,6 @@ bidder!==USER
 ){
 
 hidePartnerHand();
-
 return;
 
 }
@@ -2850,19 +2350,12 @@ renderPartnerHand();
 
 }
 
-
 function hidePartnerHand(){
 
 $("partnerHand").style.display="none";
-
 $("partnerCards").innerHTML="";
 
 }
-
-
-/*
-MERT'İN 13 KARTI AÇIK.
-*/
 
 function renderPartnerHand(){
 
@@ -2872,81 +2365,66 @@ bidder!==USER
 ){
 
 hidePartnerHand();
-
 return;
 
 }
 
-
-let container=
-$("partnerCards");
+let container=$("partnerCards");
 
 container.innerHTML="";
 
+let hand=players[PARTNER].hand;
+let legal=legalCards(PARTNER);
 
-let hand=
-players[PARTNER].hand;
+hand.forEach((card,index)=>{
 
-let legal=
-legalCards(PARTNER);
+let el=document.createElement("div");
 
-
-hand.forEach(
-(card,index)=>{
-
-let el=
-document.createElement("div");
-
-el.className=
-"partnerCard";
-
+el.className="partnerCard";
 
 if(
 current===PARTNER &&
-legal.some(
-c=>c.id===card.id
-)
+legal.some(c=>c.id===card.id)
 ){
 
 el.classList.add("legal");
 
 }
 
-
-if(
-card.suit==="♥"||
-card.suit==="♦"
-){
-
+if(card.suit==="♥"||card.suit==="♦")
 el.classList.add("red");
-
-}
-
 
 if(index<7){
 
-let x=
-14+(index/6)*72;
+let x=(index/6)*72+14;
 
 el.style.left=x+"%";
-
 el.style.top="0";
 
 }else{
 
-let x=
-20+((index-7)/5)*60;
+let x=((index-7)/5)*60+20;
 
 el.style.left=x+"%";
 
-el.style.top="29px";
+/*
+MOBİLDE KARTLARIN 2 KAT BOYUTUNA
+UYGUN OLARAK İKİNCİ SIRA DAHA AŞAĞIDA
+*/
+
+if(window.innerWidth<=700){
+
+el.style.top="105px";
+
+}else{
+
+el.style.top="55px";
 
 }
 
+}
 
-el.innerHTML=
-partnerCardHTML(card);
-
+el.innerHTML=partnerCardHTML(card);
 
 el.onclick=()=>{
 
@@ -2962,22 +2440,15 @@ playPartnerCard(card);
 
 };
 
-
 container.appendChild(el);
 
 });
 
 }
 
-
-/* =====================================================
-   PARTNER CARD HTML
-===================================================== */
-
 function partnerCardHTML(card){
 
 let face="";
-
 
 if(card.rank==="J"){
 
@@ -3019,7 +2490,6 @@ ${card.suit}
 
 }
 
-
 return `
 
 <div class="partnerCorner">
@@ -3048,49 +2518,28 @@ ${card.suit}
 
 }
 
-
-/* =====================================================
-   PLAYERS
-===================================================== */
-
 function updatePlayers(){
 
 for(let i=0;i<4;i++){
 
 $("p"+i)
-.classList.toggle(
-"active",
-current===i
-);
+.classList.toggle("active",current===i);
 
 $("p"+i)
 .querySelector(".pscore")
-.textContent=
-tricks[i]+" el";
+.textContent=tricks[i]+" el";
 
 }
 
 }
-
-
-/* =====================================================
-   CONTROLS
-===================================================== */
 
 function hideControls(){
 
 $("controls").style.display="none";
-
 $("bidButton").style.display="none";
-
 $("trumpButton").style.display="none";
 
 }
-
-
-/* =====================================================
-   RESULT
-===================================================== */
 
 function finishRound(){
 
@@ -3098,15 +2547,10 @@ hideControls();
 
 let html="";
 
-
 if(selectedMode==="esli"){
 
-let myTeam=
-tricks[USER]+tricks[PARTNER];
-
-let enemyTeam=
-tricks[1]+tricks[3];
-
+let myTeam=tricks[USER]+tricks[PARTNER];
+let enemyTeam=tricks[1]+tricks[3];
 
 html+=`
 
@@ -3121,45 +2565,36 @@ html+=`
 </div>
 `;
 
-
 if(
 bidder===USER &&
 myTeam>=highestBid
 ){
 
 html+=`
-
 <div class="resultRow">
 <span>SONUÇ</span>
 <b>KAZANDIN</b>
 </div>
-
 `;
 
 }else if(bidder===USER){
 
 html+=`
-
 <div class="resultRow">
 <span>SONUÇ</span>
 <b>KAYBETTİN</b>
 </div>
-
 `;
 
 }else{
 
 html+=`
-
 <div class="resultRow">
 <span>SONUÇ</span>
 <b>
-${myTeam>enemyTeam?
-"KAZANDIN":
-"KAYBETTİN"}
+${myTeam>enemyTeam?"KAZANDIN":"KAYBETTİN"}
 </b>
 </div>
-
 `;
 
 }
@@ -3168,34 +2603,27 @@ ${myTeam>enemyTeam?
 
 for(let i=0;i<4;i++){
 
-let score=
-tricks[i];
+let score=tricks[i];
 
 if(i===bidder){
 
-if(
-tricks[i]>=highestBid
-){
+if(tricks[i]>=highestBid){
 
 score+=highestBid;
 
 }else{
 
-score=
--highestBid*2;
+score=-highestBid*2;
 
 }
 
 }
-
 
 html+=`
 
 <div class="resultRow">
 
-<span>
-${NAMES[i]}
-</span>
+<span>${NAMES[i]}</span>
 
 <b>
 ${score>0?"+":""}${score}
@@ -3209,14 +2637,10 @@ ${score>0?"+":""}${score}
 
 }
 
-
 $("results").innerHTML=html;
-
 $("resultModal").style.display="flex";
 
-
 let success=false;
-
 
 if(selectedMode==="esli"){
 
@@ -3232,70 +2656,40 @@ tricks[USER]>=highestBid;
 
 }
 
-
 if(success){
 
 coins+=100;
-
 level++;
 
-localStorage.setItem(
-"batakCoins",
-coins
-);
-
-localStorage.setItem(
-"batakLevel",
-level
-);
+localStorage.setItem("batakCoins",coins);
+localStorage.setItem("batakLevel",level);
 
 winSound();
 
 }else{
 
-coins=
-Math.max(
-0,
-coins+20
-);
+coins=Math.max(0,coins+20);
 
-localStorage.setItem(
-"batakCoins",
-coins
-);
+localStorage.setItem("batakCoins",coins);
 
 }
-
 
 updateProfile();
 
 }
 
-
-/* =====================================================
-   NEXT
-===================================================== */
-
 $("next").onclick=()=>{
 
 unlockAudio();
-
 clickSound();
 
-close(
-$("resultModal")
-);
+close($("resultModal"));
 
 round++;
 
 newRound();
 
 };
-
-
-/* =====================================================
-   TOAST
-===================================================== */
 
 let toastTimer;
 
@@ -3304,13 +2698,11 @@ function showToast(text){
 let t=$("toast");
 
 t.textContent=text;
-
 t.classList.add("show");
 
 clearTimeout(toastTimer);
 
-toastTimer=
-setTimeout(()=>{
+toastTimer=setTimeout(()=>{
 
 t.classList.remove("show");
 
@@ -3318,19 +2710,11 @@ t.classList.remove("show");
 
 }
 
-
-/* =====================================================
-   AUDIO
-===================================================== */
-
 let audio=null;
-
 let masterGain=null;
-
 let compressor=null;
 
 const MASTER_VOLUME=.95;
-
 
 function initAudio(){
 
@@ -3345,55 +2729,33 @@ return;
 
 }
 
-
 audio=
 new(
 window.AudioContext||
 window.webkitAudioContext
 )();
 
+masterGain=audio.createGain();
+masterGain.gain.value=MASTER_VOLUME;
 
-masterGain=
-audio.createGain();
-
-masterGain.gain.value=
-MASTER_VOLUME;
-
-
-compressor=
-audio.createDynamicsCompressor();
+compressor=audio.createDynamicsCompressor();
 
 compressor.threshold.value=-18;
-
 compressor.knee.value=12;
-
 compressor.ratio.value=5;
-
 compressor.attack.value=.003;
-
 compressor.release.value=.15;
 
-
-masterGain.connect(
-compressor
-);
-
-compressor.connect(
-audio.destination
-);
-
+masterGain.connect(compressor);
+compressor.connect(audio.destination);
 
 }catch(e){
 
-console.log(
-"Audio başlatılamadı",
-e
-);
+console.log("Audio başlatılamadı",e);
 
 }
 
 }
-
 
 function unlockAudio(){
 
@@ -3401,19 +2763,12 @@ try{
 
 initAudio();
 
-if(
-audio &&
-audio.state==="suspended"
-){
-
+if(audio && audio.state==="suspended")
 audio.resume();
-
-}
 
 }catch(e){}
 
 }
-
 
 function playTone(
 freq,
@@ -3425,39 +2780,26 @@ type="sine"
 if(!sound)
 return;
 
-
 try{
 
 initAudio();
 
-if(!audio || !masterGain)
+if(!audio||!masterGain)
 return;
 
 if(audio.state==="suspended")
 audio.resume();
 
+const now=audio.currentTime;
 
-const now=
-audio.currentTime;
-
-const osc=
-audio.createOscillator();
-
-const gain=
-audio.createGain();
-
+const osc=audio.createOscillator();
+const gain=audio.createGain();
 
 osc.type=type;
 
-osc.frequency.setValueAtTime(
-freq,
-now
-);
+osc.frequency.setValueAtTime(freq,now);
 
-gain.gain.setValueAtTime(
-.0001,
-now
-);
+gain.gain.setValueAtTime(.0001,now);
 
 gain.gain.exponentialRampToValueAtTime(
 Math.max(.001,gainValue),
@@ -3470,19 +2812,14 @@ now+duration
 );
 
 osc.connect(gain);
-
 gain.connect(masterGain);
 
 osc.start(now);
-
-osc.stop(
-now+duration+.02
-);
+osc.stop(now+duration+.02);
 
 }catch(e){}
 
 }
-
 
 function cardSound(){
 
@@ -3491,37 +2828,17 @@ return;
 
 initAudio();
 
-playTone(
-125,
-.055,
-.24,
-"triangle"
-);
+playTone(125,.055,.24,"triangle");
 
 setTimeout(()=>{
-
-playTone(
-78,
-.075,
-.15,
-"sine"
-);
-
+playTone(78,.075,.15,"sine");
 },20);
 
 setTimeout(()=>{
-
-playTone(
-230,
-.025,
-.055,
-"triangle"
-);
-
+playTone(230,.025,.055,"triangle");
 },30);
 
 }
-
 
 function bidSound(){
 
@@ -3530,41 +2847,22 @@ return;
 
 initAudio();
 
-playTone(
-430,
-.08,
-.18,
-"sine"
-);
+playTone(430,.08,.18,"sine");
 
 setTimeout(()=>{
-
-playTone(
-610,
-.10,
-.14,
-"sine"
-);
-
+playTone(610,.10,.14,"sine");
 },80);
 
 }
-
 
 function passSound(){
 
 if(!sound)
 return;
 
-playTone(
-170,
-.10,
-.13,
-"sine"
-);
+playTone(170,.10,.13,"sine");
 
 }
-
 
 function trumpSound(){
 
@@ -3573,37 +2871,17 @@ return;
 
 initAudio();
 
-playTone(
-390,
-.08,
-.17,
-"triangle"
-);
+playTone(390,.08,.17,"triangle");
 
 setTimeout(()=>{
-
-playTone(
-520,
-.10,
-.19,
-"triangle"
-);
-
+playTone(520,.10,.19,"triangle");
 },90);
 
 setTimeout(()=>{
-
-playTone(
-700,
-.14,
-.16,
-"triangle"
-);
-
+playTone(700,.14,.16,"triangle");
 },180);
 
 }
-
 
 function winSound(){
 
@@ -3612,37 +2890,17 @@ return;
 
 initAudio();
 
-playTone(
-420,
-.10,
-.17,
-"triangle"
-);
+playTone(420,.10,.17,"triangle");
 
 setTimeout(()=>{
-
-playTone(
-540,
-.10,
-.19,
-"triangle"
-);
-
+playTone(540,.10,.19,"triangle");
 },100);
 
 setTimeout(()=>{
-
-playTone(
-680,
-.18,
-.21,
-"triangle"
-);
-
+playTone(680,.18,.21,"triangle");
 },200);
 
 }
-
 
 function startSound(){
 
@@ -3651,78 +2909,39 @@ return;
 
 initAudio();
 
-playTone(
-330,
-.08,
-.14,
-"sine"
-);
+playTone(330,.08,.14,"sine");
 
 setTimeout(()=>{
-
-playTone(
-440,
-.10,
-.17,
-"sine"
-);
-
+playTone(440,.10,.17,"sine");
 },100);
 
 setTimeout(()=>{
-
-playTone(
-660,
-.16,
-.20,
-"sine"
-);
-
+playTone(660,.16,.20,"sine");
 },220);
 
 }
-
 
 function clickSound(){
 
 if(!sound)
 return;
 
-playTone(
-280,
-.045,
-.10,
-"square"
-);
+playTone(280,.045,.10,"square");
 
 }
-
 
 function errorSound(){
 
 if(!sound)
 return;
 
-playTone(
-120,
-.12,
-.15,
-"sawtooth"
-);
+playTone(120,.12,.15,"sawtooth");
 
 setTimeout(()=>{
-
-playTone(
-85,
-.14,
-.11,
-"sawtooth"
-);
-
+playTone(85,.14,.11,"sawtooth");
 },90);
 
 }
-
 
 function beep(){
 
@@ -3730,27 +2949,14 @@ cardSound();
 
 }
 
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
 function updateProfile(){
 
 $("coins").textContent=coins;
-
 $("coinGame").textContent=coins;
-
 $("level").textContent=level;
-
 $("levelGame").textContent=level;
 
 }
-
-
-/* =====================================================
-   CLOSE
-===================================================== */
 
 function close(el){
 
@@ -3758,14 +2964,10 @@ el.style.display="none";
 
 }
 
-
-/* =====================================================
-   INIT
-===================================================== */
-
 updateProfile();
 
 </script>
 
 </body>
 </html>
+```
