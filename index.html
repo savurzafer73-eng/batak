@@ -437,7 +437,11 @@ color:#ffdb77;
 display:none
 }
 
-/* ================= PARTNER HAND ================= */
+/* =====================================================
+   PARTNER HAND
+   EŞİNİN KARTLARI = SENİN KARTLARININ YAKLAŞIK %50'Sİ
+   2 SIRA = 7 + 6
+===================================================== */
 
 .partnerHand{
 position:absolute;
@@ -446,7 +450,7 @@ left:50%;
 top:105px;
 transform:translateX(-50%);
 width:min(720px,96vw);
-height:184px;
+height:145px;
 display:none;
 pointer-events:none
 }
@@ -462,21 +466,42 @@ background:#020b08ee;
 border:1px solid #d2ad5055;
 color:#ffd96c;
 font-size:8px;
-white-space:nowrap
+white-space:nowrap;
+z-index:20
 }
 
-/* MASAÜSTÜ EŞ KARTI */
+/* KARTLARI 7 + 6 DİZENLE */
+#partnerCards{
+width:100%;
+height:100%;
+display:grid;
+grid-template-columns:repeat(7,44px);
+grid-auto-rows:63px;
+justify-content:center;
+align-content:start;
+column-gap:4px;
+row-gap:4px;
+padding-top:0
+}
+
+/* EŞ KARTI */
 .partnerCard{
-position:absolute;
-width:88px;
-height:126px;
-border-radius:9px;
+position:relative;
+left:auto!important;
+top:auto!important;
+
+width:44px;
+height:63px;
+
+border-radius:5px;
 background:linear-gradient(145deg,#fff,#e9e8e2);
 border:1px solid #c8c7c0;
 color:#111;
+
 box-shadow:
-0 9px 22px #0008,
-inset 0 0 0 2px #ffffff99;
+0 5px 12px #0008,
+inset 0 0 0 1px #ffffff99;
+
 overflow:hidden;
 cursor:pointer;
 pointer-events:auto;
@@ -484,14 +509,14 @@ transition:.15s
 }
 
 .partnerCard:hover{
-transform:translateY(-7px)!important;
+transform:translateY(-4px)!important;
 z-index:100
 }
 
 .partnerCard.legal{
 box-shadow:
 0 0 0 2px #f3cf68,
-0 10px 24px #0009
+0 6px 15px #0009
 }
 
 .partnerCard.red{
@@ -500,39 +525,39 @@ color:#c52323
 
 .partnerCorner{
 position:absolute;
-top:5px;
-left:6px;
-font-size:13px;
+top:3px;
+left:3px;
+font-size:7px;
 font-weight:900;
-line-height:14px;
+line-height:8px;
 text-align:center
 }
 
 .partnerCorner.bottom{
 left:auto;
-right:6px;
+right:3px;
 top:auto;
-bottom:5px;
+bottom:3px;
 transform:rotate(180deg)
 }
 
 .partnerSuit{
-font-size:14px
+font-size:7px
 }
 
 .partnerCenter{
 position:absolute;
-inset:20px;
+inset:10px;
 display:grid;
 place-items:center;
-font-size:38px
+font-size:19px
 }
 
 .partnerFace{
 position:absolute;
-inset:21px 8px;
+inset:11px 4px;
 border:1px solid #b89240;
-border-radius:7px;
+border-radius:4px;
 background:linear-gradient(135deg,#f7e6a9,#c69d4c,#f5e3a4);
 display:flex;
 flex-direction:column;
@@ -541,18 +566,18 @@ justify-content:center
 }
 
 .partnerFaceSymbol{
-font-size:36px
+font-size:18px
 }
 
 .partnerFaceName{
-font-size:8px;
+font-size:4px;
 font-weight:900;
 color:#34250b
 }
 
 .partnerFaceSuit{
-font-size:17px;
-margin-top:2px
+font-size:8px;
+margin-top:1px
 }
 
 /* ================= USER HAND ================= */
@@ -861,70 +886,84 @@ left:4px
 bottom:183px
 }
 
-/*
-=====================================================
-MOBİLDE EŞİNİN KARTLARI 2 KAT BÜYÜK
-NORMAL MOBİL KART: 62 x 91
-EŞİNİN MOBİL KARTI: 124 x 182
-=====================================================
-*/
+/* ==========================================
+   MOBİL EŞ KARTLARI
+   SENİN KARTIN: 62 x 91
+   EŞİNİN KARTI: 31 x 45
+   7 + 6 OLARAK 2 SIRA
+========================================== */
 
 .partnerHand{
 top:108px;
 width:100vw;
-height:300px;
+height:105px;
+}
+
+#partnerCards{
+grid-template-columns:repeat(7,31px);
+grid-auto-rows:45px;
+column-gap:3px;
+row-gap:3px;
+justify-content:center;
+align-content:start
 }
 
 .partnerCard{
-width:124px;
-height:182px;
-border-radius:12px;
+width:31px;
+height:45px;
+border-radius:4px
 }
 
-/* Eş kartının içindeki yazılar da 2 kat */
-.partnerCorner{
-font-size:20px;
-line-height:22px;
-left:8px;
-top:8px
-}
-
-.partnerCorner.bottom{
-right:8px;
-bottom:8px
-}
-
-.partnerSuit{
-font-size:22px
-}
-
-.partnerCenter{
-inset:34px;
-font-size:54px
-}
-
-.partnerFace{
-inset:32px 10px;
-border-radius:10px
-}
-
-.partnerFaceSymbol{
-font-size:50px
-}
-
-.partnerFaceName{
-font-size:12px
-}
-
-.partnerFaceSuit{
-font-size:24px;
-margin-top:4px
+.partnerCard:hover{
+transform:translateY(-3px)!important
 }
 
 .partnerTitle{
-top:-14px;
-font-size:7px
+top:-13px;
+font-size:7px;
+padding:3px 8px
 }
+
+.partnerCorner{
+font-size:5px;
+line-height:6px;
+left:2px;
+top:2px
+}
+
+.partnerCorner.bottom{
+right:2px;
+bottom:2px
+}
+
+.partnerSuit{
+font-size:5px
+}
+
+.partnerCenter{
+inset:7px;
+font-size:14px
+}
+
+.partnerFace{
+inset:7px 3px;
+border-radius:3px
+}
+
+.partnerFaceSymbol{
+font-size:13px
+}
+
+.partnerFaceName{
+font-size:3px
+}
+
+.partnerFaceSuit{
+font-size:6px;
+margin-top:0
+}
+
+/* ================= USER MOBILE ================= */
 
 .hand{
 width:100vw;
@@ -1000,6 +1039,7 @@ top:99px
 
 @media(max-width:390px){
 
+/* SENİN KARTIN */
 .card{
 width:57px;
 height:86px
@@ -1013,58 +1053,61 @@ top:45px
 height:168px
 }
 
-/*
-390px ALTINDA:
-NORMAL KART = 57 x 86
-EŞİNİN KARTI = 114 x 172
-*/
-
-.partnerCard{
-width:114px;
-height:172px;
-border-radius:12px
-}
+/* EŞİNİN KARTI = YAKLAŞIK YARISI */
 
 .partnerHand{
 top:108px;
-height:285px
+height:95px
+}
+
+#partnerCards{
+grid-template-columns:repeat(7,28px);
+grid-auto-rows:42px;
+column-gap:2px;
+row-gap:2px
+}
+
+.partnerCard{
+width:28px;
+height:42px;
+border-radius:3px
 }
 
 .partnerCorner{
-font-size:18px;
-line-height:20px;
-left:7px;
-top:7px
+font-size:4px;
+line-height:5px;
+left:2px;
+top:2px
 }
 
 .partnerCorner.bottom{
-right:7px;
-bottom:7px
+right:2px;
+bottom:2px
 }
 
 .partnerSuit{
-font-size:20px
+font-size:4px
 }
 
 .partnerCenter{
-inset:31px;
-font-size:50px
+inset:6px;
+font-size:12px
 }
 
 .partnerFace{
-inset:30px 9px
+inset:6px 2px
 }
 
 .partnerFaceSymbol{
-font-size:46px
-}
-
-.partnerFaceName{
 font-size:11px
 }
 
+.partnerFaceName{
+font-size:2.5px
+}
+
 .partnerFaceSuit{
-font-size:22px
+font-size:5px
 }
 
 }
@@ -2376,6 +2419,19 @@ container.innerHTML="";
 let hand=players[PARTNER].hand;
 let legal=legalCards(PARTNER);
 
+/*
+=====================================================
+ARTIK INLINE LEFT/TOP KULLANMIYORUZ.
+
+CSS GRID OTOMATİK OLARAK:
+
+1. SIRA → 7 KART
+2. SIRA → 6 KART
+
+OLARAK DİZİYOR.
+=====================================================
+*/
+
 hand.forEach((card,index)=>{
 
 let el=document.createElement("div");
@@ -2393,36 +2449,6 @@ el.classList.add("legal");
 
 if(card.suit==="♥"||card.suit==="♦")
 el.classList.add("red");
-
-if(index<7){
-
-let x=(index/6)*72+14;
-
-el.style.left=x+"%";
-el.style.top="0";
-
-}else{
-
-let x=((index-7)/5)*60+20;
-
-el.style.left=x+"%";
-
-/*
-MOBİLDE KARTLARIN 2 KAT BOYUTUNA
-UYGUN OLARAK İKİNCİ SIRA DAHA AŞAĞIDA
-*/
-
-if(window.innerWidth<=700){
-
-el.style.top="105px";
-
-}else{
-
-el.style.top="55px";
-
-}
-
-}
 
 el.innerHTML=partnerCardHTML(card);
 
