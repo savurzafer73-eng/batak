@@ -12,7 +12,6 @@
 <meta name="application-name" content="Batak Royale">
 <meta name="description" content="Batak Royale — Türkçe, offline oynanabilen profesyonel 4 kişilik Batak oyunu.">
 <meta name="format-detection" content="telephone=no">
-<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>Batak Royale</title>
@@ -86,14 +85,13 @@ button{min-height:44px;-webkit-user-select:none;user-select:none;-webkit-touch-c
   #scoreContent span{gap:2px}
 }
 
-/* EŞLİ 2 SIRA — SON DÜZEN */
-.userHand{bottom:88px;height:238px;pointer-events:auto}
-.partnerHand{top:6px;height:238px}
+/* EŞLİ: 2 sıra, 6+7. Tekli de aynı güvenli rendererı kullanır. */
+.userHand{bottom:88px;height:194px;pointer-events:auto}
+.partnerHand{top:6px;height:194px}
 .card.upper,.card.lower,.userCard.lower,.partnerCard.lower{top:auto}
 @media(max-width:650px){
-  .userHand{bottom:88px;height:194px;width:100vw}
-  .partnerHand{top:5px;height:194px;width:100vw}
-  .card.upper,.card.lower,.userCard.lower,.partnerCard.lower{top:auto}
+ .userHand{bottom:82px;height:190px;width:100vw}
+ .partnerHand{top:5px;height:190px;width:100vw}
 }
 </style>
 </head>
@@ -120,34 +118,36 @@ function courtSVG(r,red){const a=red?'#b21f2d':'#18283e',g='#c7a24a',k='#e5b28a'
 function cardHTML(c){const red='♥♦'.includes(c.s);if('JQK'.includes(c.r))return `<div class="card ${red?'red':''}"><div class="rank">${c.r}<span class="suitSmall">${c.s}</span></div><div class="face">${courtSVG(c.r,red)}</div><div class="cornerBottom">${c.r}<span>${c.s}</span></div></div>`;if(c.r==='A')return `<div class="card ${red?'red':''}"><div class="rank">A<span class="suitSmall">${c.s}</span></div><div class="centerSuit">${c.s}</div><div class="cornerBottom">A<span>${c.s}</span></div></div>`;const map={2:['tl','br'],3:['tl','mid','br'],4:['tl','tr','bl','br'],5:['tl','tr','mid','bl','br'],6:['tl','tr','l2','r2','bl','br'],7:['tl','tr','l2','mid','r2','bl','br'],8:['tl','tr','l2','r2','l1','r1','bl','br'],9:['tl','tr','l1','r1','mid','l2','r2','bl','br'],10:['tl','tr','l1','r1','l2','r2','bl','br','b1','b2']};const pos={tl:'left:20%;top:15%',tr:'left:80%;top:15%',l1:'left:20%;top:31%',r1:'left:80%;top:31%',l2:'left:20%;top:50%',r2:'left:80%;top:50%',mid:'left:50%;top:50%',b1:'left:35%;top:70%',b2:'left:65%;top:70%',bl:'left:20%;top:85%',br:'left:80%;top:85%'};return `<div class="card ${red?'red':''}"><div class="rank">${c.r}<span class="suitSmall">${c.s}</span></div><div class="pips">${(map[Number(c.r)]||[]).map(x=>`<span class="pip" style="${pos[x]}">${c.s}</span>`).join('')}</div><div class="cornerBottom">${c.r}<span>${c.s}</span></div></div>`}
 function renderHands(){renderHand('userHand',hands.SEN,'SEN');renderHand('partnerHand',hands.MERT,'MERT')}
 function renderHand(id,h,actor){
-  const el=$(id);
-  el.innerHTML='';
+  const el=$(id); el.innerHTML='';
   if(actor==='MERT' && mode!=='esli') return;
   const mobile=innerWidth<=650;
-  const w=mobile?60:76;
-  const hgt=mobile?88:108;
-  const gap=mobile?-7:-6;
-  const rowGap=mobile?7:8;
-  const rows=[6,7];
-  let idx=0;
+  const w=mobile?60:76, hgt=mobile?88:108, gap=mobile?-7:-6, rowGap=mobile?7:8;
+  const rows=[6,7]; let idx=0;
   rows.forEach((count,row)=>{
     const total=count*w+(count-1)*gap;
     const startX=Math.max(0,(el.clientWidth-total)/2);
     for(let col=0;col<count;col++){
-      const c=h[idx], i=idx++;
-      if(!c) continue;
-      const wrap=document.createElement('div');
-      wrap.innerHTML=cardHTML(c);
+      const c=h[idx], i=idx++; if(!c) continue;
+      const wrap=document.createElement('div'); wrap.innerHTML=cardHTML(c);
       const x=wrap.firstElementChild;
-      x.classList.add(actor==='SEN'?'userCard':'partnerCard');
-      x.classList.add(row===0?'upper':'lower');
+      x.classList.add(actor==='SEN'?'userCard':'partnerCard',row===0?'upper':'lower');
       x.style.left=(startX+col*(w+gap))+'px';
       x.style.top=(row*(hgt+rowGap))+'px';
-      x.dataset.i=i;
-      x.onclick=e=>{e.stopPropagation();onCardClick(actor,i)};
+      x.dataset.i=i; x.onclick=e=>{e.stopPropagation();onCardClick(actor,i)};
       el.appendChild(x);
     }
   });
+}
+function playerShortName(){return playerName||'Oyuncu'}
+function updateProfileUI(){
+  const name=playerShortName();
+  const first=Array.from(name.trim())[0]||'O';
+  if($('profileName'))$('profileName').textContent=name;
+  if($('profileAvatar'))$('profileAvatar').textContent=first.toUpperCase();
+  if($('bottomPlayerName'))$('bottomPlayerName').textContent=name;
+  if($('coins'))$('coins').textContent=coins;
+  if($('gcoins'))$('gcoins').textContent=coins;
+  if($('snd'))$('snd').textContent=soundOn?'Açık':'Kapalı';
 }
 function openProfile(){
   $('modalBox').innerHTML=`<div class="mt">👤 PROFİL</div><div class="mx">Oyunda görünecek adını belirle.</div><input id="nameInput" class="nameInput" maxlength="16" minlength="3" autocomplete="off" value="${escapeHTML(playerName)}"><div style="display:flex;gap:9px;margin-top:12px"><button class="ctrl" style="flex:1" onclick="$('modal').classList.remove('show')">İPTAL</button><button class="ctrl primary" style="flex:1" onclick="saveProfile()">KAYDET</button></div>`;
