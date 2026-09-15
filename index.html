@@ -333,6 +333,7 @@ function suitStrength(h,s){const cards=h.filter(c=>c.s===s);let score=cards.leng
 function likelyVoid(actor,s){return !hands[actor].some(c=>c.s===s)}
 function cardPower(c){let v=rankValue(c.r);if(c.r==='A')v+=12;else if(c.r==='K')v+=5;else if(c.r==='Q')v+=2;return v}
 function aiPlay(actor){
+  if(mode==='esli' && actor==='MERT' && partnerControlled)return;
   if(phase!=='play'||currentPlayer()!==actor)return;
   const legal=legalCards(actor),h=hands[actor]; if(!legal.length)return;
   if(difficulty==='easy'){playCard(actor,legal[Math.floor(Math.random()*legal.length)]);return}
